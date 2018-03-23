@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.108" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.108" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Well.Common\Well.Common.csproj" />
+    <ProjectReference Include="..\Well.Model\Well.Model.csproj" />
+  </ItemGroup>
+
+</Project>
