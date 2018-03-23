@@ -9,11 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Well.Common", "Well.Common\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{907769C3-96CE-405C-9180-CA8524F357E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper", "G:\Dapper-master\Dapper\Dapper.csproj", "{A405C6F4-27C7-4473-8464-0B18E6913E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Well.Data", "Well.Data\Well.Data.csproj", "{BC4B0D44-B952-4873-90E7-6C0E24182C26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Well.Data", "Well.Data\Well.Data.csproj", "{BC4B0D44-B952-4873-90E7-6C0E24182C26}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Well.Model", "Well.Model\Well.Model.csproj", "{19B70774-DE25-4060-8619-08B00CE5317F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Well.Model", "Well.Model\Well.Model.csproj", "{19B70774-DE25-4060-8619-08B00CE5317F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{907769C3-96CE-405C-9180-CA8524F357E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907769C3-96CE-405C-9180-CA8524F357E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907769C3-96CE-405C-9180-CA8524F357E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A405C6F4-27C7-4473-8464-0B18E6913E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A405C6F4-27C7-4473-8464-0B18E6913E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A405C6F4-27C7-4473-8464-0B18E6913E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A405C6F4-27C7-4473-8464-0B18E6913E17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC4B0D44-B952-4873-90E7-6C0E24182C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC4B0D44-B952-4873-90E7-6C0E24182C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4B0D44-B952-4873-90E7-6C0E24182C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
