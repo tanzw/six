@@ -17,6 +17,7 @@ namespace Well.Six
         public fmMain()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             ToolStripButton t = new ToolStripButton();
 
             toolStrip1.Items.Add(t);

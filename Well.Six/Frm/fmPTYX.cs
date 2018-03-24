@@ -345,7 +345,66 @@ namespace Well.Six.Frm
 
         private void fmPTYX_Load(object sender, EventArgs e)
         {
-            Common.BindCustomers(this.cbox);
+            Common.BindCustomers(this.cbox, (sender1, e1) =>
+            {
+
+                var controls_pytx = this.tabPage1.Controls.Find("PL", false);
+                var controls_ws = this.tabPage2.Controls.Find("PL", false);
+                if (this.cbox.SelectedIndex == 0)
+                {
+                    foreach (var control in controls_pytx)
+                    {
+                        if (control is Label)
+                        {
+                            var t = control as Label;
+                            t.Text = "00.00";
+                        }
+                    }
+
+                    foreach (var control in controls_ws)
+                    {
+                        if (control is Label)
+                        {
+                            var t = control as Label;
+                            t.Text = "00.00";
+                        }
+                    }
+                }
+                else
+                {
+                    OddsImpl oddservice = new OddsImpl();
+                    var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
+                    var oddsList_pyyx = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.平特一肖);
+                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_pyyx.strJson);
+                    foreach (var control in controls_pytx)
+                    {
+                        if (control is Label)
+                        {
+                            var t = control as Label;
+                            t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
+
+                        }
+                    }
+
+
+                    var oddsList_ws = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.尾数);
+                    if (oddsList_ws != null)
+                    {
+                        var ws = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_ws.strJson);
+                        foreach (var control in controls_ws)
+                        {
+                            if (control is Label)
+                            {
+                                var t = control as Label;
+                                t.Text = ws.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
+
+                            }
+                        }
+                    }
+                }
+
+
+            });
         }
 
 

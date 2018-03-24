@@ -67,9 +67,44 @@ namespace Well.Six.UControls
         public void InitControls()
         {
             //   this.BackColor = Color.Yellow;
-            Common.BindCustomers(this.cbox);
+
+
+
             this.txtMoney.KeyPress += new KeyPressEventHandler(Common.TextBox_FilterString_KeyPress);
             InitOptions();
+            Common.BindCustomers(this.cbox, (sender1, e1) =>
+            {
+                var controls = this.groupBox2.Controls.Find("PL", false);
+
+                if (this.cbox.SelectedIndex == 0)
+                {
+                    foreach (var control in controls)
+                    {
+                        if (control is Label)
+                        {
+                            var t = control as Label;
+                            t.Text = "00.00";
+                        }
+                    }
+                }
+                else
+                {
+                    OddsImpl oddservice = new OddsImpl();
+                    var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == OrderType);
+                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                    foreach (var control in controls)
+                    {
+                        if (control is Label)
+                        {
+                            var t = control as Label;
+                            t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
+
+                        }
+                    }
+                }
+            });
+
             WinNumberImpl winService = new WinNumberImpl();
             txtIssue.Text = winService.GetNewIssue().Body;
         }
@@ -133,7 +168,7 @@ namespace Well.Six.UControls
                 ck.Tag = lbName.Tag;
                 ck.Enter += new System.EventHandler(Common.CheckBox_UpdateColor_Enter);
                 ck.Leave += new System.EventHandler(Common.CheckBox_UpdateColor_Leave);
-                ck.Location = new Point(CurrentX + lbName.Width + CodeWidth * 5 + 5 * interval + lbPL.Width, CurrentY + 5);
+                ck.Location = new Point(CurrentX + lbName.Width + 15 + CodeWidth * 5 + 5 * interval + lbPL.Width, CurrentY + 5);
                 this.groupBox2.Controls.Add(ck);
 
                 var K = i + 1;
@@ -209,7 +244,7 @@ namespace Well.Six.UControls
             }
             else
             {
-                Frm.fmConfirmLX fm = new Frm.fmConfirmLX(list, OrderType, cbox.SelectedValue.ToTryInt(), Convert.ToDecimal(txtMoney.Text));
+                Frm.fmConfirmLX fm = new Frm.fmConfirmLX();
 
                 #region 创建订单对象
                 string OrderId = Guid.NewGuid().ToString("n");
@@ -292,7 +327,7 @@ namespace Well.Six.UControls
                 order.Total_Out_Money = 0.00M;
                 #endregion
 
-                fm.InitForm<OrderLXLM>(order);
+                fm.InitForm(order);
 
                 if (fm.ShowDialog() == DialogResult.OK)
                 {

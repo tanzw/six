@@ -32,6 +32,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
+            this.btnTotal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,9 +76,20 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // btnTotal
+            // 
+            this.btnTotal.Location = new System.Drawing.Point(464, 473);
+            this.btnTotal.Name = "btnTotal";
+            this.btnTotal.Size = new System.Drawing.Size(75, 23);
+            this.btnTotal.TabIndex = 4;
+            this.btnTotal.Text = "统计";
+            this.btnTotal.UseVisualStyleBackColor = true;
+            this.btnTotal.Click += new System.EventHandler(this.btnTotal_Click);
+            // 
             // fmNumersList
             // 
             this.ClientSize = new System.Drawing.Size(699, 508);
+            this.Controls.Add(this.btnTotal);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Button btnTotal;
     }
 }

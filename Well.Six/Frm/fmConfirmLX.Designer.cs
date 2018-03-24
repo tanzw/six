@@ -33,6 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odds = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -40,11 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Odds = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,59 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(426, 294);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Index";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column1.HeaderText = "序号";
+            this.Column1.MinimumWidth = 40;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 40;
+            // 
+            // Remarks
+            // 
+            this.Remarks.DataPropertyName = "Remarks";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Remarks.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Remarks.HeaderText = "号码";
+            this.Remarks.MinimumWidth = 150;
+            this.Remarks.Name = "Remarks";
+            this.Remarks.ReadOnly = true;
+            this.Remarks.Width = 150;
+            // 
+            // Odds
+            // 
+            this.Odds.DataPropertyName = "Odds";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Odds.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Odds.HeaderText = "赔率";
+            this.Odds.MinimumWidth = 60;
+            this.Odds.Name = "Odds";
+            this.Odds.ReadOnly = true;
+            this.Odds.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "InMoney";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "金额";
+            this.Column2.MinimumWidth = 80;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Flag";
+            this.Column3.FalseValue = "0";
+            this.Column3.HeaderText = "确定";
+            this.Column3.MinimumWidth = 50;
+            this.Column3.Name = "Column3";
+            this.Column3.TrueValue = "1";
+            this.Column3.Width = 50;
             // 
             // btnOK
             // 
@@ -136,61 +189,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "组数：";
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Index";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column1.HeaderText = "序号";
-            this.Column1.MinimumWidth = 40;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 40;
-            // 
-            // Remarks
-            // 
-            this.Remarks.DataPropertyName = "Remarks";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Remarks.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Remarks.HeaderText = "号码";
-            this.Remarks.MinimumWidth = 150;
-            this.Remarks.Name = "Remarks";
-            this.Remarks.ReadOnly = true;
-            this.Remarks.Width = 150;
-            // 
-            // Odds
-            // 
-            this.Odds.DataPropertyName = "Odds";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Odds.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Odds.HeaderText = "赔率";
-            this.Odds.MinimumWidth = 60;
-            this.Odds.Name = "Odds";
-            this.Odds.ReadOnly = true;
-            this.Odds.Width = 60;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "InMoney";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "金额";
-            this.Column2.MinimumWidth = 80;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Flag";
-            this.Column3.FalseValue = "0";
-            this.Column3.HeaderText = "确定";
-            this.Column3.MinimumWidth = 50;
-            this.Column3.Name = "Column3";
-            this.Column3.TrueValue = "1";
-            this.Column3.Width = 50;
-            // 
             // fmConfirmLX
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 402);

@@ -12,6 +12,8 @@ namespace Well.Model
 
         public int OrderType { get; set; }
 
+        public decimal Return_PL { get; set; }
+
         public string strJson { get; set; }
 
     }

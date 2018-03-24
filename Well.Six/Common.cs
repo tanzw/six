@@ -51,6 +51,23 @@ namespace Well.Six
             }
         }
 
+        public static void BindCustomers(ComboBox comBox, Action<object, EventArgs> ac)
+        {
+            comBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            CustomerImpl services = new CustomerImpl();
+            var result = services.GetList(new Model.Customers() { IsDel = 0 });
+
+            if (result.Code == 0)
+            {
+                result.Body.Insert(0, new Model.Customers() { Id = 0, Name = "请选择客户" });
+                comBox.DataSource = result.Body;
+                comBox.DisplayMember = "Name";
+                comBox.ValueMember = "Id";
+
+            }
+            comBox.SelectedIndexChanged += new EventHandler(ac);
+        }
+
         public static void MessageBoxShow(string text, MessageBoxIcon icon)
         {
             MessageBox.Show(text, "提示", MessageBoxButtons.OK, icon);

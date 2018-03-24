@@ -19,7 +19,9 @@ namespace Well.Six.Frm
         public fmTM()
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitOption();
             //宋体, 15pt, style = Bold, Italic
 
@@ -90,15 +92,83 @@ namespace Well.Six.Frm
 
         private void fmTM_Load(object sender, EventArgs e)
         {
-            Common.BindCustomers(this.cbox);
+            Common.BindCustomers(this.cbox, (sender1, e1) =>
+            {
+                var value = "00.00";
+                if (this.cbox.SelectedIndex == 0)
+                {
+
+                }
+                else
+                {
+                    OddsImpl oddservice = new OddsImpl();
+                    var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.特码);
+                    var tm = Newtonsoft.Json.JsonConvert.DeserializeObject<TMOdds>(oddsList.strJson);
+                    value = tm.Num_PL.ToMoney();
+                }
+                var controls = this.groupBox2.Controls.Find("PL", false);
+                foreach (var control in controls)
+                {
+                    if (control is Label)
+                    {
+                        var t = control as Label;
+                        t.Text = value;
+                    }
+                }
+            });
             WinNumberImpl winService = new WinNumberImpl();
             txtIssue.Text = winService.GetNewIssue().Body;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            #region 检测输入
+            if (this.cbox.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtIssue.Text))
+            {
+                MessageEx.ShowWarning("请输入期号");
+                return;
+            }
+            if (txtIssue.Text.Trim().Length != 7)
+            {
+                MessageEx.ShowWarning("请输入正确的期号");
+                return;
+            }
+
+            #endregion
+
+            #region 获取输入
+
+            bool flag = false;
+            foreach (var control in this.groupBox2.Controls)
+            {
+                if (control is TextBox)
+                {
+                    var c = control as TextBox;
+                    if (!string.IsNullOrWhiteSpace(c.Text))
+                    {
+                        flag = true;
+
+                    }
+                }
+            }
+            if (!flag)
+            {
+                MessageEx.ShowWarning("请输入号码的金额");
+                return;
+            }
+            #endregion
+
+
             var OrderId = Guid.NewGuid().ToString("n");
             var list = new List<OrderTM>();
+            var index = 0;
             foreach (var control in this.groupBox2.Controls)
             {
                 if (control is TextBox)
@@ -110,6 +180,7 @@ namespace Well.Six.Frm
                         O.Id = Guid.NewGuid().ToString("N");
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(c.Text);
+                        O.Flag = 1;
 
                         O.Status = (int)ResultStatus.Wait;
 
@@ -118,12 +189,14 @@ namespace Well.Six.Frm
                         {
                             var lbCode = Code as Label;
                             O.Code = lbCode.Text;
+                            index = index + 1;
                         }
                         else
                         {
                             continue;
                         }
-
+                        O.Remarks = O.Code;
+                        O.Index = index;
                         var PL = this.groupBox2.Controls.Find("PL", false).FirstOrDefault(x => x.Tag == c.Tag);
                         if (PL != null)
                         {
@@ -157,17 +230,21 @@ namespace Well.Six.Frm
                 OrderDetails = list
             };
 
-            OrderImpl services = new OrderImpl();
-            if (services.AddOrderTM(order).Code == 0)
+            Frm.fmConfirmLX fmConfigm = new fmConfirmLX();
+            fmConfigm.InitForm(order);
+            if (fmConfigm.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.None);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                OrderImpl services = new OrderImpl();
+                if (services.AddOrderTM(order).Code == 0)
+                {
+                    MessageBox.Show("成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    btnReset_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("失败", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
             }
-            else
-            {
-                MessageBox.Show("失败", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.None);
-            }
-
         }
         private void txtNum_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -193,5 +270,7 @@ namespace Well.Six.Frm
                 }
             }
         }
+
+
     }
 }

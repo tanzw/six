@@ -59,5 +59,29 @@ namespace Well.Common.Extensions
             }
 
         }
+
+
+        public static string ToMoney(this decimal v, MoneyPattern pattern = MoneyPattern.SubString, int count = 2)
+        {
+            //if (pattern == MoneyPattern.SubString)
+            //{
+            //var tmp = (double)(v * 100) / 100.00;
+            //return tmp.ToString();
+            return string.Format("{0:N2}", v);
+            //}
+        }
+
+        public enum MoneyPattern
+        {
+
+            /// <summary>
+            /// 四舍五入
+            /// </summary>
+            Rounding = 1,
+            /// <summary>
+            /// 截取
+            /// </summary>
+            SubString = 2
+        }
     }
 }

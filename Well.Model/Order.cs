@@ -55,6 +55,12 @@ namespace Well.Model
         public decimal OutMoney { get; set; }
 
         public int Status { get; set; }
+
+        public int Flag { get; set; }
+
+        public string Remarks { get; set; }
+
+        public int Index { get; set; }
     }
 
     public class OrderLXLM

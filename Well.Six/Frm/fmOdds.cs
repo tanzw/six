@@ -49,7 +49,7 @@ namespace Well.Six.Frm
                                 if (pl_lm2 != null)
                                 {
                                     oddsLX1.SetValues(pl_lm2.List);
-                                    txtLMFS.Text = pl_lm2.Return_PL.ToString();
+                                    txtLXFS.Text = pl_lm2.Return_PL.ToString();
                                 }
                                 break;
                             case (int)OrderType.三连肖:
@@ -57,7 +57,7 @@ namespace Well.Six.Frm
                                 if (pl_lm3 != null)
                                 {
                                     oddsLX2.SetValues(pl_lm3.List);
-                                    txtLMFS.Text = pl_lm3.Return_PL.ToString();
+                                    txtLXFS.Text = pl_lm3.Return_PL.ToString();
                                 }
                                 break;
                             case (int)OrderType.四连肖:
@@ -65,7 +65,7 @@ namespace Well.Six.Frm
                                 if (pl_lm4 != null)
                                 {
                                     oddsLX3.SetValues(pl_lm4.List);
-                                    txtLMFS.Text = pl_lm4.Return_PL.ToString();
+                                    txtLXFS.Text = pl_lm4.Return_PL.ToString();
                                 }
                                 break;
                             case (int)OrderType.五连肖:
@@ -73,7 +73,7 @@ namespace Well.Six.Frm
                                 if (pl_lm5 != null)
                                 {
                                     oddsLX4.SetValues(pl_lm5.List);
-                                    txtLMFS.Text = pl_lm5.Return_PL.ToString();
+                                    txtLXFS.Text = pl_lm5.Return_PL.ToString();
                                 }
                                 break;
                             case (int)OrderType.二连码:
@@ -86,7 +86,6 @@ namespace Well.Six.Frm
                                     txtSQZ.Text = pl_lm.SQZ.ToString();
                                     txtSZE.Text = pl_lm.SZE.ToString();
                                     txtSZS.Text = pl_lm.SZS.ToString();
-                                    txtLMFS.Text = pl_lm.Return_PL.ToString();
                                 }
                                 break;
                             case (int)OrderType.平特一肖:
@@ -189,6 +188,7 @@ namespace Well.Six.Frm
 
             Well.Model.LXOdds pt = new Model.LXOdds();
             pt.List = oddsLX5.GetResult();
+            pt.Return_PL = Convert.ToDecimal(txtPTYXFS.Text.Trim());
 
             Well.Model.LMOdds lm = new Model.LMOdds();
             lm.EQZ = Convert.ToDecimal(txtEQZ.Text.Trim());
@@ -203,42 +203,49 @@ namespace Well.Six.Frm
             Well.Model.OddsData tmModel = new Model.OddsData();
             tmModel.CustomerId = customerId;
             tmModel.OrderType = (int)OrderType.特码;
+            tmModel.Return_PL = tm.Return_PL;
             tmModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(tm);
             list.Add(tmModel);
 
             Well.Model.OddsData lx2Model = new Model.OddsData();
             lx2Model.CustomerId = customerId;
             lx2Model.OrderType = (int)OrderType.二连肖;
+            lx2Model.Return_PL = lx2.Return_PL;
             lx2Model.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lx2);
             list.Add(lx2Model);
 
             Well.Model.OddsData lx3Model = new Model.OddsData();
             lx3Model.CustomerId = customerId;
             lx3Model.OrderType = (int)OrderType.三连肖;
+            lx3Model.Return_PL = lx3.Return_PL;
             lx3Model.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lx3);
             list.Add(lx3Model);
 
             Well.Model.OddsData lx4Model = new Model.OddsData();
             lx4Model.CustomerId = customerId;
             lx4Model.OrderType = (int)OrderType.四连肖;
+            lx4Model.Return_PL = lx4.Return_PL;
             lx4Model.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lx4);
             list.Add(lx4Model);
 
             Well.Model.OddsData lx5Model = new Model.OddsData();
             lx5Model.CustomerId = customerId;
             lx5Model.OrderType = (int)OrderType.五连肖;
+            lx5Model.Return_PL = lx5.Return_PL;
             lx5Model.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lx5);
             list.Add(lx5Model);
 
             Well.Model.OddsData lmModel = new Model.OddsData();
             lmModel.CustomerId = customerId;
             lmModel.OrderType = (int)OrderType.二连码;
+            lmModel.Return_PL = lm.Return_PL;
             lmModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lm);
             list.Add(lmModel);
 
             Well.Model.OddsData ptyxModel = new Model.OddsData();
             ptyxModel.CustomerId = customerId;
             ptyxModel.OrderType = (int)OrderType.平特一肖;
+            ptyxModel.Return_PL = pt.Return_PL;
             ptyxModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(pt);
             list.Add(ptyxModel);
 

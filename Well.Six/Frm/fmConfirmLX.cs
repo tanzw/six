@@ -15,6 +15,10 @@ namespace Well.Six.Frm
         public fmConfirmLX()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         bool isInit = false;
@@ -24,22 +28,40 @@ namespace Well.Six.Frm
             InitializeComponent();
         }
 
-        private Order<OrderLXLM> OrderLXLM
+
+
+
+        public void InitForm(OrderMain order)
         {
-            get; set;
+            switch (order.Order_Type)
+            {
+                case (int)OrderType.特码:
+                    var TM = order as Order<OrderTM>;
+                    lbCount.Text = TM.OrderDetails.Count.ToString();
+                    lbMoney.Text = TM.Total_In_Money.ToString();
+                    BindData(TM.OrderDetails);
+                    break;
+                case (int)OrderType.二连肖:
+                case (int)OrderType.三连肖:
+                case (int)OrderType.四连肖:
+                case (int)OrderType.五连肖:
+                case (int)OrderType.二连码:
+                case (int)OrderType.三连码:
+                case (int)OrderType.四连码:
+                case (int)OrderType.五连码:
+                    var lblm = order as Order<OrderLXLM>;
+                    lbCount.Text = lblm.OrderDetails.Count.ToString();
+                    lbMoney.Text = lblm.Total_In_Money.ToString();
+                    BindData(lblm.OrderDetails);
+                    break;
+
+            }
+
+            //  
+
+
         }
 
-        private Order<OrderLXLM> OrderTM
-        {
-            get; set;
-        }
-
-        public void InitForm<T>(Order<T> order)
-        {
-            BindData(order.OrderDetails);
-
-
-        }
 
 
         private void BindData(object dataSource)
@@ -76,7 +98,27 @@ namespace Well.Six.Frm
         {
 
         }
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
 
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        btnOK_Click(null, null);
+                        break;
+                }
+            }
+            return false;
+        }
 
     }
 }

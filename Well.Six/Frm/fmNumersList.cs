@@ -189,5 +189,10 @@ namespace Well.Six.Frm
             Well.Data.WinNumberImpl service = new Data.WinNumberImpl();
             service.Run(dataGridView1.CurrentRow.Cells[1].Value.ToString());
         }
+
+        private void btnTotal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

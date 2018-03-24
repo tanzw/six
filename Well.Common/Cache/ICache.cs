@@ -7,7 +7,7 @@ namespace Well.Common.Cache
   
 
     //public class CacheOjbect
-    //{
+    //{ 
     //    private static readonly Object _locker = new object();
 
     //    public static CacheOjbect()
