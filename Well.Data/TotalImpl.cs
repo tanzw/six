@@ -19,9 +19,10 @@ namespace Well.Data
             var result = new StandardResult();
             using (var db = base.NewDB())
             {
+                db.Execute("delete from t_total_details where issue=@Issue", new { Issue = issue });
 
                 string sql_TM = @"insert into t_total_details(issue, ordertype, Inmoney, outmoney, returnmoney, customerId) 
-select a.issue,a.order_type,sum(a.total_in_money),sum(a.total_out_money),sum(a.total_in_money)*b.return_pl,a.customer_id from t_orders AS a  INNER JOIN t_odds as b on a.customer_id=b.customerId and a.order_type=b.ordertype
+select a.issue,a.order_type,sum(a.total_in_money),sum(a.total_out_money),sum(a.total_in_money)*b.return_pl,a.customer_id from t_orders AS a  INNER JOIN t_odds as b on a.customer_id=b.customerId and a.child_type=b.ordertype
 INNER JOIN t_customers as c on a.customer_id=c.id  where a.issue=@Issue
 group by a.issue,a.order_type,a.customer_id";
 

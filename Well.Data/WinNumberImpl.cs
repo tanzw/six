@@ -203,7 +203,7 @@ namespace Well.Data
                     {
                         foreach (var detail in item.OrderDetails)
                         {
-                            switch (item.Order_Type)
+                            switch (item.Child_Type)
                             {
                                 case (int)ChildType.二连肖:
                                 case (int)ChildType.二连码:
@@ -260,7 +260,7 @@ namespace Well.Data
                         UpdateOrderStatus(2, item.Id, orderMainStatus, trans);
                     }
 
-                    AddTotal(issue);
+                  
                     trans.Commit();
                 }
                 catch (Exception ex)
