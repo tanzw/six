@@ -83,5 +83,23 @@ namespace Well.Model
                 return _CodeList;
             }
         }
+
+        private List<string> _ZodiacList = new List<string>();
+        public List<string> ZodiacList
+        {
+            get
+            {
+                _ZodiacList.Clear();
+                _ZodiacList.Add(Num1_Zodiac);
+                _ZodiacList.Add(Num2_Zodiac);
+                _ZodiacList.Add(Num3_Zodiac);
+                _ZodiacList.Add(Num4_Zodiac);
+                _ZodiacList.Add(Num5_Zodiac);
+                _ZodiacList.Add(Num6_Zodiac);
+                _ZodiacList.Add(Num7_Zodiac);
+
+                return _ZodiacList;
+            }
+        }
     }
 }

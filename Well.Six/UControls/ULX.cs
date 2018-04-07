@@ -27,12 +27,17 @@ namespace Well.Six.UControls
 
         #region 公有属性
         int _OrderType = 0;
+        int _ChildType = 0;
         public int OrderType
         {
             get { return _OrderType; }
             set { _OrderType = value; }
         }
-
+        public int ChildType
+        {
+            get { return _ChildType; }
+            set { _ChildType = value; }
+        }
         public int MinCount
         {
             get
@@ -91,8 +96,9 @@ namespace Well.Six.UControls
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == OrderType);
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == ChildType);
                     var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
                     foreach (var control in controls)
                     {
                         if (control is Label)
@@ -260,6 +266,7 @@ namespace Well.Six.UControls
                     Issue = txtIssue.Text.Trim(),
                     Order_No = ServiceNum.GetOrderNo(),
                     Order_Type = OrderType,
+                    Child_Type = ChildType,
                     Update_Time = "",
                     Update_User_Id = ""
                 };
@@ -272,7 +279,7 @@ namespace Well.Six.UControls
                 }
 
                 //生成号码组合
-                List<int[]> ListCombination = PermutationAndCombination<int>.GetCombination(InCombinationList.ToArray(), OrderType - 10); //求全部的3-3组合
+                List<int[]> ListCombination = PermutationAndCombination<int>.GetCombination(InCombinationList.ToArray(), ChildType - 20); //求全部的3-3组合
 
                 //根据号码组合创建订单明细
                 int index = 1;

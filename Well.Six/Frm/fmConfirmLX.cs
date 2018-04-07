@@ -33,22 +33,22 @@ namespace Well.Six.Frm
 
         public void InitForm(OrderMain order)
         {
-            switch (order.Order_Type)
+            switch (order.Child_Type)
             {
-                case (int)OrderType.特码:
+                case (int)ChildType.特码:
                     var TM = order as Order<OrderTM>;
                     lbCount.Text = TM.OrderDetails.Count.ToString();
                     lbMoney.Text = TM.Total_In_Money.ToString();
                     BindData(TM.OrderDetails);
                     break;
-                case (int)OrderType.二连肖:
-                case (int)OrderType.三连肖:
-                case (int)OrderType.四连肖:
-                case (int)OrderType.五连肖:
-                case (int)OrderType.二连码:
-                case (int)OrderType.三连码:
-                case (int)OrderType.四连码:
-                case (int)OrderType.五连码:
+                case (int)ChildType.二连肖:
+                case (int)ChildType.三连肖:
+                case (int)ChildType.四连肖:
+                case (int)ChildType.五连肖:
+                case (int)ChildType.二连码:
+                case (int)ChildType.三连码:
+                case (int)ChildType.四连码:
+                case (int)ChildType.五连码:
                     var lblm = order as Order<OrderLXLM>;
                     lbCount.Text = lblm.OrderDetails.Count.ToString();
                     lbMoney.Text = lblm.Total_In_Money.ToString();

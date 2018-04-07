@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Well.Data;
 
 namespace Well.Six.Frm
 {
@@ -24,10 +25,14 @@ namespace Well.Six.Frm
 
         private void fmLX_Load(object sender, EventArgs e)
         {
-            ulx2l.OrderType = 12;
-            ulx3l.OrderType = 13;
-            ulx4l.OrderType = 14;
-            ulx5l.OrderType = 15;
+            ulx2l.OrderType = (int)OrderType.连肖;
+            ulx3l.OrderType = (int)OrderType.连肖;
+            ulx4l.OrderType = (int)OrderType.连肖;
+            ulx5l.OrderType = (int)OrderType.连肖;
+            ulx2l.ChildType = (int)ChildType.二连肖;
+            ulx3l.ChildType = (int)ChildType.三连肖;
+            ulx4l.ChildType = (int)ChildType.四连肖;
+            ulx5l.ChildType = (int)ChildType.五连肖;
             ulx2l.InitControls();
             ulx3l.InitControls();
             ulx4l.InitControls();

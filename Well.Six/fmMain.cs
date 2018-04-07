@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Well.Data;
+using Well.Common.Extensions;
 
 namespace Well.Six
 {
@@ -18,14 +19,136 @@ namespace Well.Six
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            ToolStripButton t = new ToolStripButton();
+            BuildColums();
+        }
 
-            toolStrip1.Items.Add(t);
+        public void BuildColums()
+        {
+
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.RowHeadersVisible = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToAddRows = false;
+            DataGridViewCellStyle CellStyle = new DataGridViewCellStyle() { Font = new Font("宋体", 12) };
+            dataGridView1.DefaultCellStyle = CellStyle;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+
+
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+
+            System.Windows.Forms.DataGridViewCellStyle dgCellStyle_MiddleCenter = new System.Windows.Forms.DataGridViewCellStyle();
+            dgCellStyle_MiddleCenter.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            System.Windows.Forms.DataGridViewCellStyle dgCellStyle_MiddleR = new System.Windows.Forms.DataGridViewCellStyle();
+            dgCellStyle_MiddleR.Alignment = DataGridViewContentAlignment.BottomRight;
+
+            var c0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c0.ReadOnly = true;
+            c0.DataPropertyName = "Id";
+            c0.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c0.HeaderText = "订单号";
+            c0.MinimumWidth = 90;
+            c0.Name = "order_no";
+            c0.Visible = false;
+
+            var c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c1.ReadOnly = true;
+            c1.DataPropertyName = "order_no";
+            c1.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c1.HeaderText = "订单号";
+            c1.MinimumWidth = 90;
+            c1.Name = "order_no";
+
+            var c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c2.ReadOnly = true;
+            c2.DataPropertyName = "Issue";
+            c2.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c2.HeaderText = "期号";
+            c2.MinimumWidth = 70;
+            c2.Width = 70;
+            c2.Name = "issue";
+
+
+            var c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c3.ReadOnly = true;
+            c3.DataPropertyName = "customername";
+            c3.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c3.HeaderText = "客户";
+            c3.MinimumWidth = 80;
+            c3.Width = 60;
+            c3.Name = "Num1_Code";
+
+
+            var c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c4.ReadOnly = true;
+            c4.DataPropertyName = "childtypename";
+            c4.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c4.HeaderText = "玩法";
+            c4.MinimumWidth = 80;
+            c4.Width = 60;
+            c4.Name = "Num2_Code";
+
+            var c5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c5.ReadOnly = true;
+            c5.DataPropertyName = "total_in_money";
+            c5.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c5.HeaderText = "金额";
+            c5.MinimumWidth = 70;
+            c5.Width = 60;
+            c5.Name = "Num3_Code";
+
+            var c6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c6.ReadOnly = true;
+            c6.DataPropertyName = "CreateTime";
+            c6.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c6.HeaderText = "创建时间";
+            c6.MinimumWidth = 120;
+            c6.Width = 60;
+            c6.Name = "Num4_Code";
+
+
+
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            c0,
+            c1,
+            c2,
+            c3,
+            c4,
+            c5,
+            c6 });
+        }
+
+        public void BindDataSource()
+        {
+            OrderImpl service = new OrderImpl();
+            var result = service.GetList(new Model.OrderSearch() { CustomerId = cbxCustomerId.SelectedValue.ToTryInt(), Issue = txtIssue.Text.Trim() });
+
+
+            if (result.Code == 0)
+            {
+                dataGridView1.DataSource = result.Body;
+            }
+
+        }
+
+
+        public void InitControls()
+        {
+            Common.BindCustomers(cbxCustomerId);
+            WinNumberImpl winService = new WinNumberImpl();
+            txtIssue.Text = winService.GetNewIssue().Body;
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            InitControls();
+            BindDataSource();
         }
 
         private void btnTM_Click(object sender, EventArgs e)
@@ -179,8 +302,52 @@ namespace Well.Six
             btnLM_Click(sender, e);
         }
 
+        private void btnFastLX_Click(object sender, EventArgs e)
+        {
+            Frm.fmFastLX fm = new Frm.fmFastLX();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            fm.ShowDialog();
+        }
 
         #endregion
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindDataSource();
+        }
+
+        private void 删除订单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var sd = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            OrderImpl service = new OrderImpl();
+            if (service.DeleteOrder(sd).Body)
+            {
+                BindDataSource();
+            }
+
+        }
+
+        private void 统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm.fmTotal fm = new Frm.fmTotal();
+            fm.ShowInTaskbar = false;
+            fm.MinimizeBox = false;
+            fm.MaximizeBox = false;
+
+            fm.StartPosition = FormStartPosition.CenterParent;
+            fm.ShowDialog();
+        }
 
 
     }

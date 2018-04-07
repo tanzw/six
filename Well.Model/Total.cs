@@ -17,6 +17,8 @@ namespace Well.Model
         public decimal OutMoney { get; set; }
 
         public decimal ReturnMoney { get; set; }
+
+        public string CustomerName { get; set; }
     }
 
     public class TotalDetails

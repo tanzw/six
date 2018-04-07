@@ -103,9 +103,10 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.特码);
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.特码);
                     var tm = Newtonsoft.Json.JsonConvert.DeserializeObject<TMOdds>(oddsList.strJson);
                     value = tm.Num_PL.ToMoney();
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
                 }
                 var controls = this.groupBox2.Controls.Find("PL", false);
                 foreach (var control in controls)
@@ -220,9 +221,10 @@ namespace Well.Six.Frm
                 Customer_Id = cbox.SelectedValue.ToString().ToTryInt(),
                 Id = OrderId,
                 IsDel = 0,
-                Issue = ServiceNum.GetIssue(),
+                Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
                 Order_Type = (int)OrderType.特码,
+                Child_Type = (int)ChildType.特码,
                 Total_In_Money = list.Sum(x => x.InMoney),
                 Total_Out_Money = 0,
                 Update_Time = "",
@@ -269,6 +271,28 @@ namespace Well.Six.Frm
                     t.Text = "";
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        btnOK_Click(null, null);
+                        break;
+                }
+            }
+            return false;
         }
 
 

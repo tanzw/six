@@ -187,11 +187,22 @@ namespace Well.Six.Frm
         private void btnRun_Click(object sender, EventArgs e)
         {
             Well.Data.WinNumberImpl service = new Data.WinNumberImpl();
-            service.Run(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            MessageEx.Show("開獎開始");
+            var issue = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            if (service.Run(issue).Code != 0)
+            {
+
+            }
+
+            service.UpdateOrderMainOutMoney(issue);
+            Well.Data.TotalImpl total = new Data.TotalImpl();
+            total.Add(issue);
+            MessageEx.Show("開獎完成");
         }
 
         private void btnTotal_Click(object sender, EventArgs e)
         {
+            var index = dataGridView1.CurrentRow.Index;
 
         }
     }

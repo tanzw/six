@@ -87,8 +87,8 @@ namespace Well.Data
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
-            string sqlCommandText = "Insert into t_orders(id,order_no,issue,order_type,customer_id,total_in_money,total_out_money,create_time,create_user_id,update_time,update_user_id,isdel) " +
-                "values(@Id,@Order_No,@Issue,@Order_Type,@Customer_Id,@Total_In_Money,@Total_Out_Money,@Create_Time,@Create_User_Id,@Update_Time,@Update_User_Id,0)";
+            string sqlCommandText = "Insert into t_orders(id,order_no,issue,order_type,child_type,customer_id,total_in_money,total_out_money,create_time,create_user_id,update_time,update_user_id,isdel) " +
+                "values(@Id,@Order_No,@Issue,@Order_Type,@Child_Type,@Customer_Id,@Total_In_Money,@Total_Out_Money,@Create_Time,@Create_User_Id,@Update_Time,@Update_User_Id,0)";
             if (db.Execute(sqlCommandText, model, trans) <= 0)
             {
                 result.Code = 1;
@@ -107,8 +107,8 @@ namespace Well.Data
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
-            string sqlCommandText = "Insert into t_orders_tm(id,orderId,code,odds,inmoney,outmoney,status) " +
-                "values(@Id,@OrderId,@Code,@Odds,@InMoney,@OutMoney,@Status)";
+            string sqlCommandText = "Insert into t_orders_tm(id,orderId,sort,code,odds,inmoney,outmoney,status) " +
+                "values(@Id,@OrderId,@Index,@Code,@Odds,@InMoney,@OutMoney,@Status)";
             if (db.Execute(sqlCommandText, array, trans) <= 0)
             {
                 result.Code = 1;
@@ -127,8 +127,8 @@ namespace Well.Data
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
-            string sqlCommandText = "Insert into t_orders_lxlm(id,orderId,code1,zodiac1,code2,zodiac2,code3,zodiac3,code4,zodiac4,code5,zodiac5,odds,inmoney,outmoney,minoutmoney,maxoutmoney,minodds,maxodds,remarks,status) " +
-                "values(@Id,@OrderId,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
+            string sqlCommandText = "Insert into t_orders_lxlm(id,orderId,sort,code1,zodiac1,code2,zodiac2,code3,zodiac3,code4,zodiac4,code5,zodiac5,odds,inmoney,outmoney,minoutmoney,maxoutmoney,minodds,maxodds,remarks,status) " +
+                "values(@Id,@OrderId,@Index,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
             if (db.Execute(sqlCommandText, array, trans) <= 0)
             {
                 result.Code = 1;
@@ -137,5 +137,75 @@ namespace Well.Data
             return result;
         }
 
+        public StandardResult<List<OrderView>> GetList(OrderSearch search = null)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            var result = new StandardResult<List<OrderView>>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder("select * from view_orders where 1=1");
+                if (search != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(search.Issue))
+                    {
+                        sqlCommonText.Append(" and issue=@Issue");
+                    }
+                    if (search.OrderType != 0)
+                    {
+                        sqlCommonText.Append(" and ORDER_TYPE=@OrderType");
+                    }
+                    if (search.CustomerId != 0)
+                    {
+                        sqlCommonText.Append(" and CustomerId=@CustomerId");
+                    }
+                }
+                var list = db.Query<OrderView>(sqlCommonText.ToString(), search);
+                result.Body = list.ToList();
+                return result;
+            }
+        }
+
+        public StandardResult<bool> DeleteOrder(string orderId)
+        {
+            var result = new StandardResult<bool>();
+            using (var db = base.NewDB())
+            {
+                db.Open();
+                IDbTransaction trans = db.BeginTransaction();
+                try
+                {
+
+                    string sqlCommandText = "delete FROM  t_orders where id=@Id";
+                    if (db.Execute(sqlCommandText, new { Id = orderId }, trans) <= 0)
+                    {
+                        result.Code = 1;
+                        result.Msg = "失败";
+                    }
+
+                    string sqlCommandText1 = "delete FROM  t_orders_tm where orderid=@Id";
+                    if (db.Execute(sqlCommandText1, new { Id = orderId }, trans) <= 0)
+                    {
+                        result.Code = 1;
+                        result.Msg = "失败";
+                    }
+
+                    string sqlCommandText2 = "delete FROM  t_orders_lxlm where orderid=@Id";
+                    if (db.Execute(sqlCommandText2, new { Id = orderId }, trans) <= 0)
+                    {
+                        result.Code = 1;
+                        result.Msg = "失败";
+                    }
+                    result.Body = true;
+
+                    trans.Commit();
+                }
+                catch (Exception ex)
+                {
+                    result.Body = false;
+                    trans.Rollback();
+                }
+            }
+            return result;
+        }
     }
 }

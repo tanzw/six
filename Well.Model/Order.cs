@@ -14,6 +14,8 @@ namespace Well.Model
 
         public int Order_Type { get; set; }
 
+        public int Child_Type { get; set; }
+
         public int Customer_Id { get; set; }
 
         public decimal Total_In_Money { get; set; }
@@ -115,5 +117,47 @@ namespace Well.Model
         /// UI使用,序号
         /// </summary>
         public int Index { get; set; }
+    }
+
+    public class OrderView
+    {
+        public string Id { get; set; }
+        public string Order_No { get; set; }
+
+        public string Issue { get; set; }
+
+        public string OrderType { get; set; }
+
+        public string OrderTypeName { get; set; }
+        public string ChildType { get; set; }
+
+        public string ChildTypeName { get; set; }
+
+        public string Total_In_Money { get; set; }
+
+        public string Total_Out_Money { get; set; }
+
+        public string CreateTime { get; set; }
+
+        public string Status { get; set; }
+
+        public string StatusName { get; set; }
+
+        public string CustomerId { get; set; }
+
+        public string CustomerName { get; set; }
+
+
+
+        //select a.id, a.order_no, a.issue,a.order_type,(CASE a.order_type WHEN 1 THEN '特码' WHEN 12 THEN '二连肖' WHEN 13 then '三连肖' WHEN 14 THEN '四连肖' WHEN 15 THEN '五连肖' END) as ordertypename,a.total_in_money,a.total_out_money,a.create_time,a.create_user_id,(CASE a.status WHEN 0 THEN '未开奖' WHEN 1 THEN '已中奖' WHEN 2 THEN '未中奖' ELSE '未知' END) as statusname,a.status,b.id as CustomerId, b.name as CustomerName from t_orders as a INNER JOIN t_customers as b ON a.customer_id=b.id order by a.create_time DESC
+    }
+
+    public class OrderSearch
+    {
+        public string Issue { get; set; }
+
+        public int OrderType { get; set; }
+
+        public int CustomerId { get; set; }
     }
 }

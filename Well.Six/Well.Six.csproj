@@ -109,6 +109,12 @@
     <Compile Include="Frm\fmCustomerEdit.Designer.cs">
       <DependentUpon>fmCustomerEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\fmFastLX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmFastLX.Designer.cs">
+      <DependentUpon>fmFastLX.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmFastTM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,12 @@
     </Compile>
     <Compile Include="Frm\fmTM.Designer.cs">
       <DependentUpon>fmTM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\fmTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmTotal.Designer.cs">
+      <DependentUpon>fmTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Form1.cs">
       <SubType>Form</SubType>
@@ -207,6 +219,9 @@
     <EmbeddedResource Include="Frm\fmCustomerEdit.resx">
       <DependentUpon>fmCustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmFastLX.resx">
+      <DependentUpon>fmFastLX.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmFastTM.resx">
       <DependentUpon>fmFastTM.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmTM.resx">
       <DependentUpon>fmTM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmTotal.resx">
+      <DependentUpon>fmTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

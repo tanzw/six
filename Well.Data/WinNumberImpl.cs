@@ -159,7 +159,6 @@ namespace Well.Data
                             switch (item.Order_Type)
                             {
                                 case (int)OrderType.特码:
-                                case (int)OrderType.特码快捷:
                                     if (detail.Code == model.Body.Num7_Code)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -170,7 +169,7 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.平特一肖:
+                                case (int)OrderType.平特:
                                     if (detail.Code == model.Body.Num1_Zodiac || detail.Code == model.Body.Num2_Zodiac || detail.Code == model.Body.Num3_Zodiac || detail.Code == model.Body.Num4_Zodiac || detail.Code == model.Body.Num5_Zodiac || detail.Code == model.Body.Num6_Zodiac || detail.Code == model.Body.Num7_Zodiac)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -196,7 +195,7 @@ namespace Well.Data
 
                             UpdateOrderTMStatus(detail, trans);
                         }
-                        UpdateOrderStatus(item.Id, orderMainStatus, trans);
+                        UpdateOrderStatus(1, item.Id, orderMainStatus, trans);
                     }
 
                     orderMainStatus = (int)ResultStatus.Lose;
@@ -206,9 +205,9 @@ namespace Well.Data
                         {
                             switch (item.Order_Type)
                             {
-                                case (int)OrderType.二连肖:
-                                case (int)OrderType.二连码:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2))
+                                case (int)ChildType.二连肖:
+                                case (int)ChildType.二连码:
+                                    if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -218,9 +217,9 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.三连肖:
-                                case (int)OrderType.三连码:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3))
+                                case (int)ChildType.三连肖:
+                                case (int)ChildType.三连码:
+                                    if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -230,9 +229,9 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.四连肖:
-                                case (int)OrderType.四连码:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3) && model.Body.CodeList.Contains(detail.Code4))
+                                case (int)ChildType.四连肖:
+                                case (int)ChildType.四连码:
+                                    if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -242,9 +241,9 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.五连肖:
-                                case (int)OrderType.五连码:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3) && model.Body.CodeList.Contains(detail.Code4) && model.Body.CodeList.Contains(detail.Code5))
+                                case (int)ChildType.五连肖:
+                                case (int)ChildType.五连码:
+                                    if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4) && model.Body.ZodiacList.Contains(detail.Zodiac5))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -258,11 +257,13 @@ namespace Well.Data
 
                             UpdateOrderLXLMStatus(detail, trans);
                         }
-                        UpdateOrderStatus(item.Id, orderMainStatus, trans);
+                        UpdateOrderStatus(2, item.Id, orderMainStatus, trans);
                     }
+
+                    AddTotal(issue);
                     trans.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     trans.Rollback();
                     result.Code = 1;
@@ -273,6 +274,35 @@ namespace Well.Data
 
         }
 
+        public StandardResult UpdateOrderMainOutMoney(string issue)
+        {
+            StandardResult result = new StandardResult();
+            using (var db = base.NewDB())
+            {
+                db.Open();
+                IDbTransaction trans = db.BeginTransaction();
+                try
+                {
+                    StringBuilder sqlCommandText = new StringBuilder();
+                    sqlCommandText.Append("Update t_orders set total_out_money=(select sum(outmoney) from t_orders_tm  where orderId=t_orders.id and status=1) where (order_type=1 or order_type=4 or order_type=5  ) and issue=@Issue  and status=1");
+
+                    db.Execute(sqlCommandText.ToString(), new { Issue = issue }, trans);
+
+                    sqlCommandText.Clear();
+
+                    sqlCommandText.Append("Update t_orders set total_out_money=(select sum(outmoney) from t_orders_lmlx  where orderId=t_orders.id and status=1) where (order_type=2 or order_type=3) and issue=@Issue  and status=1");
+                    db.Execute(sqlCommandText.ToString(), new { Issue = issue }, trans);
+                    trans.Commit();
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    result.Code = 1;
+                    result.Msg = ex.Message;
+                }
+            }
+            return result;
+        }
         private List<Order<OrderTM>> GetOrderTMList(string issue)
         {
 
@@ -377,14 +407,24 @@ namespace Well.Data
             return result;
         }
 
-        private StandardResult UpdateOrderStatus(string id, int status, IDbTransaction trans)
+        private StandardResult UpdateOrderStatus(int v, string id, int status, IDbTransaction trans)
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
             StringBuilder sqlCommandText = new StringBuilder();
             sqlCommandText.Append("Update t_orders set ");
-            sqlCommandText.Append(" status=@Status");
+            sqlCommandText.Append(" status=@Status,");
+
+            if (v == 1)
+            {
+                sqlCommandText.Append(" total_out_money=(select sum(outmoney) from t_orders_tm  where orderId=@Id and status=1)");
+            }
+            else if (v == 2)
+            {
+                sqlCommandText.Append(" total_out_money=(select sum(outmoney) from t_orders_lxlm  where orderId=@Id and status=1)");
+            }
             sqlCommandText.Append(" where id = @Id");
+
 
             if (db.Execute(sqlCommandText.ToString(), new { Status = status, Id = id }, trans) <= 0)
             {
@@ -393,6 +433,58 @@ namespace Well.Data
             }
             return result;
         }
+
+
+        public StandardResult AddTotal(string issue)
+        {
+            var result = new StandardResult();
+            using (var db = base.NewDB())
+            {
+                string totalId = Guid.NewGuid().ToString("n");
+                string sql_TM = @"insert into t_total_details(totalId, ordertype, Inmoney, outmoney, returnmoney, customerId) SELECT
+                                 @totalId,
+                                 a.order_type,
+                                 sum(b.inmoney),
+                                 sum(b.outmoney) , 	sum(b.inmoney)*c.return_pl,
+                                 a.customer_id
+                                FROM
+                                 t_orders AS a
+                                INNER JOIN t_orders_tm AS b ON a.id = b.orderid
+                                INNER JOIN t_odds as c on a.customer_id=c.customerId and a.order_type=c.ordertype
+                                WHERE
+                                 a.issue = @Issue
+                                GROUP BY
+                                 a.issue,
+                                 a.customer_id,
+                                 a.order_type,
+                                 c.return_pl";
+
+                db.Execute(sql_TM, new { totalId = totalId, Issue = issue });
+
+
+                string sql_lxlm = @"insert into t_total_details(totalId, ordertype, Inmoney, outmoney, returnmoney, customerId) SELECT
+                                 @totalId,
+                                 a.order_type,
+                                 sum(b.inmoney),
+                                 sum(b.outmoney) , 	sum(b.inmoney)*c.return_pl,
+                                 a.customer_id
+                                FROM
+                                 t_orders AS a
+                                INNER JOIN t_orders_tm AS b ON a.id = b.orderid
+                                INNER JOIN t_odds as c on a.customer_id=c.customerId and a.order_type=c.ordertype
+                                WHERE
+                                 a.issue = @Issue
+                                GROUP BY
+                                 a.issue,
+                                 a.customer_id,
+                                 a.order_type,
+                                 c.return_pl";
+                db.Execute(sql_lxlm, new { totalId = totalId, Issue = issue });
+
+                return result;
+            }
+        }
+
         #endregion
 
 

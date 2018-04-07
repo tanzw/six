@@ -247,7 +247,8 @@ namespace Well.Six.Frm
                 IsDel = 0,
                 Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
-                Order_Type = (int)OrderType.平特一肖,
+                Order_Type = (int)OrderType.平特,
+                Child_Type = (int)ChildType.平特,
                 Total_In_Money = list.Sum(x => x.InMoney),
                 Total_Out_Money = 0,
                 Update_Time = "",
@@ -323,6 +324,7 @@ namespace Well.Six.Frm
                 Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
                 Order_Type = (int)OrderType.尾数,
+                Child_Type = (int)ChildType.尾数,
                 Total_In_Money = list.Sum(x => x.InMoney),
                 Total_Out_Money = 0,
                 Update_Time = "",
@@ -374,8 +376,9 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList_pyyx = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.平特一肖);
+                    var oddsList_pyyx = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.平特);
                     var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_pyyx.strJson);
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
                     foreach (var control in controls_pytx)
                     {
                         if (control is Label)
@@ -411,6 +414,37 @@ namespace Well.Six.Frm
         private void btnReset_ws_Click(object sender, EventArgs e)
         {
             btnReset_Click(sender, e);
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        switch (this.tabControl1.SelectedIndex)
+                        {
+                            case 0:
+                                btnOK_Click(null, null);
+                                break;
+                            case 1:
+                                btnOK_ws_Click(null, null);
+                                break;
+                        }
+
+                        break;
+                }
+            }
+            return false;
         }
     }
 }
