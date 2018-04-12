@@ -20,6 +20,14 @@ namespace Well.Six
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             BuildColums();
+            fmdetail = new Frm.fmOrderDetails();
+            fmdetail.StartPosition = FormStartPosition.Manual;
+
+            fmdetail.Location = new Point(this.Location.X + 707, this.Location.Y + 105);
+            fmdetail.Show();
+            fmdetail.MinimizeBox = false;
+            fmdetail.MaximizeBox = false;
+            fmdetail.Visible = false;
         }
 
         public void BuildColums()
@@ -144,11 +152,12 @@ namespace Well.Six
 
 
         }
-
+        Frm.fmOrderDetails fmdetail;
         private void Form1_Load(object sender, EventArgs e)
         {
             InitControls();
             BindDataSource();
+        
         }
 
         private void btnTM_Click(object sender, EventArgs e)
@@ -350,5 +359,10 @@ namespace Well.Six
         }
 
 
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+            fmdetail.Visible = true;
+        }
     }
 }

@@ -188,7 +188,7 @@ namespace Well.Six.Frm
             detail.Index = listView1.Items.Count + 1;
 
             detail.InMoney = Convert.ToDecimal(txtMoney.Text);
-            orderDetails.Add(detail);
+
 
             var item = new ListViewItem();
             item.UseItemStyleForSubItems = false;
@@ -239,11 +239,12 @@ namespace Well.Six.Frm
                 charIndex = charIndex + 1;
             }
             detail.Odds = GetMinOdds(odds.List, tempList);
-
+            detail.OutMoney = detail.InMoney * detail.Odds;
+            orderDetails.Add(detail);
             str = str.Substring(0, str.Length - 1);
             item.SubItems.Add(str);
 
-            item.SubItems.Add(GetMinOdds(odds.List, tempList).ToMoney());
+            item.SubItems.Add(detail.Odds.ToMoney());
             item.SubItems.Add(txtMoney.Text.Trim());
             listView1.Items.Add(item);
             tempList.Clear();

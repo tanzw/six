@@ -151,6 +151,12 @@
     <Compile Include="Frm\fmOdds.Designer.cs">
       <DependentUpon>fmOdds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\fmOrderDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmOrderDetails.Designer.cs">
+      <DependentUpon>fmOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmPTYX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmOdds.resx">
       <DependentUpon>fmOdds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmOrderDetails.resx">
+      <DependentUpon>fmOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmPTYX.resx">
       <DependentUpon>fmPTYX.cs</DependentUpon>

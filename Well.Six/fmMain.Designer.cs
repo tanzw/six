@@ -310,6 +310,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(938, 604);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // contextMenuStrip1
             // 
@@ -334,7 +335,7 @@
             // 
             // btnFastTM
             // 
-            this.btnFastTM.Location = new System.Drawing.Point(605, 671);
+            this.btnFastTM.Location = new System.Drawing.Point(535, 665);
             this.btnFastTM.Name = "btnFastTM";
             this.btnFastTM.Size = new System.Drawing.Size(75, 23);
             this.btnFastTM.TabIndex = 7;
@@ -419,7 +420,7 @@
             // 
             // btnLM
             // 
-            this.btnLM.Location = new System.Drawing.Point(524, 671);
+            this.btnLM.Location = new System.Drawing.Point(454, 665);
             this.btnLM.Name = "btnLM";
             this.btnLM.Size = new System.Drawing.Size(75, 23);
             this.btnLM.TabIndex = 4;
@@ -429,7 +430,7 @@
             // 
             // btnPTYX
             // 
-            this.btnPTYX.Location = new System.Drawing.Point(443, 671);
+            this.btnPTYX.Location = new System.Drawing.Point(373, 665);
             this.btnPTYX.Name = "btnPTYX";
             this.btnPTYX.Size = new System.Drawing.Size(75, 23);
             this.btnPTYX.TabIndex = 3;
@@ -439,7 +440,7 @@
             // 
             // btnLX
             // 
-            this.btnLX.Location = new System.Drawing.Point(362, 671);
+            this.btnLX.Location = new System.Drawing.Point(292, 665);
             this.btnLX.Name = "btnLX";
             this.btnLX.Size = new System.Drawing.Size(75, 23);
             this.btnLX.TabIndex = 2;
@@ -449,7 +450,7 @@
             // 
             // btnTM
             // 
-            this.btnTM.Location = new System.Drawing.Point(281, 671);
+            this.btnTM.Location = new System.Drawing.Point(211, 665);
             this.btnTM.Name = "btnTM";
             this.btnTM.Size = new System.Drawing.Size(75, 23);
             this.btnTM.TabIndex = 1;
@@ -459,7 +460,7 @@
             // 
             // btnFastLX
             // 
-            this.btnFastLX.Location = new System.Drawing.Point(686, 671);
+            this.btnFastLX.Location = new System.Drawing.Point(616, 665);
             this.btnFastLX.Name = "btnFastLX";
             this.btnFastLX.Size = new System.Drawing.Size(75, 23);
             this.btnFastLX.TabIndex = 9;

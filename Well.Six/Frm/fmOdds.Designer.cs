@@ -39,13 +39,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.oddsLX1 = new Well.Six.UControls.OddsLX();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.oddsLX2 = new Well.Six.UControls.OddsLX();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.oddsLX3 = new Well.Six.UControls.OddsLX();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.oddsLX4 = new Well.Six.UControls.OddsLX();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.txtLMFS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -65,9 +61,13 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.txtPTYXFS = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.oddsLX5 = new Well.Six.UControls.OddsLX();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.oddsLX1 = new Well.Six.UControls.OddsLX();
+            this.oddsLX2 = new Well.Six.UControls.OddsLX();
+            this.oddsLX3 = new Well.Six.UControls.OddsLX();
+            this.oddsLX4 = new Well.Six.UControls.OddsLX();
+            this.oddsLX5 = new Well.Six.UControls.OddsLX();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -193,13 +193,6 @@
             this.tabPage3.Text = "二连";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // oddsLX1
-            // 
-            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX1.Name = "oddsLX1";
-            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX1.TabIndex = 0;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.oddsLX2);
@@ -210,13 +203,6 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "三连";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // oddsLX2
-            // 
-            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX2.Name = "oddsLX2";
-            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX2.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -229,13 +215,6 @@
             this.tabPage5.Text = "四连";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // oddsLX3
-            // 
-            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX3.Name = "oddsLX3";
-            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX3.TabIndex = 0;
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.oddsLX4);
@@ -246,13 +225,6 @@
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "五连";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // oddsLX4
-            // 
-            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX4.Name = "oddsLX4";
-            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX4.TabIndex = 0;
             // 
             // tabPage7
             // 
@@ -284,7 +256,7 @@
             this.txtLMFS.Location = new System.Drawing.Point(327, 229);
             this.txtLMFS.Name = "txtLMFS";
             this.txtLMFS.Size = new System.Drawing.Size(100, 21);
-            this.txtLMFS.TabIndex = 14;
+            this.txtLMFS.TabIndex = 7;
             // 
             // label8
             // 
@@ -300,7 +272,7 @@
             this.txtSIQZ.Location = new System.Drawing.Point(327, 202);
             this.txtSIQZ.Name = "txtSIQZ";
             this.txtSIQZ.Size = new System.Drawing.Size(100, 21);
-            this.txtSIQZ.TabIndex = 12;
+            this.txtSIQZ.TabIndex = 6;
             // 
             // label7
             // 
@@ -316,7 +288,7 @@
             this.textBox7.Location = new System.Drawing.Point(327, 67);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 10;
+            this.textBox7.TabIndex = 0;
             // 
             // label6
             // 
@@ -332,7 +304,7 @@
             this.textBox6.Location = new System.Drawing.Point(327, 94);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 8;
+            this.textBox6.TabIndex = 1;
             // 
             // label5
             // 
@@ -348,7 +320,7 @@
             this.txtEQZ.Location = new System.Drawing.Point(327, 121);
             this.txtEQZ.Name = "txtEQZ";
             this.txtEQZ.Size = new System.Drawing.Size(100, 21);
-            this.txtEQZ.TabIndex = 6;
+            this.txtEQZ.TabIndex = 2;
             // 
             // label4
             // 
@@ -364,7 +336,7 @@
             this.txtSQZ.Location = new System.Drawing.Point(327, 175);
             this.txtSQZ.Name = "txtSQZ";
             this.txtSQZ.Size = new System.Drawing.Size(100, 21);
-            this.txtSQZ.TabIndex = 4;
+            this.txtSQZ.TabIndex = 5;
             // 
             // label3
             // 
@@ -380,14 +352,14 @@
             this.txtSZS.Location = new System.Drawing.Point(433, 148);
             this.txtSZS.Name = "txtSZS";
             this.txtSZS.Size = new System.Drawing.Size(100, 21);
-            this.txtSZS.TabIndex = 2;
+            this.txtSZS.TabIndex = 4;
             // 
             // txtSZE
             // 
             this.txtSZE.Location = new System.Drawing.Point(327, 148);
             this.txtSZE.Name = "txtSZE";
             this.txtSZE.Size = new System.Drawing.Size(100, 21);
-            this.txtSZE.TabIndex = 1;
+            this.txtSZE.TabIndex = 3;
             // 
             // label2
             // 
@@ -427,13 +399,6 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "返  水:";
             // 
-            // oddsLX5
-            // 
-            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
-            this.oddsLX5.Name = "oddsLX5";
-            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX5.TabIndex = 0;
-            // 
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(632, 362);
@@ -453,6 +418,41 @@
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // oddsLX1
+            // 
+            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX1.Name = "oddsLX1";
+            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX1.TabIndex = 0;
+            // 
+            // oddsLX2
+            // 
+            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX2.Name = "oddsLX2";
+            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX2.TabIndex = 0;
+            // 
+            // oddsLX3
+            // 
+            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX3.Name = "oddsLX3";
+            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX3.TabIndex = 0;
+            // 
+            // oddsLX4
+            // 
+            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX4.Name = "oddsLX4";
+            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX4.TabIndex = 0;
+            // 
+            // oddsLX5
+            // 
+            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
+            this.oddsLX5.Name = "oddsLX5";
+            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX5.TabIndex = 0;
             // 
             // fmOdds
             // 

@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Well.Data;
+using Well.Model;
+using Well.Common.Extensions;
+using Well.Common.Result;
 
 namespace Well.Six.Frm
 {
@@ -70,12 +73,190 @@ namespace Well.Six.Frm
             }
 
         }
+
         private void fmLM_Load(object sender, EventArgs e)
         {
             InitOption();
+
+            Common.BindCustomers(this.cbox, (sender1, e1) =>
+            {
+                var controls = this.groupBox2.Controls.Find("PL", false);
+
+                if (this.cbox.SelectedIndex == 0)
+                {
+                    lbEZE.Text = "0";
+                    lbSIQZ.Text = "0";
+                    lbSQZ.Text = "0";
+                    lbSZE.Text = "0";
+                    lbSZS.Text = "0";
+                }
+                else
+                {
+                    OddsImpl oddservice = new OddsImpl();
+                    var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.二连码);
+                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(oddsList.strJson);
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
+                    lbEZE.Text = ptyx.EQZ.ToString();
+                    lbSIQZ.Text = ptyx.SIZHONGSI.ToString();
+                    lbSQZ.Text = ptyx.SQZ.ToString();
+                    lbSZE.Text = ptyx.SZE.ToString();
+                    lbSZS.Text = ptyx.SZS.ToString();
+                }
+            });
+
+            WinNumberImpl winService = new WinNumberImpl();
+            txtIssue.Text = winService.GetNewIssue().Body;
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            //需要组合的号码
+            List<string> InCombinationList = new List<string>();
+            #region  获取输入
+            var controls = this.groupBox3.Controls.Find("CK", false);
+            foreach (var control in controls)
+            {
+                if (control is CheckBox)
+                {
+                    var ck = control as CheckBox;
+                    if (ck.Checked)
+                    {
+                        var sd = this.groupBox3.Controls.Find("Code", false);
+                        var lb = sd.FirstOrDefault(x => x.Tag == ck.Tag);
+                        if (lb != null)
+                        {
+                            var lbCode = lb as Label;
+                            InCombinationList.Add(lbCode.Text);
+                        }
+
+                    }
+                }
+            }
+            #endregion
+
+            #region 检测输入
+
+            if (!radioButton5.Checked && !radioButton6.Checked && !radioButton7.Checked && !radioButton8.Checked)
+            {
+                MessageEx.ShowWarning("请选择连码类型");
+                return;
+            }
+
+            #endregion
+            var v = 0;
+            if (radioButton5.Checked)
+            {
+                v = 3;
+            }
+            if (radioButton6.Checked)
+            {
+                v = 3;
+            }
+            if (radioButton7.Checked)
+            {
+                v = 2;
+            }
+            if (radioButton8.Checked)
+            {
+                v = 4;
+            }
+
+
+            Frm.fmConfirmLX fm = new Frm.fmConfirmLX();
+
+            #region 创建订单对象
+            string OrderId = Guid.NewGuid().ToString("n");
+
+            //订单主体
+            var order = new Order<OrderLXLM>()
+            {
+                Create_Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                Create_User_Id = "0",
+                Customer_Id = cbox.SelectedValue.ToString().ToTryInt(),
+                Id = OrderId,
+                IsDel = 0,
+                Issue = txtIssue.Text.Trim(),
+                Order_No = ServiceNum.GetOrderNo(),
+                Order_Type = (int)OrderType.连码,
+                Child_Type = (int)ChildType.三连码,
+                Update_Time = "",
+                Update_User_Id = ""
+            };
+
+            //生成号码组合
+            List<string[]> ListCombination = PermutationAndCombination<string>.GetCombination(InCombinationList.ToArray(), v); //求全部的3-3组合
+
+            //根据号码组合创建订单明细
+            int index = 1;
+            foreach (string[] arr in ListCombination)
+            {
+                OrderLXLM detail = new OrderLXLM();
+                int childIndex = 0;
+                var str = "";
+                foreach (string item in arr)
+                {
+                    switch (childIndex)
+                    {
+                        case 0:
+                            detail.Code1 = item.ToString();
+                            break;
+                        case 1:
+                            detail.Code2 = item.ToString();
+                            break;
+                        case 2:
+                            detail.Code3 = item.ToString();
+                            break;
+                        case 3:
+                            detail.Code4 = item.ToString();
+                            break;
+                    }
+
+                    str += item + "、";
+                    childIndex = childIndex + 1;
+                }
+                detail.Id = Guid.NewGuid().ToString("n");
+                detail.Index = index;
+                detail.Remarks = str.Remove(str.Length - 1, 1);
+                detail.OrderId = OrderId;
+                detail.Odds = Convert.ToDecimal(lbEZE.Text);
+                detail.InMoney = Convert.ToDecimal(txtMoney.Text);
+                detail.OutMoney = detail.InMoney * detail.Odds;
+                detail.Status = (int)ResultStatus.Wait;
+                detail.Flag = 1;
+                order.OrderDetails.Add(detail);
+                index = index + 1;
+            }
+
+            order.Total_In_Money = order.OrderDetails.Sum(x => x.InMoney);
+            order.Total_Out_Money = 0.00M;
+            #endregion
+
+            fm.InitForm(order);
+
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                OrderImpl service = new OrderImpl();
+                if (service.AddOrderLXLM(order).Code == 0)
+                {
+                    MessageEx.Show("下单成功");
+                    btnReset_Click(null, null);
+                }
+                else
+                {
+                    MessageEx.Show("下单失败");
+                }
+
+            }
+        }
+
+
+        private void btnReset_Click(object sender, EventArgs e)
         {
 
         }
