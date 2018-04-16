@@ -72,7 +72,7 @@ namespace Well.Six.Frm
                         {
                             Code = x.Value,
                             Id = Guid.NewGuid().ToString("n"),
-                            Index = listView1.Items.Count,
+                            Sort = listView1.Items.Count,
                             InMoney = inmoney,
                             Odds = tm.Num_PL,
                             OutMoney = tm.Num_PL * inmoney,
@@ -97,7 +97,7 @@ namespace Well.Six.Frm
                     {
                         Code = txtCode.Text.Trim(),
                         Id = Guid.NewGuid().ToString("n"),
-                        Index = listView1.Items.Count,
+                        Sort = listView1.Items.Count,
                         InMoney = Convert.ToDecimal(txtMoney.Text.Trim()),
                         Odds = tm.Num_PL,
                         OutMoney = tm.Num_PL * Convert.ToDecimal(txtMoney.Text.Trim()),
@@ -219,7 +219,7 @@ namespace Well.Six.Frm
             {
                 //listView1.Items.Find();
                 var index = this.listView1.SelectedItems[0].SubItems[0].Text.ToTryInt();
-                updateModel = orderDetails.FirstOrDefault(x => x.Index == index);
+                updateModel = orderDetails.FirstOrDefault(x => x.Sort == index);
                 txtCode.Text = updateModel.Code;
                 txtMoney.Text = updateModel.InMoney.ToString();
                 isUpdate = true;

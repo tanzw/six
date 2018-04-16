@@ -20,14 +20,11 @@ namespace Well.Six
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             BuildColums();
-            //fmdetail = new Frm.fmOrderDetails();
-            //fmdetail.StartPosition = FormStartPosition.Manual;
+            fmdetail = new Frm.fmOrderDetails();
+            fmdetail.StartPosition = FormStartPosition.Manual;
 
-            //fmdetail.Location = new Point(this.Location.X + 707, this.Location.Y + 105);
-            //fmdetail.Show();
-            //fmdetail.MinimizeBox = false;
-            //fmdetail.MaximizeBox = false;
-            //fmdetail.Visible = false;
+            fmdetail.MinimizeBox = false;
+            fmdetail.MaximizeBox = false;
         }
 
         public void BuildColums()
@@ -361,8 +358,26 @@ namespace Well.Six
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-           // fmdetail.Visible = true;
-            //fmdetail.SetData()
+            if (fmdetail.IsDisposed)
+            {
+                fmdetail = new Frm.fmOrderDetails();
+                fmdetail.StartPosition = FormStartPosition.Manual;
+            }
+            fmdetail.SetData(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            fmdetail.Location = new Point(this.Location.X + 936, this.Location.Y + 105);
+            fmdetail.Show();
+            this.Activate();
+        }
+
+        private void btnSB_Click(object sender, EventArgs e)
+        {
+            Frm.fmBS fm = new Frm.fmBS();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                //TODO:加载订单
+            }
         }
     }
 }

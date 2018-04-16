@@ -318,7 +318,7 @@ namespace Well.Six.UControls
                         childIndex = childIndex + 1;
                     }
                     detail.Id = Guid.NewGuid().ToString("n");
-                    detail.Index = index;
+                    detail.Sort = index;
                     detail.Remarks = str.Remove(str.Length - 1, 1);
                     detail.OrderId = OrderId;
                     detail.Odds = GetMinOdds(list, InCombinationList);

@@ -213,7 +213,6 @@ namespace Well.Data
                             switch (item.Child_Type)
                             {
                                 case (int)ChildType.二连肖:
-                                case (int)ChildType.二连码:
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -224,8 +223,19 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
+                                case (int)ChildType.二全中:
+                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code1))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                                 case (int)ChildType.三连肖:
-                                case (int)ChildType.三连码:
+
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -236,8 +246,19 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
+                                case (int)ChildType.三全中:
+                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                                 case (int)ChildType.四连肖:
-                                case (int)ChildType.四连码:
+
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -248,8 +269,18 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
+                                case (int)ChildType.四全中:
+                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3) && model.Body.CodeList.Contains(detail.Code4))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                                 case (int)ChildType.五连肖:
-                                case (int)ChildType.五连码:
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4) && model.Body.ZodiacList.Contains(detail.Zodiac5))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -260,8 +291,39 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                            }
+                                case (int)ChildType.三中三:
+                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        //需要组合的号码
+                                        List<string> InCombinationList = new List<string>();
 
+                                        InCombinationList.Add(detail.Code1);
+                                        InCombinationList.Add(detail.Code2);
+                                        InCombinationList.Add(detail.Code3);
+                                        //生成号码组合
+                                        List<string[]> ListCombination = PermutationAndCombination<string>.GetCombination(InCombinationList.ToArray(), 2); //求全部的3-3组合
+                                        foreach (string[] arr in ListCombination)
+                                        {
+                                            if (model.Body.CodeList.Contains(arr[0]) && model.Body.CodeList.Contains(arr[1]))
+                                            {
+                                                detail.Status = (int)ResultStatus.Win;
+                                                orderMainStatus = (int)ResultStatus.Win;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                detail.Status = (int)ResultStatus.Lose;
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                    break;
+                            }
                             UpdateOrderLXLMStatus(detail, trans);
                         }
                         UpdateOrderStatus(2, item.Id, orderMainStatus, trans);

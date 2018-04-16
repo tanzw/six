@@ -62,7 +62,7 @@ namespace Well.Model
 
         public string Remarks { get; set; }
 
-        public int Index { get; set; }
+        public int Sort { get; set; }
     }
 
     public class OrderLXLM
@@ -116,7 +116,7 @@ namespace Well.Model
         /// <summary>
         /// UI使用,序号
         /// </summary>
-        public int Index { get; set; }
+        public int Sort { get; set; }
     }
 
     public class OrderView
@@ -126,7 +126,7 @@ namespace Well.Model
 
         public string Issue { get; set; }
 
-        public string OrderType { get; set; }
+        public int OrderType { get; set; }
 
         public string OrderTypeName { get; set; }
         public string ChildType { get; set; }

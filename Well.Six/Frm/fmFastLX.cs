@@ -185,7 +185,7 @@ namespace Well.Six.Frm
             var detail = new OrderLXLM();
             detail.Id = Guid.NewGuid().ToString("n");
             detail.Status = (int)ResultStatus.Wait;
-            detail.Index = listView1.Items.Count + 1;
+            detail.Sort = listView1.Items.Count + 1;
 
             detail.InMoney = Convert.ToDecimal(txtMoney.Text);
 
@@ -240,8 +240,9 @@ namespace Well.Six.Frm
             }
             detail.Odds = GetMinOdds(odds.List, tempList);
             detail.OutMoney = detail.InMoney * detail.Odds;
-            orderDetails.Add(detail);
             str = str.Substring(0, str.Length - 1);
+            detail.Remarks = str;
+            orderDetails.Add(detail);
             item.SubItems.Add(str);
 
             item.SubItems.Add(detail.Odds.ToMoney());

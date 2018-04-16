@@ -76,6 +76,8 @@ namespace Well.Six.Frm
 
         private void fmLM_Load(object sender, EventArgs e)
         {
+            this.txtMoney.KeyPress += new KeyPressEventHandler(Common.TextBox_FilterString_KeyPress);
+
             InitOption();
 
             Common.BindCustomers(this.cbox, (sender1, e1) =>
@@ -94,7 +96,7 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.二连码);
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.二全中);
                     var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(oddsList.strJson);
                     Common.CustomerId = cbox.SelectedValue.ToTryInt();
                     lbEZE.Text = ptyx.EQZ.ToString();
@@ -148,23 +150,40 @@ namespace Well.Six.Frm
                 return;
             }
 
+            if (cbox.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtMoney.Text))
+            {
+                MessageEx.ShowWarning("请输入金额");
+                return;
+            }
+
             #endregion
             var v = 0;
+            var childtype = 0;
             if (radioButton5.Checked)
             {
                 v = 3;
+                childtype = (int)ChildType.三全中;
             }
             if (radioButton6.Checked)
             {
                 v = 3;
+                childtype = (int)ChildType.三全中;
             }
             if (radioButton7.Checked)
             {
                 v = 2;
+                childtype = (int)ChildType.二全中;
             }
             if (radioButton8.Checked)
             {
                 v = 4;
+                childtype = (int)ChildType.四全中;
             }
 
 
@@ -184,7 +203,7 @@ namespace Well.Six.Frm
                 Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
                 Order_Type = (int)OrderType.连码,
-                Child_Type = (int)ChildType.三连码,
+                Child_Type = childtype,
                 Update_Time = "",
                 Update_User_Id = ""
             };
@@ -221,7 +240,7 @@ namespace Well.Six.Frm
                     childIndex = childIndex + 1;
                 }
                 detail.Id = Guid.NewGuid().ToString("n");
-                detail.Index = index;
+                detail.Sort = index;
                 detail.Remarks = str.Remove(str.Length - 1, 1);
                 detail.OrderId = OrderId;
                 detail.Odds = Convert.ToDecimal(lbEZE.Text);
@@ -258,7 +277,19 @@ namespace Well.Six.Frm
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            var controls = this.groupBox3.Controls.Find("CK", false);
+            foreach (var control in controls)
+            {
+                if (control is CheckBox)
+                {
+                    var ck = control as CheckBox;
+                    if (ck.Checked)
+                    {
+                        ck.Checked = false;
 
+                    }
+                }
+            }
         }
     }
 }

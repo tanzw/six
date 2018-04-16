@@ -108,7 +108,7 @@ namespace Well.Data
             StandardResult result = new StandardResult();
             var db = trans.Connection;
             string sqlCommandText = "Insert into t_orders_tm(id,orderId,sort,code,odds,inmoney,outmoney,status) " +
-                "values(@Id,@OrderId,@Index,@Code,@Odds,@InMoney,@OutMoney,@Status)";
+                "values(@Id,@OrderId,@Sort,@Code,@Odds,@InMoney,@OutMoney,@Status)";
             if (db.Execute(sqlCommandText, array, trans) <= 0)
             {
                 result.Code = 1;
@@ -128,7 +128,7 @@ namespace Well.Data
             StandardResult result = new StandardResult();
             var db = trans.Connection;
             string sqlCommandText = "Insert into t_orders_lxlm(id,orderId,sort,code1,zodiac1,code2,zodiac2,code3,zodiac3,code4,zodiac4,code5,zodiac5,odds,inmoney,outmoney,minoutmoney,maxoutmoney,minodds,maxodds,remarks,status) " +
-                "values(@Id,@OrderId,@Index,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
+                "values(@Id,@OrderId,@Sort,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
             if (db.Execute(sqlCommandText, array, trans) <= 0)
             {
                 result.Code = 1;
@@ -206,6 +206,45 @@ namespace Well.Data
                 }
             }
             return result;
+        }
+
+        public StandardResult<OrderView> GetModel(string id)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            var result = new StandardResult<OrderView>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder("select * from view_orders where id=@Id");
+                result.Body = db.Query<OrderView>(sqlCommonText.ToString(), new { Id = id }).FirstOrDefault();
+                return result;
+
+            }
+        }
+
+        public StandardResult<List<OrderTM>> GetOrderTMList(string orderId)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            var result = new StandardResult<List<OrderTM>>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder("select * from t_orders_tm where orderid=@OrderId");
+                result.Body = db.Query<OrderTM>(sqlCommonText.ToString(), new { OrderId = orderId }).ToList();
+                return result;
+
+            }
+        }
+
+        public StandardResult<List<OrderLXLM>> GetOrderLXLMList(string orderId)
+        {
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+            var result = new StandardResult<List<OrderLXLM>>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder("select * from t_orders_lxlm where orderid=@OrderId");
+                result.Body = db.Query<OrderLXLM>(sqlCommonText.ToString(), new { OrderId = orderId }).ToList();
+                return result;
+
+            }
         }
     }
 }

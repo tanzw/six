@@ -55,6 +55,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFastLX = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -73,7 +74,7 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
-            this.btnFastLX = new System.Windows.Forms.Button();
+            this.btnSB = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -276,6 +277,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSB);
             this.panel1.Controls.Add(this.btnFastLX);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnFastTM);
@@ -290,6 +292,16 @@
             this.panel1.Size = new System.Drawing.Size(938, 709);
             this.panel1.TabIndex = 4;
             // 
+            // btnFastLX
+            // 
+            this.btnFastLX.Location = new System.Drawing.Point(616, 665);
+            this.btnFastLX.Name = "btnFastLX";
+            this.btnFastLX.Size = new System.Drawing.Size(75, 23);
+            this.btnFastLX.TabIndex = 9;
+            this.btnFastLX.Text = "连肖快捷";
+            this.btnFastLX.UseVisualStyleBackColor = true;
+            this.btnFastLX.Click += new System.EventHandler(this.btnFastLX_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridView1);
@@ -301,11 +313,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(938, 604);
             this.dataGridView1.TabIndex = 0;
@@ -458,18 +473,19 @@
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
             // 
-            // btnFastLX
+            // btnSB
             // 
-            this.btnFastLX.Location = new System.Drawing.Point(616, 665);
-            this.btnFastLX.Name = "btnFastLX";
-            this.btnFastLX.Size = new System.Drawing.Size(75, 23);
-            this.btnFastLX.TabIndex = 9;
-            this.btnFastLX.Text = "连肖快捷";
-            this.btnFastLX.UseVisualStyleBackColor = true;
-            this.btnFastLX.Click += new System.EventHandler(this.btnFastLX_Click);
+            this.btnSB.Location = new System.Drawing.Point(698, 664);
+            this.btnSB.Name = "btnSB";
+            this.btnSB.Size = new System.Drawing.Size(75, 23);
+            this.btnSB.TabIndex = 10;
+            this.btnSB.Text = "色波";
+            this.btnSB.UseVisualStyleBackColor = true;
+            this.btnSB.Click += new System.EventHandler(this.btnSB_Click);
             // 
             // fmMain
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 757);
@@ -540,6 +556,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem 统计ToolStripMenuItem;
         private System.Windows.Forms.Button btnFastLX;
+        private System.Windows.Forms.Button btnSB;
     }
 }
 

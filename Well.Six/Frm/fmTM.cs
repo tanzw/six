@@ -197,7 +197,7 @@ namespace Well.Six.Frm
                             continue;
                         }
                         O.Remarks = O.Code;
-                        O.Index = index;
+                        O.Sort = index;
                         var PL = this.groupBox2.Controls.Find("PL", false).FirstOrDefault(x => x.Tag == c.Tag);
                         if (PL != null)
                         {

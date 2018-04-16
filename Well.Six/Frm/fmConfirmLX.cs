@@ -45,10 +45,10 @@ namespace Well.Six.Frm
                 case (int)ChildType.三连肖:
                 case (int)ChildType.四连肖:
                 case (int)ChildType.五连肖:
-                case (int)ChildType.二连码:
-                case (int)ChildType.三连码:
-                case (int)ChildType.四连码:
-                case (int)ChildType.五连码:
+                case (int)ChildType.二全中:
+                case (int)ChildType.三全中:
+                case (int)ChildType.四全中:
+                case (int)ChildType.三中三:
                     var lblm = order as Order<OrderLXLM>;
                     lbCount.Text = lblm.OrderDetails.Count.ToString();
                     lbMoney.Text = lblm.Total_In_Money.ToString();

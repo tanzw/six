@@ -85,6 +85,12 @@
     <Compile Include="fmMain.Designer.cs">
       <DependentUpon>fmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\fmBS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmBS.Designer.cs">
+      <DependentUpon>fmBS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmMain.resx">
       <DependentUpon>fmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmBS.resx">
+      <DependentUpon>fmBS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmChangePassword.resx">
       <DependentUpon>fmChangePassword.cs</DependentUpon>

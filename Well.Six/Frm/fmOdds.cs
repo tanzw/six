@@ -76,7 +76,7 @@ namespace Well.Six.Frm
                                     txtLXFS.Text = pl_lm5.Return_PL.ToString();
                                 }
                                 break;
-                            case (int)ChildType.二连码:
+                            case (int)ChildType.二全中:
                                 var pl_lm = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(item.strJson);
                                 if (pl_lm != null)
                                 {
@@ -237,7 +237,7 @@ namespace Well.Six.Frm
 
             Well.Model.OddsData lmModel = new Model.OddsData();
             lmModel.CustomerId = customerId;
-            lmModel.OrderType = (int)ChildType.二连码;
+            lmModel.OrderType = (int)ChildType.二全中;
             lmModel.Return_PL = lm.Return_PL;
             lmModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lm);
             list.Add(lmModel);
