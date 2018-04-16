@@ -16,5 +16,10 @@ namespace Well.Six.Frm
         {
             InitializeComponent();
         }
+
+        public void SetData()
+        {
+
+        }
     }
 }

@@ -24,6 +24,10 @@ namespace Well.Model
     public class TotalDetails
     {
         public int Id { get; set; }
+        public int CustomerId { get; set; }
+
+        public string Issue { get; set; }
+
 
         public int TotalId { get; set; }
 
@@ -34,5 +38,11 @@ namespace Well.Model
         public decimal OutMoney { get; set; }
 
         public decimal ReturnMoney { get; set; }
+
+        public string OrderTypeName { get; set; }
+
+        public string CustomerName { get; set; }
+
+        public string total { get; set; }
     }
 }

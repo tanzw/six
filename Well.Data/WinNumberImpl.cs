@@ -63,7 +63,7 @@ namespace Well.Data
             }
         }
 
-        public StandardResult<string> GetNewIssue()
+        public StandardResult<string> GetNewIssue(bool isLast = false)
         {
             var result = new StandardResult<string>();
             using (var db = base.NewDB())
@@ -72,14 +72,21 @@ namespace Well.Data
                 var obj = db.ExecuteScalar(sqlCommandText, null);
                 if (obj != null && obj != DBNull.Value)
                 {
-                    var issue = obj.ToTryInt();
-                    if (obj.ToString().Substring(0, 4) == DateTime.Now.Year.ToString())
+                    if (isLast)
                     {
-                        result.Body = (issue + 1).ToString();
+                        result.Body = obj.ToString();
                     }
                     else
                     {
-                        result.Body = DateTime.Now.Year + "001";
+                        var issue = obj.ToTryInt();
+                        if (obj.ToString().Substring(0, 4) == DateTime.Now.Year.ToString())
+                        {
+                            result.Body = (issue + 1).ToString();
+                        }
+                        else
+                        {
+                            result.Body = DateTime.Now.Year + "001";
+                        }
                     }
                 }
                 else
@@ -260,7 +267,7 @@ namespace Well.Data
                         UpdateOrderStatus(2, item.Id, orderMainStatus, trans);
                     }
 
-                  
+
                     trans.Commit();
                 }
                 catch (Exception ex)

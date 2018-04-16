@@ -33,17 +33,123 @@ group by a.issue,a.order_type,a.customer_id";
         }
 
 
-        public StandardResult<List<Total>> GetTotalList()
+        public StandardResult<List<TotalDetails>> GetTotalDetailsList(OrderSearch search = null)
         {
-            var result = new StandardResult<List<Total>>();
+            var result = new StandardResult<List<TotalDetails>>();
             using (var db = base.NewDB())
             {
-                StringBuilder sqlCommonText = new StringBuilder("select a.*,b.name as customername from t_total as a inner JOIN t_customers as b ON a.customerId=b.Id where 1=1 ");
+                StringBuilder sqlCommonText = new StringBuilder();
+                sqlCommonText.Append(@"SELECT
+        a.id,
+        a.issue,
+        a.ordertype,
+        (
+            CASE a.ordertype
 
-                result.Body = db.Query<Total>(sqlCommonText.ToString(), null).ToList();
+            WHEN 1 THEN
+
+                '特码'
+
+            WHEN 2 THEN
+
+                '连肖'
+
+            WHEN 3 THEN
+
+                '连码'
+
+            WHEN 4 THEN
+
+                '一肖'
+
+            WHEN 5 THEN
+
+                '特尾'
+
+            ELSE
+
+                '其他'
+
+            END
+        ) AS ordertypename,
+        a.inmoney,
+		a.outmoney,
+		a.returnmoney,
+		a.customerId,
+		b.name AS customername,
+        (a.inmoney-a.outmoney-a.returnmoney) as total
+    FROM
+        t_total_details AS a
+    INNER JOIN t_customers AS b ON a.customerId = b.Id
+    WHERE
+        1 = 1 ");
+
+                if (search != null)
+                {
+                    if (search.CustomerId != 0)
+                    {
+                        sqlCommonText.Append(" and a.customerid=@CustomerId");
+                    }
+                    if (!string.IsNullOrWhiteSpace(search.Issue))
+                    {
+                        sqlCommonText.Append(" and a.issue==@Issue");
+                    }
+                }
+
+                result.Body = db.Query<TotalDetails>(sqlCommonText.ToString(), search).ToList();
 
             }
             return result;
+        }
+
+        public StandardResult<List<TotalDetails>> GetTotalList(OrderSearch search = null)
+        {
+            var result = new StandardResult<List<TotalDetails>>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder();
+                sqlCommonText.Append(@"select *,(inmoney - outmoney - returnmoney) as total from(
+                 SELECT
+                
+                        a.issue,
+                        sum(a.inmoney) AS inmoney,
+                        sum(a.outmoney) AS outmoney,
+                        sum(a.returnmoney) AS returnmoney,
+                        a.customerId,
+                        b.name AS customername
+                
+                    FROM
+                
+                        t_total_details AS a
+                
+                    INNER JOIN t_customers AS b ON a.customerId = b.Id
+                
+                    WHERE
+                
+                        1 = 1 ");
+
+
+
+                if (search != null)
+                {
+                    if (search.CustomerId != 0)
+                    {
+                        sqlCommonText.Append(" and a.customerid=@CustomerId");
+                    }
+                    if (!string.IsNullOrWhiteSpace(search.Issue))
+                    {
+                        sqlCommonText.Append(" and a.issue=@Issue");
+                    }
+                }
+                sqlCommonText.Append(@" GROUP BY
+                        a.issue,
+                        a.customerid) as tb");
+
+                result.Body = db.Query<TotalDetails>(sqlCommonText.ToString(), search).ToList();
+
+            }
+            return result;
+
         }
     }
 }
