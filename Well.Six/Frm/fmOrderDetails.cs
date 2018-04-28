@@ -30,77 +30,80 @@ namespace Well.Six.Frm
             listView1.Items.Clear();
 
             var result = service.GetModel(id);
-            lbCount.Text = "0";
-            lbCustomerName.Text = result.Body.CustomerName;
-            lbMoney.Text = result.Body.Total_In_Money.ToString();
-            lbType.Text = result.Body.ChildTypeName;
-
-            if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特)
+            if (result.Body != null)
             {
-                var TMlList = service.GetOrderTMList(id);
-                lbCount.Text = TMlList.Body.Count.ToString();
+                lbCount.Text = "0";
+                lbCustomerName.Text = result.Body.CustomerName;
+                lbMoney.Text = result.Body.Total_In_Money.ToString();
+                lbType.Text = result.Body.ChildTypeName;
 
-                TMlList.Body.ForEach(x =>
+                if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特)
                 {
-                    var item = new ListViewItem();
-                    item.UseItemStyleForSubItems = false;
-                    item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
-                    item.SubItems.Add(x.Sort.ToString());
-                    item.SubItems.Add(x.Code.ToString());
-                    item.SubItems.Add(x.Odds.ToString());
-                    item.SubItems.Add(x.InMoney.ToString());
-                    listView1.Items.Add(item);
-                });
+                    var TMlList = service.GetOrderTMList(id);
+                    lbCount.Text = TMlList.Body.Count.ToString();
 
-            }
-            else if (result.Body.OrderType == (int)OrderType.连肖)
-            {
-                var LXLMlList = service.GetOrderLXLMList(id);
-                lbCount.Text = LXLMlList.Body.Count.ToString();
+                    TMlList.Body.ForEach(x =>
+                    {
+                        var item = new ListViewItem();
+                        item.UseItemStyleForSubItems = false;
+                        item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
+                        item.SubItems.Add(x.Sort.ToString());
+                        item.SubItems.Add(x.Code.ToString());
+                        item.SubItems.Add(x.Odds.ToString());
+                        item.SubItems.Add(x.InMoney.ToString());
+                        listView1.Items.Add(item);
+                    });
 
-                LXLMlList.Body.ForEach(x =>
+                }
+                else if (result.Body.OrderType == (int)OrderType.连肖)
                 {
-                    var item = new ListViewItem();
-                    item.UseItemStyleForSubItems = false;
-                    item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
-                    item.SubItems.Add(x.Sort.ToString());
-                    var str = "";
-                    if (x.Remarks == null)
+                    var LXLMlList = service.GetOrderLXLMList(id);
+                    lbCount.Text = LXLMlList.Body.Count.ToString();
+
+                    LXLMlList.Body.ForEach(x =>
                     {
-                        if (!string.IsNullOrWhiteSpace(x.Zodiac1))
+                        var item = new ListViewItem();
+                        item.UseItemStyleForSubItems = false;
+                        item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
+                        item.SubItems.Add(x.Sort.ToString());
+                        var str = "";
+                        if (x.Remarks == null)
                         {
-                            str += x.Zodiac1;
+                            if (!string.IsNullOrWhiteSpace(x.Zodiac1))
+                            {
+                                str += x.Zodiac1;
+                            }
+                            if (!string.IsNullOrWhiteSpace(x.Zodiac2))
+                            {
+                                str += "、" + x.Zodiac2;
+                            }
+                            if (!string.IsNullOrWhiteSpace(x.Zodiac3))
+                            {
+                                str += "、" + x.Zodiac3;
+                            }
+                            if (!string.IsNullOrWhiteSpace(x.Zodiac4))
+                            {
+                                str += "、" + x.Zodiac4;
+                            }
+                            if (!string.IsNullOrWhiteSpace(x.Zodiac5))
+                            {
+                                str += "、" + x.Zodiac5;
+                            }
                         }
-                        if (!string.IsNullOrWhiteSpace(x.Zodiac2))
+                        else
                         {
-                            str += "、" + x.Zodiac2;
+                            str = x.Remarks;
                         }
-                        if (!string.IsNullOrWhiteSpace(x.Zodiac3))
-                        {
-                            str += "、" + x.Zodiac3;
-                        }
-                        if (!string.IsNullOrWhiteSpace(x.Zodiac4))
-                        {
-                            str += "、" + x.Zodiac4;
-                        }
-                        if (!string.IsNullOrWhiteSpace(x.Zodiac5))
-                        {
-                            str += "、" + x.Zodiac5;
-                        }
-                    }
-                    else
-                    {
-                        str = x.Remarks; 
-                    }
 
 
-                    item.SubItems.Add(str);
-                    item.SubItems.Add(x.Odds.ToString());
-                    item.SubItems.Add(x.InMoney.ToString());
-                    listView1.Items.Add(item);
-                });
+                        item.SubItems.Add(str);
+                        item.SubItems.Add(x.Odds.ToString());
+                        item.SubItems.Add(x.InMoney.ToString());
+                        listView1.Items.Add(item);
+                    });
 
 
+                }
             }
         }
     }

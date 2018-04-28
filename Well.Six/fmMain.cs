@@ -335,7 +335,7 @@ namespace Well.Six
 
         private void 删除订单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var sd = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+             var sd = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             OrderImpl service = new OrderImpl();
             if (service.DeleteOrder(sd).Body)
             {

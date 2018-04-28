@@ -32,7 +32,10 @@ namespace Well.Data
                             sqlCommandText = "update t_odds set return_pl=@Return_PL,strJson=@strJson where id=@Id";
                             item.Id = id;
                         }
-
+                        else
+                        {
+                            sqlCommandText = "Insert into t_odds(customerId,ordertype,return_pl,strJson) values(@CustomerId,@OrderType,@Return_PL,@strJson)";
+                        }
                         if (db.Execute(sqlCommandText, item, trans) <= 0)
                         {
                             throw new Exception("添加客户赔率失败");

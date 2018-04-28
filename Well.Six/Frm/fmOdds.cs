@@ -95,6 +95,176 @@ namespace Well.Six.Frm
                                     oddsLX5.SetValues(pl_ptyx.List);
                                     txtPTYXFS.Text = pl_ptyx.Return_PL.ToString();
                                 }
+                                break;
+                            case (int)OrderType.大小单双:
+                                var bs = Newtonsoft.Json.JsonConvert.DeserializeObject<BSOdds>(item.strJson);
+                                if (bs != null)
+                                {
+                                    txtfs.Text = bs.Return_PL.ToString();
+                                    foreach (var oo in bs.List)
+                                    {
+                                        switch (oo.Key)
+                                        {
+
+                                            #region 红波
+                                            case (int)ChildType.红波:
+                                                txthb.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红单:
+                                                txthd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红双:
+                                                txths.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红大:
+                                                txthda.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红小:
+                                                txthx.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红大单:
+                                                txthdd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红大双:
+                                                txthds.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红小单:
+                                                txthxd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.红小双:
+                                                txthxs.Text = oo.Value.ToString();
+                                                break;
+
+                                            #endregion
+
+                                            #region 绿波
+                                            case (int)ChildType.绿波:
+                                                txtlb.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿单:
+                                                txtld.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿双:
+                                                txtls.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿大:
+                                                txtlda.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿小:
+                                                txtlx.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿大单:
+                                                txtldd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿大双:
+                                                txtlds.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿小单:
+                                                txtlxd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.绿小双:
+                                                txtlxs.Text = oo.Value.ToString();
+                                                break;
+
+                                            #endregion
+
+                                            #region 蓝波
+                                            case (int)ChildType.蓝波:
+                                                txtlanb.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝单:
+                                                txtland.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝双:
+                                                txtlans.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝大:
+                                                txtlanda.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝小:
+                                                txtlanx.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝大单:
+                                                txtlandd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝大双:
+                                                txtlands.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝小单:
+                                                txtlanxd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.蓝小双:
+                                                txtlanxs.Text = oo.Value.ToString();
+                                                break;
+
+                                            #endregion
+
+                                            #region 特大单双
+
+                                            case (int)ChildType.特单:
+                                                txttd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特双:
+                                                txtts.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特大:
+                                                txttda.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特小:
+                                                txttx.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特大单:
+                                                txttdd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特大双:
+                                                txttds.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特小单:
+                                                txttxd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.特小双:
+                                                txttxs.Text = oo.Value.ToString();
+                                                break;
+
+                                            #endregion
+
+                                            #region  合大小单双
+
+                                            case (int)ChildType.合单:
+                                                txthed.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合双:
+                                                txthes.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合大:
+                                                txtheda.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合小:
+                                                txthex.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合大单:
+                                                txthedd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合大双:
+                                                txtheds.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合小单:
+                                                txthexd.Text = oo.Value.ToString();
+                                                break;
+                                            case (int)ChildType.合小双:
+                                                txthexs.Text = oo.Value.ToString();
+                                                break;
+
+                                                #endregion
+
+                                        }
+
+                                    }
+
+                                }
+
+
+
 
                                 break;
                         }
@@ -200,6 +370,11 @@ namespace Well.Six.Frm
             lm.SIZHONGSI = Convert.ToDecimal(txtSIQZ.Text.Trim());
             lm.Return_PL = Convert.ToDecimal(txtLMFS.Text.Trim());
 
+
+            Well.Model.BSOdds bs = new BSOdds();
+            bs.Return_PL = Convert.ToDecimal(txtfs.Text.Trim());
+            bs.List = new Dictionary<int, decimal>();
+
             Well.Model.OddsData tmModel = new Model.OddsData();
             tmModel.CustomerId = customerId;
             tmModel.OrderType = (int)ChildType.特码;
@@ -249,6 +424,66 @@ namespace Well.Six.Frm
             ptyxModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(pt);
             list.Add(ptyxModel);
 
+            Well.Model.OddsData bsModel = new Model.OddsData();
+            bsModel.CustomerId = customerId;
+            bsModel.OrderType = (int)OrderType.大小单双;
+            bsModel.Return_PL = Convert.ToDecimal(txtfs.Text.Trim());
+
+
+            bs.List.Add((int)ChildType.红波, Convert.ToDecimal(txthb.Text.Trim()));
+            bs.List.Add((int)ChildType.绿波, Convert.ToDecimal(txtlb.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝波, Convert.ToDecimal(txtlanb.Text.Trim()));
+
+            bs.List.Add((int)ChildType.红单, Convert.ToDecimal(txthd.Text.Trim()));
+            bs.List.Add((int)ChildType.红双, Convert.ToDecimal(txths.Text.Trim()));
+            bs.List.Add((int)ChildType.红大, Convert.ToDecimal(txthda.Text.Trim()));
+            bs.List.Add((int)ChildType.红小, Convert.ToDecimal(txthx.Text.Trim()));
+            bs.List.Add((int)ChildType.红大单, Convert.ToDecimal(txthdd.Text.Trim()));
+            bs.List.Add((int)ChildType.红小单, Convert.ToDecimal(txthxs.Text.Trim()));
+            bs.List.Add((int)ChildType.红大双, Convert.ToDecimal(txthds.Text.Trim()));
+            bs.List.Add((int)ChildType.红小双, Convert.ToDecimal(txthxs.Text.Trim()));
+
+            bs.List.Add((int)ChildType.绿单, Convert.ToDecimal(txtld.Text.Trim()));
+            bs.List.Add((int)ChildType.绿双, Convert.ToDecimal(txtls.Text.Trim()));
+            bs.List.Add((int)ChildType.绿大, Convert.ToDecimal(txtlda.Text.Trim()));
+            bs.List.Add((int)ChildType.绿小, Convert.ToDecimal(txtlx.Text.Trim()));
+            bs.List.Add((int)ChildType.绿大单, Convert.ToDecimal(txtldd.Text.Trim()));
+            bs.List.Add((int)ChildType.绿小单, Convert.ToDecimal(txtlxs.Text.Trim()));
+            bs.List.Add((int)ChildType.绿大双, Convert.ToDecimal(txtlds.Text.Trim()));
+            bs.List.Add((int)ChildType.绿小双, Convert.ToDecimal(txtlxs.Text.Trim()));
+
+            bs.List.Add((int)ChildType.蓝单, Convert.ToDecimal(txtland.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝双, Convert.ToDecimal(txtlans.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝大, Convert.ToDecimal(txtlanda.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝小, Convert.ToDecimal(txtlanx.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝大单, Convert.ToDecimal(txtlandd.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝小单, Convert.ToDecimal(txtlanxs.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝大双, Convert.ToDecimal(txtlands.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝小双, Convert.ToDecimal(txtlanxs.Text.Trim()));
+
+
+            bs.List.Add((int)ChildType.特单, Convert.ToDecimal(txttd.Text.Trim()));
+            bs.List.Add((int)ChildType.特双, Convert.ToDecimal(txtts.Text.Trim()));
+            bs.List.Add((int)ChildType.特大, Convert.ToDecimal(txttda.Text.Trim()));
+            bs.List.Add((int)ChildType.特小, Convert.ToDecimal(txttx.Text.Trim()));
+            bs.List.Add((int)ChildType.特大单, Convert.ToDecimal(txttdd.Text.Trim()));
+            bs.List.Add((int)ChildType.特小单, Convert.ToDecimal(txttxs.Text.Trim()));
+            bs.List.Add((int)ChildType.特大双, Convert.ToDecimal(txttds.Text.Trim()));
+            bs.List.Add((int)ChildType.特小双, Convert.ToDecimal(txttxs.Text.Trim()));
+
+            bs.List.Add((int)ChildType.合单, Convert.ToDecimal(txthed.Text.Trim()));
+            bs.List.Add((int)ChildType.合双, Convert.ToDecimal(txthes.Text.Trim()));
+            bs.List.Add((int)ChildType.合大, Convert.ToDecimal(txtheda.Text.Trim()));
+            bs.List.Add((int)ChildType.合小, Convert.ToDecimal(txthex.Text.Trim()));
+            bs.List.Add((int)ChildType.合大单, Convert.ToDecimal(txthedd.Text.Trim()));
+            bs.List.Add((int)ChildType.合小单, Convert.ToDecimal(txthexs.Text.Trim()));
+            bs.List.Add((int)ChildType.合大双, Convert.ToDecimal(txtheds.Text.Trim()));
+            bs.List.Add((int)ChildType.合小双, Convert.ToDecimal(txthexs.Text.Trim()));
+
+
+            bsModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(bs);
+            list.Add(bsModel);
+
             OddsImpl service = new OddsImpl();
             if (service.Add(list).Code == 0)
             {
@@ -268,3 +503,4 @@ namespace Well.Six.Frm
 
     }
 }
+

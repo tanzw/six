@@ -57,6 +57,11 @@ namespace Well.Model
 
     }
 
+    public class BSOdds : Odds
+    {
+        public Dictionary<int, decimal> List { get; set; }
+    }
+
     public class WSOdds : Odds
     {
         public Dictionary<int, decimal> List { get; set; }
