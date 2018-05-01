@@ -7,6 +7,7 @@ using Well.Common.Result;
 using Well.Model;
 using Well.Common.Extensions;
 using System.Data;
+using System.Drawing;
 
 namespace Well.Data
 {
@@ -156,6 +157,11 @@ namespace Well.Data
                 IDbTransaction trans = db.BeginTransaction();
 
                 var tempList = new List<string>();
+                var green = Color.LimeGreen;
+                var red = Color.Red;
+                var blue = Color.Blue;
+                int sum = 0;//计算合数变量
+                int num = 0;//计算合数变量
                 try
                 {
                     var orderMainStatus = (int)ResultStatus.Lose;
@@ -163,9 +169,10 @@ namespace Well.Data
                     {
                         foreach (var detail in item.OrderDetails)
                         {
-                            switch (item.Order_Type)
+                            var v = 0;
+                            switch (detail.ChildType)
                             {
-                                case (int)OrderType.特码:
+                                case (int)ChildType.特码:
                                     if (detail.Code == model.Body.Num7_Code)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -176,7 +183,7 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.平特:
+                                case (int)ChildType.平特:
                                     if (detail.Code == model.Body.Num1_Zodiac || detail.Code == model.Body.Num2_Zodiac || detail.Code == model.Body.Num3_Zodiac || detail.Code == model.Body.Num4_Zodiac || detail.Code == model.Body.Num5_Zodiac || detail.Code == model.Body.Num6_Zodiac || detail.Code == model.Body.Num7_Zodiac)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -187,8 +194,15 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)OrderType.尾数:
-                                    if (detail.Code == model.Body.Num7_Code.Substring(model.Body.Num7_Code.Length - 1, 1))
+                                case (int)ChildType.尾数:
+                                    if (detail.Code == model.Body.Num7_Code.Substring(model.Body.Num7_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num6_Code.Substring(model.Body.Num6_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num5_Code.Substring(model.Body.Num5_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num4_Code.Substring(model.Body.Num4_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num3_Code.Substring(model.Body.Num3_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num2_Code.Substring(model.Body.Num2_Code.Length - 1, 1) ||
+                                        detail.Code == model.Body.Num1_Code.Substring(model.Body.Num1_Code.Length - 1, 1)
+                                        )
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -198,6 +212,599 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
+                                #region 波色
+                                case (int)ChildType.红波:
+                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == red)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿波:
+                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == green)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝波:
+                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == blue)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                #endregion
+
+                                #region 半波--红波
+
+                                case (int)ChildType.红大:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红小:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 == 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红大单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红小单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红大双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.红小双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                #endregion
+
+                                #region 半波--绿波
+
+                                case (int)ChildType.绿大:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿小:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 == 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿大单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿小单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿大双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.绿小双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                #endregion
+
+                                #region 半波--蓝波
+
+                                case (int)ChildType.蓝大:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝小:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝大单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝小单:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝大双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.蓝小双:
+                                    v = detail.Code.ToTryInt();
+                                    if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                #endregion
+
+                                #region 特码大小单双
+
+                                case (int)ChildType.特大:
+                                    v = detail.Code.ToTryInt();
+                                    if (v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特小:
+                                    v = detail.Code.ToTryInt();
+                                    if (v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特单:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特双:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 == 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特大单:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 != 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特小单:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 != 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特大双:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 == 0 && v > 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.特小双:
+                                    v = detail.Code.ToTryInt();
+                                    if (v % 2 == 0 && v <= 24)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                #endregion
+
+                                #region 特码合大小单双
+
+                                case (int)ChildType.合大:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum > 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合小:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum <= 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合单:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合双:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum % 2 != 0)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合大单:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+
+                                    if (sum % 2 != 0 && sum > 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合小单:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+
+                                    if (sum % 2 != 0 && sum <= 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合大双:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum % 2 == 0 && sum > 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.合小双:
+                                    v = detail.Code.ToTryInt();
+                                    num = v;
+                                    sum = 0;
+                                    while (num > 0)
+                                    {
+                                        sum += num % 10;//每次的余数都是末尾的数字
+                                        num /= 10;//因为是INT型的所以等于直接去掉最后的数字.
+                                    }
+                                    if (sum % 2 == 0 && sum <= 6)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                    #endregion
                             }
 
                             UpdateOrderTMStatus(detail, trans);
@@ -210,7 +817,7 @@ namespace Well.Data
                     {
                         foreach (var detail in item.OrderDetails)
                         {
-                            switch (item.Child_Type)
+                            switch (detail.ChildType)
                             {
                                 case (int)ChildType.二连肖:
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2))
@@ -224,7 +831,8 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.二全中:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code1))
+                                    var temp = model.Body.CodeList.Take(6);
+                                    if (temp.Contains(detail.Code1) && temp.Contains(detail.Code2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -247,7 +855,8 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.三全中:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3))
+                                    var temp1 = model.Body.CodeList.Take(6);
+                                    if (temp1.Contains(detail.Code1) && temp1.Contains(detail.Code2) && temp1.Contains(detail.Code3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -269,17 +878,6 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
-                                case (int)ChildType.四全中:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3) && model.Body.CodeList.Contains(detail.Code4))
-                                    {
-                                        detail.Status = (int)ResultStatus.Win;
-                                        orderMainStatus = (int)ResultStatus.Win;
-                                    }
-                                    else
-                                    {
-                                        detail.Status = (int)ResultStatus.Lose;
-                                    }
-                                    break;
                                 case (int)ChildType.五连肖:
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4) && model.Body.ZodiacList.Contains(detail.Zodiac5))
                                     {
@@ -292,7 +890,8 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.三中三:
-                                    if (model.Body.CodeList.Contains(detail.Code1) && model.Body.CodeList.Contains(detail.Code2) && model.Body.CodeList.Contains(detail.Code3))
+                                    var temp2 = model.Body.CodeList.Take(6);
+                                    if (temp2.Contains(detail.Code1) && temp2.Contains(detail.Code2) && temp2.Contains(detail.Code3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -309,9 +908,10 @@ namespace Well.Data
                                         List<string[]> ListCombination = PermutationAndCombination<string>.GetCombination(InCombinationList.ToArray(), 2); //求全部的3-3组合
                                         foreach (string[] arr in ListCombination)
                                         {
-                                            if (model.Body.CodeList.Contains(arr[0]) && model.Body.CodeList.Contains(arr[1]))
+                                            if (temp2.Contains(arr[0]) && temp2.Contains(arr[1]))
                                             {
                                                 detail.Status = (int)ResultStatus.Win;
+                                                detail.OutMoney = detail.MinOdds * detail.InMoney;
                                                 orderMainStatus = (int)ResultStatus.Win;
                                                 break;
                                             }
@@ -323,13 +923,27 @@ namespace Well.Data
                                         }
                                     }
                                     break;
+                                case (int)ChildType.特碰:
+                                    if (model.Body.CodeList[6] == detail.Code1 && model.Body.CodeList.Take(6).Contains(detail.Code2))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else if (model.Body.CodeList[6] == detail.Code2 && model.Body.CodeList.Take(6).Contains(detail.Code1))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                             }
                             UpdateOrderLXLMStatus(detail, trans);
                         }
                         UpdateOrderStatus(2, item.Id, orderMainStatus, trans);
                     }
-
-
                     trans.Commit();
                 }
                 catch (Exception ex)
@@ -465,7 +1079,8 @@ namespace Well.Data
             var db = trans.Connection;
             StringBuilder sqlCommandText = new StringBuilder();
             sqlCommandText.Append("Update t_orders_lxlm set ");
-            sqlCommandText.Append(" status=@Status");
+            sqlCommandText.Append(" status=@Status,");
+            sqlCommandText.Append(" outmoney=@OutMoney");
             sqlCommandText.Append(" where id = @Id");
 
             if (db.Execute(sqlCommandText.ToString(), model, trans) <= 0)

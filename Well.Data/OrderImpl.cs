@@ -127,8 +127,8 @@ namespace Well.Data
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
-            string sqlCommandText = "Insert into t_orders_lxlm(id,orderId,sort,code1,zodiac1,code2,zodiac2,code3,zodiac3,code4,zodiac4,code5,zodiac5,odds,inmoney,outmoney,minoutmoney,maxoutmoney,minodds,maxodds,remarks,status) " +
-                "values(@Id,@OrderId,@Sort,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
+            string sqlCommandText = "Insert into t_orders_lxlm(id,orderId,sort,childtype,code1,zodiac1,code2,zodiac2,code3,zodiac3,code4,zodiac4,code5,zodiac5,odds,inmoney,outmoney,minoutmoney,maxoutmoney,minodds,maxodds,remarks,status) " +
+                "values(@Id,@OrderId,@Sort,@ChildType,@Code1,@Zodiac1,@Code2,@Zodiac2,@Code3,@Zodiac3,@Code4,@Zodiac4,@Code5,@Zodiac5,@Odds,@InMoney,@OutMoney,@MinOutMoney,@MaxOutMoney,@MinOdds,@MaxOdds,@Remarks,@Status)";
             if (db.Execute(sqlCommandText, array, trans) <= 0)
             {
                 result.Code = 1;

@@ -260,6 +260,7 @@ namespace Well.Six.Frm
                 detail.Remarks = str.Remove(str.Length - 1, 1);
                 detail.OrderId = OrderId;
                 detail.Odds = pl;
+                detail.ChildType = childtype;
                 detail.InMoney = Convert.ToDecimal(txtMoney.Text);
                 detail.OutMoney = detail.InMoney * detail.Odds;
                 detail.Status = (int)ResultStatus.Wait;

@@ -254,6 +254,7 @@ namespace Well.Six.Frm
                         O.InMoney = Convert.ToDecimal(c.Text);
                         O.Status = (int)ResultStatus.Wait;
                         O.Flag = 1;
+                        O.ChildType = (int)ChildType.平特;
 
                         O.Sort = index;
 
@@ -381,6 +382,7 @@ namespace Well.Six.Frm
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(c.Text);
                         O.Status = (int)ResultStatus.Wait;
+                        O.ChildType = (int)ChildType.尾数;
                         O.Sort = index;
                         var Code = container.Controls.Find("Code", false).FirstOrDefault(x => x.Tag == c.Tag);
                         if (Code != null)

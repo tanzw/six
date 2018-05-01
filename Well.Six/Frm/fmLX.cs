@@ -79,5 +79,10 @@ namespace Well.Six.Frm
             }
             return false;
         }
+
+        private void ulx2l_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

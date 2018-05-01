@@ -37,26 +37,47 @@ namespace Well.Six.Frm
                 lbMoney.Text = result.Body.Total_In_Money.ToString();
                 lbType.Text = result.Body.ChildTypeName;
 
-                if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特)
+                if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.波色 || result.Body.OrderType == (int)OrderType.大小单双)
                 {
                     var TMlList = service.GetOrderTMList(id);
                     lbCount.Text = TMlList.Body.Count.ToString();
 
-                    TMlList.Body.ForEach(x =>
+                    if (result.Body.OrderType == (int)OrderType.波色 || result.Body.OrderType == (int)OrderType.大小单双)
                     {
-                        var item = new ListViewItem();
-                        item.UseItemStyleForSubItems = false;
-                        item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
-                        item.SubItems.Add(x.Sort.ToString());
-                        item.SubItems.Add("");
-                        item.SubItems.Add(x.Code.ToString());
-                        item.SubItems.Add(x.Odds.ToString());
-                        item.SubItems.Add(x.InMoney.ToString());
-                        listView1.Items.Add(item);
-                    });
+                        TMlList.Body.ForEach(x =>
+                        {
+                            var item = new ListViewItem();
+                            item.UseItemStyleForSubItems = false;
+                            item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
+                            item.SubItems.Add(x.Sort.ToString());
+                            var sd = (ChildType)x.ChildType;
+                            var sd1 = (OrderType)result.Body.OrderType;
+                            item.SubItems.Add(sd1.ToString());
+                            item.SubItems.Add(sd.ToString());
+                            item.SubItems.Add(x.Odds.ToString());
+                            item.SubItems.Add(x.InMoney.ToString());
+                            listView1.Items.Add(item);
+                        });
+                    }
+                    else
+                    {
+                        TMlList.Body.ForEach(x =>
+                        {
+                            var item = new ListViewItem();
+                            item.UseItemStyleForSubItems = false;
+                            item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
+                            item.SubItems.Add(x.Sort.ToString());
+                            var sd = (ChildType)x.ChildType;
+                            item.SubItems.Add(sd.ToString());
+                            item.SubItems.Add(x.Code.ToString());
+                            item.SubItems.Add(x.Odds.ToString());
+                            item.SubItems.Add(x.InMoney.ToString());
+                            listView1.Items.Add(item);
+                        });
+                    }
 
                 }
-                else if (result.Body.OrderType == (int)OrderType.连肖)
+                else if (result.Body.OrderType == (int)OrderType.连肖 || result.Body.OrderType == (int)OrderType.连码)
                 {
                     var LXLMlList = service.GetOrderLXLMList(id);
                     lbCount.Text = LXLMlList.Body.Count.ToString();
@@ -95,7 +116,8 @@ namespace Well.Six.Frm
                         {
                             str = x.Remarks;
                         }
-
+                        var sd = (ChildType)x.ChildType;
+                        item.SubItems.Add(sd.ToString());
 
                         item.SubItems.Add(str);
                         item.SubItems.Add(x.Odds.ToString());

@@ -90,7 +90,7 @@ namespace Well.Six
 
             var c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             c4.ReadOnly = true;
-            c4.DataPropertyName = "childtypename";
+            c4.DataPropertyName = "ordertypename";
             c4.DefaultCellStyle = dgCellStyle_MiddleCenter;
             c4.HeaderText = "玩法";
             c4.MinimumWidth = 80;

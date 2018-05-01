@@ -31,12 +31,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.ulx2l = new Well.Six.UControls.ULX();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ulx3l = new Well.Six.UControls.ULX();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ulx4l = new Well.Six.UControls.ULX();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.ulx5l = new Well.Six.UControls.ULX();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -80,41 +80,9 @@
             this.tabPage1.Text = "二连肖";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.ulx3l);
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(807, 599);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "三连肖";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.ulx4l);
-            this.tabPage3.Location = new System.Drawing.Point(4, 31);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(807, 599);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "四连肖";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.ulx5l);
-            this.tabPage4.Location = new System.Drawing.Point(4, 31);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(807, 599);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "五连肖";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // ulx2l
             // 
+            this.ulx2l.ChildType = 0;
             this.ulx2l.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ulx2l.Location = new System.Drawing.Point(3, 3);
             this.ulx2l.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -122,35 +90,72 @@
             this.ulx2l.OrderType = 0;
             this.ulx2l.Size = new System.Drawing.Size(801, 440);
             this.ulx2l.TabIndex = 0;
+            this.ulx2l.Load += new System.EventHandler(this.ulx2l_Load);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.ulx3l);
+            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(807, 446);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "三连肖";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // ulx3l
             // 
+            this.ulx3l.ChildType = 0;
             this.ulx3l.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ulx3l.Location = new System.Drawing.Point(3, 3);
             this.ulx3l.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.ulx3l.Name = "ulx3l";
             this.ulx3l.OrderType = 0;
-            this.ulx3l.Size = new System.Drawing.Size(801, 593);
+            this.ulx3l.Size = new System.Drawing.Size(801, 440);
             this.ulx3l.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ulx4l);
+            this.tabPage3.Location = new System.Drawing.Point(4, 31);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(807, 446);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "四连肖";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // ulx4l
             // 
+            this.ulx4l.ChildType = 0;
             this.ulx4l.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ulx4l.Location = new System.Drawing.Point(3, 3);
             this.ulx4l.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.ulx4l.Name = "ulx4l";
             this.ulx4l.OrderType = 0;
-            this.ulx4l.Size = new System.Drawing.Size(801, 593);
+            this.ulx4l.Size = new System.Drawing.Size(801, 440);
             this.ulx4l.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.ulx5l);
+            this.tabPage4.Location = new System.Drawing.Point(4, 31);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(807, 446);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "五连肖";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // ulx5l
             // 
+            this.ulx5l.ChildType = 0;
             this.ulx5l.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ulx5l.Location = new System.Drawing.Point(3, 3);
             this.ulx5l.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.ulx5l.Name = "ulx5l";
             this.ulx5l.OrderType = 0;
-            this.ulx5l.Size = new System.Drawing.Size(801, 593);
+            this.ulx5l.Size = new System.Drawing.Size(801, 440);
             this.ulx5l.TabIndex = 0;
             // 
             // fmLX
