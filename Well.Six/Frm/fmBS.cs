@@ -745,7 +745,7 @@ namespace Well.Six.Frm
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(cc.Text);
                         O.Flag = 1;
-
+                        O.ChildType = int.Parse(cc.Tag.ToString());
                         O.Status = (int)ResultStatus.Wait;
 
                         var Code = this.Controls.Find("code", true).FirstOrDefault(x => x.Tag == c.Tag);
@@ -759,7 +759,7 @@ namespace Well.Six.Frm
                         {
                             continue;
                         }
-                        O.Remarks = O.Code;
+                        O.Remarks = Code.Text;
                         O.Sort = index;
                         var PL = this.Controls.Find("pl", true).FirstOrDefault(x => x.Tag == c.Tag);
                         if (PL != null)
@@ -795,7 +795,7 @@ namespace Well.Six.Frm
                 OrderDetails = list
             };
 
-            Frm.fmConfirmLX fmConfigm = new fmConfirmLX();
+            Frm.fmConfirmOther fmConfigm = new fmConfirmOther();
             fmConfigm.InitForm(order);
             if (fmConfigm.ShowDialog() == DialogResult.OK)
             {
@@ -814,7 +814,16 @@ namespace Well.Six.Frm
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            var controls1 = this.Controls.Find("txt", true);
+            foreach (var c in controls1)
+            {
+                if (c is TextBox)
+                {
+                    var cc = c as TextBox;
+                    cc.Text = "";
 
+                }
+            }
         }
 
         decimal value = 0m;
@@ -1003,9 +1012,28 @@ namespace Well.Six.Frm
             });
         }
 
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
 
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        btnOK_Click(null, null);
+                        break;
+                }
+            }
+            return false;
         }
     }
 }

@@ -1,66 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Well.Data;
 using Well.Model;
 
 namespace Well.Six.Frm
 {
-    public partial class fmConfirmLX : Form
+    public partial class fmConfirmOther : Form
     {
-
-        public fmConfirmLX()
+        public fmConfirmOther()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.Text = "投注确认";
         }
-
-        bool isInit = false;
-
-        public fmConfirmLX(Dictionary<int, decimal> _list, int _OrderType, int _custormeiId, decimal _money)
-        {
-            InitializeComponent();
-        }
-
-
-
 
         public void InitForm(OrderMain order)
         {
-            switch (order.Child_Type)
+            switch (order.Order_Type)
             {
-                case (int)ChildType.特码:
+                case (int)OrderType.波色:
+                case (int)OrderType.大小单双:
+                case (int)OrderType.尾数:
+                case (int)OrderType.平特:
                     var TM = order as Order<OrderTM>;
                     lbCount.Text = TM.OrderDetails.Count.ToString();
                     lbMoney.Text = TM.Total_In_Money.ToString();
                     BindData(TM.OrderDetails);
                     break;
-                case (int)ChildType.二连肖:
-                case (int)ChildType.三连肖:
-                case (int)ChildType.四连肖:
-                case (int)ChildType.五连肖:
-                case (int)ChildType.二全中:
-                case (int)ChildType.三全中:
-                case (int)ChildType.四全中:
-                case (int)ChildType.三中三:
-                case (int)ChildType.特碰:
-                    var lblm = order as Order<OrderLXLM>;
-                    lbCount.Text = lblm.OrderDetails.Count.ToString();
-                    lbMoney.Text = lblm.Total_In_Money.ToString();
-                    BindData(lblm.OrderDetails);
-                    break;
-
             }
-
-            //  
-
-
         }
 
 
@@ -85,6 +62,7 @@ namespace Well.Six.Frm
 
         }
 
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -93,11 +71,6 @@ namespace Well.Six.Frm
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void fmConfirmLX_Load(object sender, EventArgs e)
-        {
-
         }
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
@@ -120,6 +93,5 @@ namespace Well.Six.Frm
             }
             return false;
         }
-
     }
 }

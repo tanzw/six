@@ -279,7 +279,7 @@ namespace Well.Six.UControls
                 }
 
                 //生成号码组合
-                List<int[]> ListCombination = PermutationAndCombination<int>.GetCombination(InCombinationList.ToArray(), ChildType - 20); //求全部的3-3组合
+                List<int[]> ListCombination = PermutationAndCombination<int>.GetCombination(InCombinationList.ToArray(), MinCount); //求全部的3-3组合
 
                 //根据号码组合创建订单明细
                 int index = 1;
@@ -319,6 +319,7 @@ namespace Well.Six.UControls
                     }
                     detail.Id = Guid.NewGuid().ToString("n");
                     detail.Sort = index;
+                    detail.ChildType = ChildType;
                     detail.Remarks = str.Remove(str.Length - 1, 1);
                     detail.OrderId = OrderId;
                     detail.Odds = GetMinOdds(list, InCombinationList);

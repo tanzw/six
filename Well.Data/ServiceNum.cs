@@ -261,6 +261,10 @@ namespace Well.Data
         尾数 = 5,
         波色 = 6,
         大小单双 = 7,
+        合肖 = 8,
+        全不中 = 9,
+        单平 = 10,
+
     }
 
     public enum ChildType
@@ -277,6 +281,7 @@ namespace Well.Data
         三全中 = 33,
         四全中 = 34,
         三中三 = 35,
+        特碰 = 36,
 
         平特 = 41,
         尾数 = 51,

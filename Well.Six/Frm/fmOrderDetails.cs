@@ -48,6 +48,7 @@ namespace Well.Six.Frm
                         item.UseItemStyleForSubItems = false;
                         item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                         item.SubItems.Add(x.Sort.ToString());
+                        item.SubItems.Add("");
                         item.SubItems.Add(x.Code.ToString());
                         item.SubItems.Add(x.Odds.ToString());
                         item.SubItems.Add(x.InMoney.ToString());

@@ -25,7 +25,7 @@ namespace Well.Six.Frm
         TMOdds tm = null;
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtCode.Text) && (list.Count(x => x.Value == txtCode.Text.Trim()) == 0 && list.Count(x => x.Zodiac == txtCode.Text.Trim()) == 0))
+            if (string.IsNullOrWhiteSpace(txtCode.Text) || (list.Count(x => x.Value == txtCode.Text.Trim()) == 0 && list.Count(x => x.Zodiac == txtCode.Text.Trim()) == 0))
             {
                 MessageEx.ShowWarning("号码不符合規則,請重新輸入");
                 txtCode.Text = "";
@@ -67,12 +67,13 @@ namespace Well.Six.Frm
                         item.SubItems.Add(x.Value);
                         item.SubItems.Add(tm.Num_PL.ToMoney());
                         item.SubItems.Add(inmoney.ToMoney());
-                        listView1.Items.Add(item);
+                        listView1.Items.Insert(0, item);
                         orderDetails.Add(new OrderTM()
                         {
                             Code = x.Value,
                             Id = Guid.NewGuid().ToString("n"),
                             Sort = listView1.Items.Count,
+                            ChildType = (int)ChildType.特码,
                             InMoney = inmoney,
                             Odds = tm.Num_PL,
                             OutMoney = tm.Num_PL * inmoney,
@@ -92,12 +93,13 @@ namespace Well.Six.Frm
                     item.SubItems.Add(txtCode.Text.Trim());
                     item.SubItems.Add(tm.Num_PL.ToMoney());
                     item.SubItems.Add(txtMoney.Text.Trim());
-                    listView1.Items.Add(item);
+                    listView1.Items.Insert(0, item);
                     orderDetails.Add(new OrderTM()
                     {
                         Code = txtCode.Text.Trim(),
                         Id = Guid.NewGuid().ToString("n"),
                         Sort = listView1.Items.Count,
+                        ChildType = (int)ChildType.特码,
                         InMoney = Convert.ToDecimal(txtMoney.Text.Trim()),
                         Odds = tm.Num_PL,
                         OutMoney = tm.Num_PL * Convert.ToDecimal(txtMoney.Text.Trim()),

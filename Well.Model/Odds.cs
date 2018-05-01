@@ -46,6 +46,8 @@ namespace Well.Model
 
         public decimal EQZ { get; set; }
 
+        public decimal TP { get; set; }
+
         public decimal SIZHONGSI { get; set; }
 
     }

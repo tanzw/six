@@ -103,6 +103,12 @@
     <Compile Include="Frm\fmConfirmLX.Designer.cs">
       <DependentUpon>fmConfirmLX.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\fmConfirmOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmConfirmOther.Designer.cs">
+      <DependentUpon>fmConfirmOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,12 @@
     </Compile>
     <Compile Include="Frm\fmCustomerEdit.Designer.cs">
       <DependentUpon>fmCustomerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\fmDXDS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmDXDS.Designer.cs">
+      <DependentUpon>fmDXDS.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\fmFastLX.cs">
       <SubType>Form</SubType>
@@ -228,11 +240,17 @@
     <EmbeddedResource Include="Frm\fmConfirmLX.resx">
       <DependentUpon>fmConfirmLX.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmConfirmOther.resx">
+      <DependentUpon>fmConfirmOther.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmCustomer.resx">
       <DependentUpon>fmCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmCustomerEdit.resx">
       <DependentUpon>fmCustomerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmDXDS.resx">
+      <DependentUpon>fmDXDS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmFastLX.resx">
       <DependentUpon>fmFastLX.cs</DependentUpon>

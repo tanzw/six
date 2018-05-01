@@ -181,6 +181,9 @@ namespace Well.Six.Frm
                         O.Id = Guid.NewGuid().ToString("N");
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(c.Text);
+                        O.ChildType = (int)ChildType.特码;
+
+
                         O.Flag = 1;
 
                         O.Status = (int)ResultStatus.Wait;

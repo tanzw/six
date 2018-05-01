@@ -42,6 +42,7 @@
             this.lbCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbMoney = new System.Windows.Forms.Label();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -49,12 +50,13 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
             this.columnHeader1,
+            this.columnHeader5,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
             this.listView1.Location = new System.Drawing.Point(12, 78);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(365, 505);
+            this.listView1.Size = new System.Drawing.Size(428, 505);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -158,11 +160,16 @@
             this.lbMoney.TabIndex = 8;
             this.lbMoney.Text = "n";
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "玩法";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // fmOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 595);
+            this.ClientSize = new System.Drawing.Size(451, 595);
             this.Controls.Add(this.lbMoney);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lbCount);
@@ -195,5 +202,6 @@
         private System.Windows.Forms.Label lbCount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbMoney;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

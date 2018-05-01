@@ -76,7 +76,7 @@ namespace Well.Six.Frm
                                     txtLXFS.Text = pl_lm5.Return_PL.ToString();
                                 }
                                 break;
-                            case (int)ChildType.二全中:
+                            case (int)OrderType.连码:
                                 var pl_lm = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(item.strJson);
                                 if (pl_lm != null)
                                 {
@@ -86,6 +86,7 @@ namespace Well.Six.Frm
                                     txtSQZ.Text = pl_lm.SQZ.ToString();
                                     txtSZE.Text = pl_lm.SZE.ToString();
                                     txtSZS.Text = pl_lm.SZS.ToString();
+                                    txttp.Text = pl_lm.TP.ToString();
                                 }
                                 break;
                             case (int)ChildType.平特:
@@ -364,9 +365,8 @@ namespace Well.Six.Frm
             lm.EQZ = Convert.ToDecimal(txtEQZ.Text.Trim());
             lm.SQZ = Convert.ToDecimal(txtSQZ.Text.Trim());
             lm.SZE = Convert.ToDecimal(txtSZE.Text.Trim());
-
             lm.SZS = Convert.ToDecimal(txtSZS.Text.Trim());
-
+            lm.TP = Convert.ToDecimal(txttp.Text.Trim());
             lm.SIZHONGSI = Convert.ToDecimal(txtSIQZ.Text.Trim());
             lm.Return_PL = Convert.ToDecimal(txtLMFS.Text.Trim());
 
@@ -412,7 +412,7 @@ namespace Well.Six.Frm
 
             Well.Model.OddsData lmModel = new Model.OddsData();
             lmModel.CustomerId = customerId;
-            lmModel.OrderType = (int)ChildType.二全中;
+            lmModel.OrderType = (int)OrderType.连码;
             lmModel.Return_PL = lm.Return_PL;
             lmModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(lm);
             list.Add(lmModel);
@@ -439,7 +439,7 @@ namespace Well.Six.Frm
             bs.List.Add((int)ChildType.红大, Convert.ToDecimal(txthda.Text.Trim()));
             bs.List.Add((int)ChildType.红小, Convert.ToDecimal(txthx.Text.Trim()));
             bs.List.Add((int)ChildType.红大单, Convert.ToDecimal(txthdd.Text.Trim()));
-            bs.List.Add((int)ChildType.红小单, Convert.ToDecimal(txthxs.Text.Trim()));
+            bs.List.Add((int)ChildType.红小单, Convert.ToDecimal(txthxd.Text.Trim()));
             bs.List.Add((int)ChildType.红大双, Convert.ToDecimal(txthds.Text.Trim()));
             bs.List.Add((int)ChildType.红小双, Convert.ToDecimal(txthxs.Text.Trim()));
 
@@ -448,7 +448,7 @@ namespace Well.Six.Frm
             bs.List.Add((int)ChildType.绿大, Convert.ToDecimal(txtlda.Text.Trim()));
             bs.List.Add((int)ChildType.绿小, Convert.ToDecimal(txtlx.Text.Trim()));
             bs.List.Add((int)ChildType.绿大单, Convert.ToDecimal(txtldd.Text.Trim()));
-            bs.List.Add((int)ChildType.绿小单, Convert.ToDecimal(txtlxs.Text.Trim()));
+            bs.List.Add((int)ChildType.绿小单, Convert.ToDecimal(txtlxd.Text.Trim()));
             bs.List.Add((int)ChildType.绿大双, Convert.ToDecimal(txtlds.Text.Trim()));
             bs.List.Add((int)ChildType.绿小双, Convert.ToDecimal(txtlxs.Text.Trim()));
 
@@ -457,7 +457,7 @@ namespace Well.Six.Frm
             bs.List.Add((int)ChildType.蓝大, Convert.ToDecimal(txtlanda.Text.Trim()));
             bs.List.Add((int)ChildType.蓝小, Convert.ToDecimal(txtlanx.Text.Trim()));
             bs.List.Add((int)ChildType.蓝大单, Convert.ToDecimal(txtlandd.Text.Trim()));
-            bs.List.Add((int)ChildType.蓝小单, Convert.ToDecimal(txtlanxs.Text.Trim()));
+            bs.List.Add((int)ChildType.蓝小单, Convert.ToDecimal(txtlanxd.Text.Trim()));
             bs.List.Add((int)ChildType.蓝大双, Convert.ToDecimal(txtlands.Text.Trim()));
             bs.List.Add((int)ChildType.蓝小双, Convert.ToDecimal(txtlanxs.Text.Trim()));
 
@@ -467,7 +467,7 @@ namespace Well.Six.Frm
             bs.List.Add((int)ChildType.特大, Convert.ToDecimal(txttda.Text.Trim()));
             bs.List.Add((int)ChildType.特小, Convert.ToDecimal(txttx.Text.Trim()));
             bs.List.Add((int)ChildType.特大单, Convert.ToDecimal(txttdd.Text.Trim()));
-            bs.List.Add((int)ChildType.特小单, Convert.ToDecimal(txttxs.Text.Trim()));
+            bs.List.Add((int)ChildType.特小单, Convert.ToDecimal(txttxd.Text.Trim()));
             bs.List.Add((int)ChildType.特大双, Convert.ToDecimal(txttds.Text.Trim()));
             bs.List.Add((int)ChildType.特小双, Convert.ToDecimal(txttxs.Text.Trim()));
 
@@ -476,7 +476,7 @@ namespace Well.Six.Frm
             bs.List.Add((int)ChildType.合大, Convert.ToDecimal(txtheda.Text.Trim()));
             bs.List.Add((int)ChildType.合小, Convert.ToDecimal(txthex.Text.Trim()));
             bs.List.Add((int)ChildType.合大单, Convert.ToDecimal(txthedd.Text.Trim()));
-            bs.List.Add((int)ChildType.合小单, Convert.ToDecimal(txthexs.Text.Trim()));
+            bs.List.Add((int)ChildType.合小单, Convert.ToDecimal(txthexd.Text.Trim()));
             bs.List.Add((int)ChildType.合大双, Convert.ToDecimal(txtheds.Text.Trim()));
             bs.List.Add((int)ChildType.合小双, Convert.ToDecimal(txthexs.Text.Trim()));
 

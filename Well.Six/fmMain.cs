@@ -335,7 +335,7 @@ namespace Well.Six
 
         private void 删除订单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             var sd = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            var sd = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             OrderImpl service = new OrderImpl();
             if (service.DeleteOrder(sd).Body)
             {
@@ -366,12 +366,31 @@ namespace Well.Six
             fmdetail.SetData(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             fmdetail.Location = new Point(this.Location.X + 936, this.Location.Y + 105);
             fmdetail.Show();
+            fmdetail.TopLevel = true;
+            fmdetail.TopMost = true;
             this.Activate();
         }
 
         private void btnSB_Click(object sender, EventArgs e)
         {
             Frm.fmBS fm = new Frm.fmBS();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                //TODO:加载订单
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var sd = (ChildType)601;
+            var ddd = sd.ToString();
+        }
+
+        private void btnDXDS_Click(object sender, EventArgs e)
+        {
+            Frm.fmDXDS fm = new Frm.fmDXDS();
             fm.ShowInTaskbar = false;
             fm.StartPosition = FormStartPosition.CenterParent;
             if (fm.ShowDialog() == DialogResult.OK)

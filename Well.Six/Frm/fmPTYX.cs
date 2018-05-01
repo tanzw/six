@@ -196,8 +196,51 @@ namespace Well.Six.Frm
         {
             var container = this.tabControl1.TabPages[tabControl1.SelectedIndex];
             var controls_txt = container.Controls.Find("TXT", false);
+
+            #region 检测输入
+
+            if (this.cbox.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtIssue.Text))
+            {
+                MessageEx.ShowWarning("请输入期号");
+                return;
+            }
+            if (txtIssue.Text.Trim().Length != 7)
+            {
+                MessageEx.ShowWarning("请输入正确的期号");
+                return;
+            }
+            var flag = false;
+            foreach (var control in controls_txt)
+            {
+
+                if (control is TextBox)
+                {
+                    var c = control as TextBox;
+                    if (!string.IsNullOrWhiteSpace(c.Text))
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            if (flag == false)
+            {
+                MessageEx.ShowWarning("请输入内容,内容不能为空");
+                return;
+            }
+
+
+            #endregion
+
+
             var OrderId = Guid.NewGuid().ToString("n");
             var list = new List<OrderTM>();
+            var index = 1;
             foreach (var control in controls_txt)
             {
                 if (control is TextBox)
@@ -210,12 +253,16 @@ namespace Well.Six.Frm
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(c.Text);
                         O.Status = (int)ResultStatus.Wait;
+                        O.Flag = 1;
+
+                        O.Sort = index;
 
                         var Code = container.Controls.Find("Code", false).FirstOrDefault(x => x.Tag == c.Tag);
                         if (Code != null)
                         {
                             var lbCode = Code as Label;
                             O.Code = lbCode.Text;
+                            O.Remarks = lbCode.Text;
                         }
                         else
                         {
@@ -234,6 +281,7 @@ namespace Well.Six.Frm
                         }
                         O.OutMoney = O.Odds * O.InMoney;
                         list.Add(O);
+                        index = index + 1;
                     }
                 }
 
@@ -255,16 +303,20 @@ namespace Well.Six.Frm
                 Update_User_Id = "",
                 OrderDetails = list
             };
-
-            OrderImpl services = new OrderImpl();
-            if (services.AddOrderTM(order).Code == 0)
+            fmConfirmOther fm = new fmConfirmOther();
+            fm.InitForm(order);
+            if (fm.ShowDialog() == DialogResult.OK)
             {
-                MessageEx.Show("成功");
-                btnReset_Click(sender, e);
-            }
-            else
-            {
-                MessageEx.ShowWarning("失败");
+                OrderImpl services = new OrderImpl();
+                if (services.AddOrderTM(order).Code == 0)
+                {
+                    MessageEx.Show("成功");
+                    btnReset_Click(sender, e);
+                }
+                else
+                {
+                    MessageEx.ShowWarning("失败");
+                }
             }
         }
 
@@ -272,8 +324,51 @@ namespace Well.Six.Frm
         {
             var container = this.tabControl1.TabPages[tabControl1.SelectedIndex];
             var controls_txt = container.Controls.Find("TXT", false);
+
+            #region 检测输入
+
+            if (this.cbox.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtIssue.Text))
+            {
+                MessageEx.ShowWarning("请输入期号");
+                return;
+            }
+            if (txtIssue.Text.Trim().Length != 7)
+            {
+                MessageEx.ShowWarning("请输入正确的期号");
+                return;
+            }
+            var flag = false;
+            foreach (var control in controls_txt)
+            {
+
+                if (control is TextBox)
+                {
+                    var c = control as TextBox;
+                    if (!string.IsNullOrWhiteSpace(c.Text))
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            if (flag == false)
+            {
+                MessageEx.ShowWarning("请输入内容,内容不能为空");
+                return;
+            }
+
+
+            #endregion
+
+
             var OrderId = Guid.NewGuid().ToString("n");
             var list = new List<OrderTM>();
+            var index = 1;
             foreach (var control in controls_txt)
             {
                 if (control is TextBox)
@@ -286,12 +381,13 @@ namespace Well.Six.Frm
                         O.OrderId = OrderId;
                         O.InMoney = Convert.ToDecimal(c.Text);
                         O.Status = (int)ResultStatus.Wait;
-
+                        O.Sort = index;
                         var Code = container.Controls.Find("Code", false).FirstOrDefault(x => x.Tag == c.Tag);
                         if (Code != null)
                         {
                             var lbCode = Code as Label;
                             O.Code = lbCode.Tag.ToString();
+                            O.Remarks = O.Code;
                         }
                         else
                         {
@@ -310,6 +406,7 @@ namespace Well.Six.Frm
                         }
                         O.OutMoney = O.Odds * O.InMoney;
                         list.Add(O);
+                        index = index + 1;
                     }
                 }
 

@@ -34,7 +34,7 @@
             this.cbox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbSIQZ = new System.Windows.Forms.Label();
+            this.lbTP = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -110,7 +110,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbSIQZ);
+            this.groupBox2.Controls.Add(this.lbTP);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.radioButton5);
@@ -131,16 +131,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // lbSIQZ
+            // lbTP
             // 
-            this.lbSIQZ.AutoSize = true;
-            this.lbSIQZ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbSIQZ.ForeColor = System.Drawing.Color.Red;
-            this.lbSIQZ.Location = new System.Drawing.Point(155, 106);
-            this.lbSIQZ.Name = "lbSIQZ";
-            this.lbSIQZ.Size = new System.Drawing.Size(26, 12);
-            this.lbSIQZ.TabIndex = 13;
-            this.lbSIQZ.Text = "100";
+            this.lbTP.AutoSize = true;
+            this.lbTP.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTP.ForeColor = System.Drawing.Color.Red;
+            this.lbTP.Location = new System.Drawing.Point(155, 106);
+            this.lbTP.Name = "lbTP";
+            this.lbTP.Size = new System.Drawing.Size(26, 12);
+            this.lbTP.TabIndex = 13;
+            this.lbTP.Text = "100";
             // 
             // label15
             // 
@@ -154,11 +154,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(102, 106);
+            this.label17.Location = new System.Drawing.Point(114, 106);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 12);
+            this.label17.Size = new System.Drawing.Size(35, 12);
             this.label17.TabIndex = 12;
-            this.label17.Text = "三全中:";
+            this.label17.Text = "特碰:";
             // 
             // radioButton5
             // 
@@ -221,10 +221,10 @@
             this.radioButton8.AutoSize = true;
             this.radioButton8.Location = new System.Drawing.Point(25, 104);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(59, 16);
+            this.radioButton8.Size = new System.Drawing.Size(47, 16);
             this.radioButton8.TabIndex = 3;
             this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "四全中";
+            this.radioButton8.Text = "特碰";
             this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // label12
@@ -355,7 +355,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lbSIQZ;
+        private System.Windows.Forms.Label lbTP;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lbEZE;
         private System.Windows.Forms.Label label15;

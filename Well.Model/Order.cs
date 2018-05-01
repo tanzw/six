@@ -48,6 +48,8 @@ namespace Well.Model
 
         public string OrderId { get; set; }
 
+        public int ChildType { get; set; }
+
         public string Code { get; set; }
 
         public decimal Odds { get; set; }
@@ -70,6 +72,8 @@ namespace Well.Model
         public string Id { get; set; }
 
         public string OrderId { get; set; }
+
+        public int ChildType { get; set; }
 
         public string Code1 { get; set; }
 

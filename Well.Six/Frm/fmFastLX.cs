@@ -61,6 +61,10 @@ namespace Well.Six.Frm
             {
                 btnOK_Click(null, null);
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void fmFastLX_Load(object sender, EventArgs e)
@@ -238,6 +242,7 @@ namespace Well.Six.Frm
 
                 charIndex = charIndex + 1;
             }
+            detail.ChildType = comboBox1.SelectedValue.ToTryInt();
             detail.Odds = GetMinOdds(odds.List, tempList);
             detail.OutMoney = detail.InMoney * detail.Odds;
             str = str.Substring(0, str.Length - 1);
@@ -247,7 +252,7 @@ namespace Well.Six.Frm
 
             item.SubItems.Add(detail.Odds.ToMoney());
             item.SubItems.Add(txtMoney.Text.Trim());
-            listView1.Items.Add(item);
+            listView1.Items.Insert(0, item);
             tempList.Clear();
             txtCode.Text = "";
             txtCode.Focus();

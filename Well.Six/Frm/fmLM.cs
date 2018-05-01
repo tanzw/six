@@ -87,7 +87,7 @@ namespace Well.Six.Frm
                 if (this.cbox.SelectedIndex == 0)
                 {
                     lbEZE.Text = "0";
-                    lbSIQZ.Text = "0";
+                    lbTP.Text = "0";
                     lbSQZ.Text = "0";
                     lbSZE.Text = "0";
                     lbSZS.Text = "0";
@@ -96,11 +96,11 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.二全中);
+                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.连码);
                     var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(oddsList.strJson);
                     Common.CustomerId = cbox.SelectedValue.ToTryInt();
                     lbEZE.Text = ptyx.EQZ.ToString();
-                    lbSIQZ.Text = ptyx.SIZHONGSI.ToString();
+                    lbTP.Text = ptyx.TP.ToString();
                     lbSQZ.Text = ptyx.SQZ.ToString();
                     lbSZE.Text = ptyx.SZE.ToString();
                     lbSZS.Text = ptyx.SZS.ToString();
@@ -118,10 +118,40 @@ namespace Well.Six.Frm
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            var v = 0;
+            var childtype = 0;
+            var pl = 0M;
+
+            if (radioButton5.Checked)
+            {
+                v = 3;
+                childtype = (int)ChildType.三中三;
+                pl = Convert.ToDecimal(lbSZS.Text);
+            }
+            if (radioButton6.Checked)
+            {
+                v = 3;
+                childtype = (int)ChildType.三全中;
+                pl = Convert.ToDecimal(lbSQZ.Text);
+            }
+            if (radioButton7.Checked)
+            {
+                v = 2;
+                childtype = (int)ChildType.二全中;
+                pl = Convert.ToDecimal(lbEZE.Text);
+            }
+            if (radioButton8.Checked)
+            {
+                v = 2;
+                childtype = (int)ChildType.特碰;
+                pl = Convert.ToDecimal(lbTP.Text);
+            }
+
             //需要组合的号码
             List<string> InCombinationList = new List<string>();
             #region  获取输入
             var controls = this.groupBox3.Controls.Find("CK", false);
+            var r = 0;
             foreach (var control in controls)
             {
                 if (control is CheckBox)
@@ -129,6 +159,7 @@ namespace Well.Six.Frm
                     var ck = control as CheckBox;
                     if (ck.Checked)
                     {
+                        r += 1;
                         var sd = this.groupBox3.Controls.Find("Code", false);
                         var lb = sd.FirstOrDefault(x => x.Tag == ck.Tag);
                         if (lb != null)
@@ -162,29 +193,14 @@ namespace Well.Six.Frm
                 return;
             }
 
+            if (r < v)
+            {
+                MessageEx.ShowWarning("内容不正确,请重新选择");
+                return;
+            }
+
             #endregion
-            var v = 0;
-            var childtype = 0;
-            if (radioButton5.Checked)
-            {
-                v = 3;
-                childtype = (int)ChildType.三全中;
-            }
-            if (radioButton6.Checked)
-            {
-                v = 3;
-                childtype = (int)ChildType.三全中;
-            }
-            if (radioButton7.Checked)
-            {
-                v = 2;
-                childtype = (int)ChildType.二全中;
-            }
-            if (radioButton8.Checked)
-            {
-                v = 4;
-                childtype = (int)ChildType.四全中;
-            }
+
 
 
             Frm.fmConfirmLX fm = new Frm.fmConfirmLX();
@@ -243,7 +259,7 @@ namespace Well.Six.Frm
                 detail.Sort = index;
                 detail.Remarks = str.Remove(str.Length - 1, 1);
                 detail.OrderId = OrderId;
-                detail.Odds = Convert.ToDecimal(lbEZE.Text);
+                detail.Odds = pl;
                 detail.InMoney = Convert.ToDecimal(txtMoney.Text);
                 detail.OutMoney = detail.InMoney * detail.Odds;
                 detail.Status = (int)ResultStatus.Wait;
@@ -290,6 +306,28 @@ namespace Well.Six.Frm
                     }
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        btnOK_Click(null, null);
+                        break;
+                }
+            }
+            return false;
         }
     }
 }
