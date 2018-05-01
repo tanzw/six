@@ -130,7 +130,7 @@ namespace Well.Six
         public void BindDataSource()
         {
             OrderImpl service = new OrderImpl();
-            var result = service.GetList(new Model.OrderSearch() { CustomerId = cbxCustomerId.SelectedValue.ToTryInt(), Issue = txtIssue.Text.Trim() });
+            var result = service.GetList(new Model.OrderSearch() { CustomerId = cbxCustomerId.SelectedValue.ToTryInt(), Issue = txtIssue.Text.Trim(), OrderType = cbxOrderType.SelectedValue.ToTryInt() });
 
 
             if (result.Code == 0)
@@ -144,6 +144,24 @@ namespace Well.Six
         public void InitControls()
         {
             Common.BindCustomers(cbxCustomerId);
+
+            List<Model.Customers> list = new List<Model.Customers>();
+            list.Add(new Model.Customers() { Id = 0, Name = "请选择" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.特码, Name = "特码" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.连肖, Name = "连肖" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.连码, Name = "连码" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.平特, Name = "平特" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.尾数, Name = "尾数" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.波色, Name = "波色" });
+            list.Add(new Model.Customers() { Id = (int)OrderType.大小单双, Name = "大小单双" });
+
+
+            cbxOrderType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxOrderType.DataSource = list;
+            cbxOrderType.DisplayMember = "Name";
+            cbxOrderType.ValueMember = "Id";
+
+
             WinNumberImpl winService = new WinNumberImpl();
             txtIssue.Text = winService.GetNewIssue().Body;
 

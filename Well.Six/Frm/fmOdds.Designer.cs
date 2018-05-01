@@ -155,6 +155,29 @@
             this.oddsLX3 = new Well.Six.UControls.OddsLX();
             this.oddsLX4 = new Well.Six.UControls.OddsLX();
             this.oddsLX5 = new Well.Six.UControls.OddsLX();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.txt0w = new System.Windows.Forms.TextBox();
+            this.txt1w = new System.Windows.Forms.TextBox();
+            this.txt2w = new System.Windows.Forms.TextBox();
+            this.txt3w = new System.Windows.Forms.TextBox();
+            this.txt4w = new System.Windows.Forms.TextBox();
+            this.txt5w = new System.Windows.Forms.TextBox();
+            this.txt9w = new System.Windows.Forms.TextBox();
+            this.txt8w = new System.Windows.Forms.TextBox();
+            this.txt7w = new System.Windows.Forms.TextBox();
+            this.txt6w = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.txtwsfs = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -166,6 +189,7 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -175,6 +199,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
+            this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -1326,6 +1351,213 @@
             this.oddsLX5.Size = new System.Drawing.Size(330, 180);
             this.oddsLX5.TabIndex = 0;
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.txtwsfs);
+            this.tabPage10.Controls.Add(this.label61);
+            this.tabPage10.Controls.Add(this.txt9w);
+            this.tabPage10.Controls.Add(this.txt8w);
+            this.tabPage10.Controls.Add(this.txt7w);
+            this.tabPage10.Controls.Add(this.txt6w);
+            this.tabPage10.Controls.Add(this.txt5w);
+            this.tabPage10.Controls.Add(this.txt4w);
+            this.tabPage10.Controls.Add(this.txt3w);
+            this.tabPage10.Controls.Add(this.txt2w);
+            this.tabPage10.Controls.Add(this.txt1w);
+            this.tabPage10.Controls.Add(this.txt0w);
+            this.tabPage10.Controls.Add(this.label63);
+            this.tabPage10.Controls.Add(this.label64);
+            this.tabPage10.Controls.Add(this.label65);
+            this.tabPage10.Controls.Add(this.label66);
+            this.tabPage10.Controls.Add(this.label60);
+            this.tabPage10.Controls.Add(this.label59);
+            this.tabPage10.Controls.Add(this.label58);
+            this.tabPage10.Controls.Add(this.label57);
+            this.tabPage10.Controls.Add(this.label56);
+            this.tabPage10.Controls.Add(this.label5);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(792, 330);
+            this.tabPage10.TabIndex = 5;
+            this.tabPage10.Text = "尾数";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(251, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "0尾";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(251, 107);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(23, 12);
+            this.label56.TabIndex = 1;
+            this.label56.Text = "1尾";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(251, 135);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(23, 12);
+            this.label57.TabIndex = 2;
+            this.label57.Text = "2尾";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(251, 162);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(23, 12);
+            this.label58.TabIndex = 3;
+            this.label58.Text = "3尾";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(251, 189);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(23, 12);
+            this.label59.TabIndex = 4;
+            this.label59.Text = "4尾";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(416, 81);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(23, 12);
+            this.label60.TabIndex = 5;
+            this.label60.Text = "5尾";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(416, 189);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(23, 12);
+            this.label63.TabIndex = 9;
+            this.label63.Text = "9尾";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(416, 162);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(23, 12);
+            this.label64.TabIndex = 8;
+            this.label64.Text = "8尾";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(416, 134);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(23, 12);
+            this.label65.TabIndex = 7;
+            this.label65.Text = "7尾";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(416, 105);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(23, 12);
+            this.label66.TabIndex = 6;
+            this.label66.Text = "6尾";
+            // 
+            // txt0w
+            // 
+            this.txt0w.Location = new System.Drawing.Point(280, 75);
+            this.txt0w.Name = "txt0w";
+            this.txt0w.Size = new System.Drawing.Size(100, 21);
+            this.txt0w.TabIndex = 12;
+            // 
+            // txt1w
+            // 
+            this.txt1w.Location = new System.Drawing.Point(280, 102);
+            this.txt1w.Name = "txt1w";
+            this.txt1w.Size = new System.Drawing.Size(100, 21);
+            this.txt1w.TabIndex = 13;
+            // 
+            // txt2w
+            // 
+            this.txt2w.Location = new System.Drawing.Point(280, 129);
+            this.txt2w.Name = "txt2w";
+            this.txt2w.Size = new System.Drawing.Size(100, 21);
+            this.txt2w.TabIndex = 14;
+            // 
+            // txt3w
+            // 
+            this.txt3w.Location = new System.Drawing.Point(280, 156);
+            this.txt3w.Name = "txt3w";
+            this.txt3w.Size = new System.Drawing.Size(100, 21);
+            this.txt3w.TabIndex = 15;
+            // 
+            // txt4w
+            // 
+            this.txt4w.Location = new System.Drawing.Point(280, 183);
+            this.txt4w.Name = "txt4w";
+            this.txt4w.Size = new System.Drawing.Size(100, 21);
+            this.txt4w.TabIndex = 16;
+            // 
+            // txt5w
+            // 
+            this.txt5w.Location = new System.Drawing.Point(445, 75);
+            this.txt5w.Name = "txt5w";
+            this.txt5w.Size = new System.Drawing.Size(100, 21);
+            this.txt5w.TabIndex = 17;
+            // 
+            // txt9w
+            // 
+            this.txt9w.Location = new System.Drawing.Point(445, 183);
+            this.txt9w.Name = "txt9w";
+            this.txt9w.Size = new System.Drawing.Size(100, 21);
+            this.txt9w.TabIndex = 21;
+            // 
+            // txt8w
+            // 
+            this.txt8w.Location = new System.Drawing.Point(445, 156);
+            this.txt8w.Name = "txt8w";
+            this.txt8w.Size = new System.Drawing.Size(100, 21);
+            this.txt8w.TabIndex = 20;
+            // 
+            // txt7w
+            // 
+            this.txt7w.Location = new System.Drawing.Point(445, 129);
+            this.txt7w.Name = "txt7w";
+            this.txt7w.Size = new System.Drawing.Size(100, 21);
+            this.txt7w.TabIndex = 19;
+            // 
+            // txt6w
+            // 
+            this.txt6w.Location = new System.Drawing.Point(445, 102);
+            this.txt6w.Name = "txt6w";
+            this.txt6w.Size = new System.Drawing.Size(100, 21);
+            this.txt6w.TabIndex = 18;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(304, 214);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(29, 12);
+            this.label61.TabIndex = 22;
+            this.label61.Text = "返水";
+            // 
+            // txtwsfs
+            // 
+            this.txtwsfs.Location = new System.Drawing.Point(339, 211);
+            this.txtwsfs.Name = "txtwsfs";
+            this.txtwsfs.Size = new System.Drawing.Size(100, 21);
+            this.txtwsfs.TabIndex = 23;
+            // 
             // fmOdds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1353,6 +1585,8 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1486,5 +1720,28 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox txtfs;
         private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.TextBox txtwsfs;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox txt9w;
+        private System.Windows.Forms.TextBox txt8w;
+        private System.Windows.Forms.TextBox txt7w;
+        private System.Windows.Forms.TextBox txt6w;
+        private System.Windows.Forms.TextBox txt5w;
+        private System.Windows.Forms.TextBox txt4w;
+        private System.Windows.Forms.TextBox txt3w;
+        private System.Windows.Forms.TextBox txt2w;
+        private System.Windows.Forms.TextBox txt1w;
+        private System.Windows.Forms.TextBox txt0w;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label5;
     }
 }

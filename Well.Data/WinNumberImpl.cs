@@ -214,7 +214,7 @@ namespace Well.Data
                                     break;
                                 #region 波色
                                 case (int)ChildType.红波:
-                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == red)
+                                    if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == red)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -225,7 +225,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿波:
-                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == green)
+                                    if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == green)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -236,7 +236,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝波:
-                                    if (ServiceNum.GetNumColor(detail.Code.ToTryInt()) == blue)
+                                    if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == blue)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
                                         orderMainStatus = (int)ResultStatus.Win;
@@ -251,7 +251,7 @@ namespace Well.Data
                                 #region 半波--红波
 
                                 case (int)ChildType.红大:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -263,7 +263,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红小:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -275,7 +275,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -287,7 +287,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -299,7 +299,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红大单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -311,7 +311,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红小单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -323,7 +323,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红大双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -335,7 +335,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.红小双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -351,7 +351,7 @@ namespace Well.Data
                                 #region 半波--绿波
 
                                 case (int)ChildType.绿大:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -363,7 +363,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿小:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -375,7 +375,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -387,7 +387,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -399,7 +399,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿大单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -411,7 +411,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿小单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -423,7 +423,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿大双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -435,7 +435,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.绿小双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -451,7 +451,7 @@ namespace Well.Data
                                 #region 半波--蓝波
 
                                 case (int)ChildType.蓝大:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -463,7 +463,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝小:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -475,7 +475,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -487,7 +487,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -499,7 +499,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝大单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -511,7 +511,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝小单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -523,7 +523,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝大双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -535,7 +535,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.蓝小双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -551,7 +551,7 @@ namespace Well.Data
                                 #region 特码大小单双
 
                                 case (int)ChildType.特大:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -563,7 +563,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特小:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -575,7 +575,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -587,7 +587,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -599,7 +599,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特大单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -611,7 +611,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特小单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -623,7 +623,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特大双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -635,7 +635,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.特小双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     if (v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
@@ -651,7 +651,7 @@ namespace Well.Data
                                 #region 特码合大小单双
 
                                 case (int)ChildType.合大:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -670,7 +670,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合小:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -689,7 +689,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -708,7 +708,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -727,7 +727,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合大单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -747,7 +747,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合小单:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -767,7 +767,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合大双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)
@@ -786,7 +786,7 @@ namespace Well.Data
                                     }
                                     break;
                                 case (int)ChildType.合小双:
-                                    v = detail.Code.ToTryInt();
+                                    v = model.Body.Num7_Code.ToTryInt();
                                     num = v;
                                     sum = 0;
                                     while (num > 0)

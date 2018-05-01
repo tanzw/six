@@ -43,18 +43,18 @@ namespace Well.Six.UControls
             get
             {
                 var v = 0;
-                switch (_OrderType)
+                switch (_ChildType)
                 {
-                    case 12:
+                    case (int)Well.Data.ChildType.二连肖:
                         v = 2;
                         break;
-                    case 13:
+                    case (int)Well.Data.ChildType.三连肖:
                         v = 3;
                         break;
-                    case 14:
+                    case (int)Well.Data.ChildType.四连肖:
                         v = 4;
                         break;
-                    case 15:
+                    case (int)Well.Data.ChildType.五连肖:
                         v = 5;
                         break;
                     default:
@@ -322,7 +322,7 @@ namespace Well.Six.UControls
                     detail.ChildType = ChildType;
                     detail.Remarks = str.Remove(str.Length - 1, 1);
                     detail.OrderId = OrderId;
-                    detail.Odds = GetMinOdds(list, InCombinationList);
+                    detail.Odds = GetMinOdds(list, arr.ToList());
                     detail.InMoney = Convert.ToDecimal(txtMoney.Text);
                     detail.OutMoney = detail.InMoney * detail.Odds;
                     detail.Status = (int)ResultStatus.Wait;

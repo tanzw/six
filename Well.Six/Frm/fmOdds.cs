@@ -97,6 +97,50 @@ namespace Well.Six.Frm
                                     txtPTYXFS.Text = pl_ptyx.Return_PL.ToString();
                                 }
                                 break;
+                            case (int)ChildType.尾数:
+                                var ws = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(item.strJson);
+                                if (ws != null)
+                                {
+                                    foreach (var oo in ws.List)
+                                    {
+                                        switch (oo.Key)
+                                        {
+
+                                            case 0:
+                                                txt0w.Text = oo.Value.ToString();
+                                                break;
+                                            case 1:
+                                                txt1w.Text = oo.Value.ToString();
+                                                break;
+                                            case 2:
+                                                txt2w.Text = oo.Value.ToString();
+                                                break;
+                                            case 3:
+                                                txt3w.Text = oo.Value.ToString();
+                                                break;
+                                            case 4:
+                                                txt4w.Text = oo.Value.ToString();
+                                                break;
+                                            case 5:
+                                                txt5w.Text = oo.Value.ToString();
+                                                break;
+                                            case 6:
+                                                txt6w.Text = oo.Value.ToString();
+                                                break;
+                                            case 7:
+                                                txt7w.Text = oo.Value.ToString();
+                                                break;
+                                            case 8:
+                                                txt8w.Text = oo.Value.ToString();
+                                                break;
+                                            case 9:
+                                                txt9w.Text = oo.Value.ToString();
+                                                break;
+                                        }
+                                    }
+                                    txtwsfs.Text = ws.Return_PL.ToString();
+                                }
+                                break;
                             case (int)OrderType.大小单双:
                                 var bs = Newtonsoft.Json.JsonConvert.DeserializeObject<BSOdds>(item.strJson);
                                 if (bs != null)
@@ -483,6 +527,29 @@ namespace Well.Six.Frm
 
             bsModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(bs);
             list.Add(bsModel);
+
+            Well.Model.LXOdds ws = new Model.LXOdds();
+            ws.List = new Dictionary<int, decimal>();
+            ws.Return_PL = Convert.ToDecimal(txtwsfs.Text.Trim());
+            ws.List.Add(0, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(1, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(2, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(3, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(4, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(5, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(6, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(7, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(8, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(9, Convert.ToDecimal(txt0w.Text.Trim()));
+
+
+            Well.Model.OddsData wsModel = new Model.OddsData();
+            wsModel.CustomerId = customerId;
+            wsModel.OrderType = (int)ChildType.尾数;
+            wsModel.Return_PL = Convert.ToDecimal(txtwsfs.Text.Trim());
+            wsModel.strJson = Newtonsoft.Json.JsonConvert.SerializeObject(ws);
+            list.Add(wsModel);
+
 
             OddsImpl service = new OddsImpl();
             if (service.Add(list).Code == 0)

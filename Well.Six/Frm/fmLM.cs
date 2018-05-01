@@ -263,6 +263,13 @@ namespace Well.Six.Frm
                 detail.ChildType = childtype;
                 detail.InMoney = Convert.ToDecimal(txtMoney.Text);
                 detail.OutMoney = detail.InMoney * detail.Odds;
+                if (childtype == (int)ChildType.三中三)
+                {
+                    detail.MinOdds = Convert.ToDecimal(lbSZE.Text);
+                    detail.MinOutMoney = detail.InMoney * detail.MinOdds;
+                    detail.MaxOdds = pl;
+                    detail.MaxOutMoney = detail.InMoney * detail.MaxOdds;
+                }
                 detail.Status = (int)ResultStatus.Wait;
                 detail.Flag = 1;
                 order.OrderDetails.Add(detail);

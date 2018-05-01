@@ -489,7 +489,7 @@ namespace Well.Six.Frm
                     }
 
 
-                    var oddsList_ws = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.尾数);
+                    var oddsList_ws = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.尾数);
                     if (oddsList_ws != null)
                     {
                         var ws = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_ws.strJson);

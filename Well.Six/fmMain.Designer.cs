@@ -55,6 +55,8 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDXDS = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnSB = new System.Windows.Forms.Button();
             this.btnFastLX = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -75,8 +77,6 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnDXDS = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -296,6 +296,26 @@
             this.panel1.Size = new System.Drawing.Size(938, 709);
             this.panel1.TabIndex = 4;
             // 
+            // btnDXDS
+            // 
+            this.btnDXDS.Location = new System.Drawing.Point(693, 665);
+            this.btnDXDS.Name = "btnDXDS";
+            this.btnDXDS.Size = new System.Drawing.Size(75, 23);
+            this.btnDXDS.TabIndex = 12;
+            this.btnDXDS.Text = "大小单双";
+            this.btnDXDS.UseVisualStyleBackColor = true;
+            this.btnDXDS.Click += new System.EventHandler(this.btnDXDS_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(779, 664);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnSB
             // 
             this.btnSB.Location = new System.Drawing.Point(612, 664);
@@ -400,7 +420,7 @@
             // cbxOrderType
             // 
             this.cbxOrderType.FormattingEnabled = true;
-            this.cbxOrderType.Location = new System.Drawing.Point(561, 20);
+            this.cbxOrderType.Location = new System.Drawing.Point(479, 20);
             this.cbxOrderType.Name = "cbxOrderType";
             this.cbxOrderType.Size = new System.Drawing.Size(146, 20);
             this.cbxOrderType.TabIndex = 5;
@@ -408,7 +428,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(520, 25);
+            this.label3.Location = new System.Drawing.Point(438, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 4;
@@ -417,7 +437,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(299, 25);
+            this.label2.Location = new System.Drawing.Point(217, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 3;
@@ -426,14 +446,14 @@
             // cbxCustomerId
             // 
             this.cbxCustomerId.FormattingEnabled = true;
-            this.cbxCustomerId.Location = new System.Drawing.Point(346, 20);
+            this.cbxCustomerId.Location = new System.Drawing.Point(264, 20);
             this.cbxCustomerId.Name = "cbxCustomerId";
             this.cbxCustomerId.Size = new System.Drawing.Size(146, 20);
             this.cbxCustomerId.TabIndex = 2;
             // 
             // txtIssue
             // 
-            this.txtIssue.Location = new System.Drawing.Point(151, 20);
+            this.txtIssue.Location = new System.Drawing.Point(69, 20);
             this.txtIssue.Name = "txtIssue";
             this.txtIssue.Size = new System.Drawing.Size(122, 21);
             this.txtIssue.TabIndex = 1;
@@ -441,7 +461,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 25);
+            this.label1.Location = new System.Drawing.Point(22, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -486,26 +506,6 @@
             this.btnTM.Text = "特码";
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(779, 664);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnDXDS
-            // 
-            this.btnDXDS.Location = new System.Drawing.Point(693, 665);
-            this.btnDXDS.Name = "btnDXDS";
-            this.btnDXDS.Size = new System.Drawing.Size(75, 23);
-            this.btnDXDS.TabIndex = 12;
-            this.btnDXDS.Text = "大小单双";
-            this.btnDXDS.UseVisualStyleBackColor = true;
-            this.btnDXDS.Click += new System.EventHandler(this.btnDXDS_Click);
             // 
             // fmMain
             // 
