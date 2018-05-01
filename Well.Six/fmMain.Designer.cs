@@ -31,14 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.投注ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.特码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.特码快捷ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.连肖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.连码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.客户设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.赔率设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开奖记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +50,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDXDS = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSB = new System.Windows.Forms.Button();
             this.btnFastLX = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -77,6 +70,7 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
+            this.特码统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -89,7 +83,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.投注ToolStripMenuItem,
             this.设置ToolStripMenuItem,
             this.系统ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -98,50 +91,10 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 投注ToolStripMenuItem
-            // 
-            this.投注ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.特码ToolStripMenuItem,
-            this.特码快捷ToolStripMenuItem,
-            this.连肖ToolStripMenuItem,
-            this.连码ToolStripMenuItem});
-            this.投注ToolStripMenuItem.Name = "投注ToolStripMenuItem";
-            this.投注ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.投注ToolStripMenuItem.Text = "投注";
-            // 
-            // 特码ToolStripMenuItem
-            // 
-            this.特码ToolStripMenuItem.Name = "特码ToolStripMenuItem";
-            this.特码ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.特码ToolStripMenuItem.Text = "特码";
-            this.特码ToolStripMenuItem.Click += new System.EventHandler(this.特码ToolStripMenuItem_Click);
-            // 
-            // 特码快捷ToolStripMenuItem
-            // 
-            this.特码快捷ToolStripMenuItem.Name = "特码快捷ToolStripMenuItem";
-            this.特码快捷ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.特码快捷ToolStripMenuItem.Text = "特码快捷";
-            this.特码快捷ToolStripMenuItem.Click += new System.EventHandler(this.特码快捷ToolStripMenuItem_Click);
-            // 
-            // 连肖ToolStripMenuItem
-            // 
-            this.连肖ToolStripMenuItem.Name = "连肖ToolStripMenuItem";
-            this.连肖ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.连肖ToolStripMenuItem.Text = "连肖";
-            this.连肖ToolStripMenuItem.Click += new System.EventHandler(this.连肖ToolStripMenuItem_Click);
-            // 
-            // 连码ToolStripMenuItem
-            // 
-            this.连码ToolStripMenuItem.Name = "连码ToolStripMenuItem";
-            this.连码ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.连码ToolStripMenuItem.Text = "连码";
-            this.连码ToolStripMenuItem.Click += new System.EventHandler(this.连码ToolStripMenuItem_Click);
-            // 
             // 设置ToolStripMenuItem
             // 
             this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.客户设置ToolStripMenuItem,
-            this.赔率设置ToolStripMenuItem,
             this.系统设置ToolStripMenuItem});
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
             this.设置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -153,13 +106,6 @@
             this.客户设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.客户设置ToolStripMenuItem.Text = "客户设置";
             this.客户设置ToolStripMenuItem.Click += new System.EventHandler(this.客户设置ToolStripMenuItem_Click);
-            // 
-            // 赔率设置ToolStripMenuItem
-            // 
-            this.赔率设置ToolStripMenuItem.Name = "赔率设置ToolStripMenuItem";
-            this.赔率设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.赔率设置ToolStripMenuItem.Text = "赔率设置";
-            this.赔率设置ToolStripMenuItem.Click += new System.EventHandler(this.赔率设置ToolStripMenuItem_Click);
             // 
             // 系统设置ToolStripMenuItem
             // 
@@ -175,7 +121,8 @@
             this.修改密码ToolStripMenuItem,
             this.备份ToolStripMenuItem,
             this.退出ToolStripMenuItem,
-            this.统计ToolStripMenuItem});
+            this.统计ToolStripMenuItem,
+            this.特码统计ToolStripMenuItem});
             this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
             this.系统ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.系统ToolStripMenuItem.Text = "系统";
@@ -211,8 +158,8 @@
             // 统计ToolStripMenuItem
             // 
             this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
-            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.统计ToolStripMenuItem.Text = "统计";
+            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.统计ToolStripMenuItem.Text = "结算统计";
             this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
             // 
             // statusStrip1
@@ -280,7 +227,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDXDS);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnSB);
             this.panel1.Controls.Add(this.btnFastLX);
             this.panel1.Controls.Add(this.panel3);
@@ -305,16 +251,6 @@
             this.btnDXDS.Text = "大小单双";
             this.btnDXDS.UseVisualStyleBackColor = true;
             this.btnDXDS.Click += new System.EventHandler(this.btnDXDS_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(779, 664);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSB
             // 
@@ -507,6 +443,13 @@
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
             // 
+            // 特码统计ToolStripMenuItem
+            // 
+            this.特码统计ToolStripMenuItem.Name = "特码统计ToolStripMenuItem";
+            this.特码统计ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.特码统计ToolStripMenuItem.Text = "特码统计";
+            this.特码统计ToolStripMenuItem.Click += new System.EventHandler(this.特码统计ToolStripMenuItem_Click);
+            // 
             // fmMain
             // 
             this.AcceptButton = this.btnSearch;
@@ -542,13 +485,7 @@
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem 投注ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 特码ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 特码快捷ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 连肖ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 连码ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 赔率设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 备份ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 开奖记录ToolStripMenuItem;
@@ -581,8 +518,8 @@
         private System.Windows.Forms.ToolStripMenuItem 统计ToolStripMenuItem;
         private System.Windows.Forms.Button btnFastLX;
         private System.Windows.Forms.Button btnSB;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnDXDS;
+        private System.Windows.Forms.ToolStripMenuItem 特码统计ToolStripMenuItem;
     }
 }
 

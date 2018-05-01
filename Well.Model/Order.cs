@@ -164,4 +164,13 @@ namespace Well.Model
 
         public int CustomerId { get; set; }
     }
+
+    public class OrderTJ
+    {
+        public string Issue { get; set; }
+
+        public string Code { get; set; }
+
+        public decimal Money { get; set; }
+    }
 }

@@ -246,5 +246,24 @@ namespace Well.Data
 
             }
         }
+
+        public StandardResult<List<OrderTJ>> GetTJ(int cid, string issue)
+        {
+            var result = new StandardResult<List<OrderTJ>>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder(@"select a.issue,b.code,sum(b.inmoney) as money from t_orders as a INNER JOIN t_orders_tm as b on a.id=b.orderId
+where a.issue = @Issue ");
+                if (cid != 0)
+                {
+                    sqlCommonText.Append(" and  a.customer_id=@cid ");
+                }
+                sqlCommonText.Append(" group by a.issue, b.code order by money desc");
+
+                result.Body = db.Query<OrderTJ>(sqlCommonText.ToString(), new { Issue = issue, cid = cid }).ToList();
+                result.Code = 0;
+                return result;
+            }
+        }
     }
 }

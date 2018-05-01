@@ -416,5 +416,13 @@ namespace Well.Six
                 //TODO:加载订单
             }
         }
+
+        private void 特码统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmTMTJ fm = new fmTMTJ();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            fm.Show();
+        }
     }
 }

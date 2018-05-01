@@ -85,6 +85,12 @@
     <Compile Include="fmMain.Designer.cs">
       <DependentUpon>fmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmTMTJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmTMTJ.Designer.cs">
+      <DependentUpon>fmTMTJ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmBS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmMain.resx">
       <DependentUpon>fmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmTMTJ.resx">
+      <DependentUpon>fmTMTJ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmBS.resx">
       <DependentUpon>fmBS.cs</DependentUpon>
