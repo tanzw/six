@@ -532,15 +532,15 @@ namespace Well.Six.Frm
             ws.List = new Dictionary<int, decimal>();
             ws.Return_PL = Convert.ToDecimal(txtwsfs.Text.Trim());
             ws.List.Add(0, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(1, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(2, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(3, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(4, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(5, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(6, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(7, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(8, Convert.ToDecimal(txt0w.Text.Trim()));
-            ws.List.Add(9, Convert.ToDecimal(txt0w.Text.Trim()));
+            ws.List.Add(1, Convert.ToDecimal(txt1w.Text.Trim()));
+            ws.List.Add(2, Convert.ToDecimal(txt2w.Text.Trim()));
+            ws.List.Add(3, Convert.ToDecimal(txt3w.Text.Trim()));
+            ws.List.Add(4, Convert.ToDecimal(txt4w.Text.Trim()));
+            ws.List.Add(5, Convert.ToDecimal(txt5w.Text.Trim()));
+            ws.List.Add(6, Convert.ToDecimal(txt6w.Text.Trim()));
+            ws.List.Add(7, Convert.ToDecimal(txt7w.Text.Trim()));
+            ws.List.Add(8, Convert.ToDecimal(txt8w.Text.Trim()));
+            ws.List.Add(9, Convert.ToDecimal(txt9w.Text.Trim()));
 
 
             Well.Model.OddsData wsModel = new Model.OddsData();

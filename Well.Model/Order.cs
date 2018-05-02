@@ -151,6 +151,9 @@ namespace Well.Model
 
         public string CustomerName { get; set; }
 
+        public int ischeck { get; set; }
+        public string ischeckname { get; set; }
+
 
 
         //select a.id, a.order_no, a.issue,a.order_type,(CASE a.order_type WHEN 1 THEN '特码' WHEN 12 THEN '二连肖' WHEN 13 then '三连肖' WHEN 14 THEN '四连肖' WHEN 15 THEN '五连肖' END) as ordertypename,a.total_in_money,a.total_out_money,a.create_time,a.create_user_id,(CASE a.status WHEN 0 THEN '未开奖' WHEN 1 THEN '已中奖' WHEN 2 THEN '未中奖' ELSE '未知' END) as statusname,a.status,b.id as CustomerId, b.name as CustomerName from t_orders as a INNER JOIN t_customers as b ON a.customer_id=b.id order by a.create_time DESC

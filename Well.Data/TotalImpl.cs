@@ -22,9 +22,47 @@ namespace Well.Data
                 db.Execute("delete from t_total_details where issue=@Issue", new { Issue = issue });
 
                 string sql_TM = @"insert into t_total_details(issue, ordertype, Inmoney, outmoney, returnmoney, customerId) 
-select a.issue,a.order_type,sum(a.total_in_money),sum(a.total_out_money),sum(a.total_in_money)*b.return_pl,a.customer_id from t_orders AS a  INNER JOIN t_odds as b on a.customer_id=b.customerId and a.child_type=b.ordertype
-INNER JOIN t_customers as c on a.customer_id=c.id  where a.issue=@Issue
-group by a.issue,a.order_type,a.customer_id";
+SELECT
+	issue,
+order_type,
+total_in_money,
+total_out_money,
+(case order_type
+	when 1 THEN
+	total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=11)
+	when 2 THEN
+	total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and (t_odds.ordertype=22 or t_odds.ordertype=23 or t_odds.ordertype=24 or t_odds.ordertype=25))
+	when 3 THEN 
+  total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=3)
+	when 4 THEN 
+  total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=41)
+when 5 THEN 
+  total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=51)
+when 6 THEN 
+  total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=7)
+when 7 THEN 
+  total_in_money*(select return_pl from t_odds where t_odds.customerId=tb.customer_id and t_odds.ordertype=7)
+END
+) as tt,
+customer_id
+FROM
+	(
+		SELECT
+			a.issue,
+			a.order_type,
+			ifnull(sum(a.total_in_money), 0) AS total_in_money,
+			ifnull(sum(a.total_out_money), 0) AS total_out_money,
+			a.customer_id
+		FROM
+			t_orders AS a
+		INNER JOIN t_customers AS c ON a.customer_id = c.id
+		WHERE
+			a.issue = @Issue
+		GROUP BY
+			a.issue,
+			a.order_type,
+			a.customer_id
+	) AS tb";
 
                 db.Execute(sql_TM, new { Issue = issue });
 

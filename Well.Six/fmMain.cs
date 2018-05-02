@@ -106,6 +106,24 @@ namespace Well.Six
             c5.Width = 60;
             c5.Name = "Num3_Code";
 
+            var c7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c7.ReadOnly = true;
+            c7.DataPropertyName = "ischeckname";
+            c7.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c7.HeaderText = "校验";
+            c7.MinimumWidth = 70;
+            c7.Width = 60;
+            c7.Name = "Num5_Code";
+
+            var c8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            c8.ReadOnly = true;
+            c8.DataPropertyName = "statusname";
+            c8.DefaultCellStyle = dgCellStyle_MiddleCenter;
+            c8.HeaderText = "中奖";
+            c8.MinimumWidth = 70;
+            c8.Width = 60;
+            c8.Name = "Num6_Code";
+
             var c6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             c6.ReadOnly = true;
             c6.DataPropertyName = "CreateTime";
@@ -124,6 +142,8 @@ namespace Well.Six
             c3,
             c4,
             c5,
+            c7,
+            c8,
             c6 });
         }
 
@@ -423,6 +443,18 @@ namespace Well.Six
             fm.ShowInTaskbar = false;
             fm.StartPosition = FormStartPosition.CenterParent;
             fm.Show();
+        }
+
+        private void 校验ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrderImpl service = new OrderImpl();
+            var id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            var result = service.SetCheck(id);
+            if (result.Code == 0)
+            {
+                dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.AliceBlue;
+                dataGridView1.CurrentRow.Cells[6].Value = "已校验";
+            }
         }
     }
 }

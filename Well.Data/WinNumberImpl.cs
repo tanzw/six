@@ -167,6 +167,7 @@ namespace Well.Data
                     var orderMainStatus = (int)ResultStatus.Lose;
                     foreach (var item in l1)
                     {
+                        orderMainStatus = (int)ResultStatus.Lose;
                         foreach (var detail in item.OrderDetails)
                         {
                             var v = 0;
@@ -812,9 +813,10 @@ namespace Well.Data
                         UpdateOrderStatus(1, item.Id, orderMainStatus, trans);
                     }
 
-                    orderMainStatus = (int)ResultStatus.Lose;
+
                     foreach (var item in l2)
                     {
+                        orderMainStatus = (int)ResultStatus.Lose;
                         foreach (var detail in item.OrderDetails)
                         {
                             switch (detail.ChildType)

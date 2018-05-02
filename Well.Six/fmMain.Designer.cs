@@ -40,6 +40,7 @@
             this.备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.特码统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -57,6 +58,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.修改订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除订单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.校验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnFastTM = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -70,7 +72,6 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
-            this.特码统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -158,9 +159,16 @@
             // 统计ToolStripMenuItem
             // 
             this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
-            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.统计ToolStripMenuItem.Text = "结算统计";
             this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
+            // 
+            // 特码统计ToolStripMenuItem
+            // 
+            this.特码统计ToolStripMenuItem.Name = "特码统计ToolStripMenuItem";
+            this.特码统计ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.特码统计ToolStripMenuItem.Text = "特码统计";
+            this.特码统计ToolStripMenuItem.Click += new System.EventHandler(this.特码统计ToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -301,9 +309,10 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.修改订单ToolStripMenuItem,
-            this.删除订单ToolStripMenuItem});
+            this.删除订单ToolStripMenuItem,
+            this.校验ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
             // 
             // 修改订单ToolStripMenuItem
             // 
@@ -317,6 +326,13 @@
             this.删除订单ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.删除订单ToolStripMenuItem.Text = "删除订单";
             this.删除订单ToolStripMenuItem.Click += new System.EventHandler(this.删除订单ToolStripMenuItem_Click);
+            // 
+            // 校验ToolStripMenuItem
+            // 
+            this.校验ToolStripMenuItem.Name = "校验ToolStripMenuItem";
+            this.校验ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.校验ToolStripMenuItem.Text = "校验";
+            this.校验ToolStripMenuItem.Click += new System.EventHandler(this.校验ToolStripMenuItem_Click);
             // 
             // btnFastTM
             // 
@@ -355,6 +371,7 @@
             // 
             // cbxOrderType
             // 
+            this.cbxOrderType.BackColor = System.Drawing.Color.SandyBrown;
             this.cbxOrderType.FormattingEnabled = true;
             this.cbxOrderType.Location = new System.Drawing.Point(479, 20);
             this.cbxOrderType.Name = "cbxOrderType";
@@ -443,13 +460,6 @@
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
             // 
-            // 特码统计ToolStripMenuItem
-            // 
-            this.特码统计ToolStripMenuItem.Name = "特码统计ToolStripMenuItem";
-            this.特码统计ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.特码统计ToolStripMenuItem.Text = "特码统计";
-            this.特码统计ToolStripMenuItem.Click += new System.EventHandler(this.特码统计ToolStripMenuItem_Click);
-            // 
             // fmMain
             // 
             this.AcceptButton = this.btnSearch;
@@ -520,6 +530,7 @@
         private System.Windows.Forms.Button btnSB;
         private System.Windows.Forms.Button btnDXDS;
         private System.Windows.Forms.ToolStripMenuItem 特码统计ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 校验ToolStripMenuItem;
     }
 }
 

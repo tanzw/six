@@ -265,5 +265,26 @@ where a.issue = @Issue ");
                 return result;
             }
         }
+
+        public StandardResult SetCheck(string orderId)
+        {
+            var result = new StandardResult();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder(@"update t_orders set ischeck=1 where id=@OrderId");
+
+                if (db.Execute(sqlCommonText.ToString(), new { OrderId = orderId }) > 0)
+                {
+                    result.Code = 0;
+                }
+                else
+                {
+                    result.Code = 1;
+                }
+            }
+            return result;
+
+        }
+
     }
 }
