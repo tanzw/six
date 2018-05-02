@@ -551,6 +551,29 @@ namespace Well.Six.Frm
             list.Add(wsModel);
 
 
+            #region 特码
+            OddsData tmdata = new OddsData();
+            tmdata.CustomerId = customerId;
+            tmdata.OrderType = (int)OrderType.特码;
+            tmdata.ChildType = (int)ChildType.特码;
+            tmdata.PL = Convert.ToDecimal(txtTMPL.Text.Trim());
+            tmdata.FS = Convert.ToDecimal(txtTMFS.Text.Trim());
+            tmdata.Remarks = "特码";
+            list.Add(tmdata);
+            #endregion
+
+            #region 二连肖
+            OddsData elxdata = new OddsData();
+            elxdata.CustomerId = customerId;
+            elxdata.OrderType = (int)OrderType.连肖;
+            elxdata.ChildType = (int)ChildType.二连肖;
+            elxdata.PL = Convert.ToDecimal(txtTMPL.Text.Trim());
+            elxdata.FS = Convert.ToDecimal(txtTMFS.Text.Trim());
+            elxdata.Remarks = "二连肖";
+            list.Add(tmdata);
+            #endregion
+
+
             OddsImpl service = new OddsImpl();
             if (service.Add(list).Code == 0)
             {

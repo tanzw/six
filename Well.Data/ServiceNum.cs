@@ -334,6 +334,14 @@ namespace Well.Data
         合大双 = 1023,
         合小双 = 1024,
 
+        六肖 = 81,
+        五肖 = 82,
+        四肖 = 83,
+        三肖 = 84,
+        二肖 = 85,
+
+
+
     }
 
     public enum ResultStatus

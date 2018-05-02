@@ -12,9 +12,22 @@ namespace Well.Model
 
         public int OrderType { get; set; }
 
+        public int ChildType { get; set; }
+
+        /// <summary>
+        /// 返水
+        /// </summary>
+        public decimal FS { get; set; }
+        /// <summary>
+        /// 赔率
+        /// </summary>
+        public decimal PL { get; set; }
+
         public decimal Return_PL { get; set; }
 
         public string strJson { get; set; }
+
+        public string Remarks { get; set; }
 
     }
     public class Odds

@@ -145,6 +145,12 @@
     <Compile Include="Frm\fmFastTM.Designer.cs">
       <DependentUpon>fmFastTM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\fmHX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\fmHX.Designer.cs">
+      <DependentUpon>fmHX.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\fmLM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmFastTM.resx">
       <DependentUpon>fmFastTM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\fmHX.resx">
+      <DependentUpon>fmHX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\fmLM.resx">
       <DependentUpon>fmLM.cs</DependentUpon>

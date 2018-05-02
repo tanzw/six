@@ -456,5 +456,16 @@ namespace Well.Six
                 dataGridView1.CurrentRow.Cells[6].Value = "已校验";
             }
         }
+
+        private void btnHX_Click(object sender, EventArgs e)
+        {
+            Frm.fmHX fm = new Frm.fmHX();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                //TODO:加载订单
+            }
+        }
     }
 }

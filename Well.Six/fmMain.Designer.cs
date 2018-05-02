@@ -64,6 +64,7 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
+            this.btnHX = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -171,6 +172,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnHX);
             this.panel1.Controls.Add(this.btnDXDS);
             this.panel1.Controls.Add(this.btnSB);
             this.panel1.Controls.Add(this.btnFastLX);
@@ -189,7 +191,7 @@
             // 
             // btnDXDS
             // 
-            this.btnDXDS.Location = new System.Drawing.Point(693, 665);
+            this.btnDXDS.Location = new System.Drawing.Point(667, 665);
             this.btnDXDS.Name = "btnDXDS";
             this.btnDXDS.Size = new System.Drawing.Size(75, 23);
             this.btnDXDS.TabIndex = 12;
@@ -199,7 +201,7 @@
             // 
             // btnSB
             // 
-            this.btnSB.Location = new System.Drawing.Point(612, 664);
+            this.btnSB.Location = new System.Drawing.Point(586, 664);
             this.btnSB.Name = "btnSB";
             this.btnSB.Size = new System.Drawing.Size(75, 23);
             this.btnSB.TabIndex = 10;
@@ -209,7 +211,7 @@
             // 
             // btnFastLX
             // 
-            this.btnFastLX.Location = new System.Drawing.Point(530, 665);
+            this.btnFastLX.Location = new System.Drawing.Point(504, 665);
             this.btnFastLX.Name = "btnFastLX";
             this.btnFastLX.Size = new System.Drawing.Size(75, 23);
             this.btnFastLX.TabIndex = 9;
@@ -273,7 +275,7 @@
             // 
             // btnFastTM
             // 
-            this.btnFastTM.Location = new System.Drawing.Point(449, 665);
+            this.btnFastTM.Location = new System.Drawing.Point(423, 665);
             this.btnFastTM.Name = "btnFastTM";
             this.btnFastTM.Size = new System.Drawing.Size(75, 23);
             this.btnFastTM.TabIndex = 7;
@@ -359,7 +361,7 @@
             // 
             // btnLM
             // 
-            this.btnLM.Location = new System.Drawing.Point(368, 665);
+            this.btnLM.Location = new System.Drawing.Point(342, 665);
             this.btnLM.Name = "btnLM";
             this.btnLM.Size = new System.Drawing.Size(75, 23);
             this.btnLM.TabIndex = 4;
@@ -369,7 +371,7 @@
             // 
             // btnPTYX
             // 
-            this.btnPTYX.Location = new System.Drawing.Point(287, 665);
+            this.btnPTYX.Location = new System.Drawing.Point(261, 665);
             this.btnPTYX.Name = "btnPTYX";
             this.btnPTYX.Size = new System.Drawing.Size(75, 23);
             this.btnPTYX.TabIndex = 3;
@@ -379,7 +381,7 @@
             // 
             // btnLX
             // 
-            this.btnLX.Location = new System.Drawing.Point(206, 665);
+            this.btnLX.Location = new System.Drawing.Point(180, 665);
             this.btnLX.Name = "btnLX";
             this.btnLX.Size = new System.Drawing.Size(75, 23);
             this.btnLX.TabIndex = 2;
@@ -389,13 +391,23 @@
             // 
             // btnTM
             // 
-            this.btnTM.Location = new System.Drawing.Point(125, 665);
+            this.btnTM.Location = new System.Drawing.Point(99, 665);
             this.btnTM.Name = "btnTM";
             this.btnTM.Size = new System.Drawing.Size(75, 23);
             this.btnTM.TabIndex = 1;
             this.btnTM.Text = "特码";
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
+            // 
+            // btnHX
+            // 
+            this.btnHX.Location = new System.Drawing.Point(748, 665);
+            this.btnHX.Name = "btnHX";
+            this.btnHX.Size = new System.Drawing.Size(75, 23);
+            this.btnHX.TabIndex = 13;
+            this.btnHX.Text = "合肖";
+            this.btnHX.UseVisualStyleBackColor = true;
+            this.btnHX.Click += new System.EventHandler(this.btnHX_Click);
             // 
             // fmMain
             // 
@@ -459,6 +471,7 @@
         private System.Windows.Forms.Button btnDXDS;
         private System.Windows.Forms.ToolStripMenuItem 特码统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 校验ToolStripMenuItem;
+        private System.Windows.Forms.Button btnHX;
     }
 }
 
