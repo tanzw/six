@@ -39,7 +39,7 @@ namespace Well.Six
         {
 
             OrderImpl service = new OrderImpl();
-            var result = service.GetTJ(cbxCustomerId.SelectedValue.ToTryInt(), txtIssue.Text.Trim());
+            var result = service.GetTJ(cbxCustomerId.SelectedValue.ToTryInt(), txtIssue.Text.Trim(), textBox1.Text.Trim());
             if (result.Code == 0)
             {
                 dataGridView1.DataSource = result.Body;
@@ -52,6 +52,28 @@ namespace Well.Six
             Common.BindCustomers(cbxCustomerId);
             WinNumberImpl winService = new WinNumberImpl();
             txtIssue.Text = winService.GetNewIssue().Body;
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            int WM_KEYDOWN = 256;
+
+            int WM_SYSKEYDOWN = 260;
+
+            if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+                switch (keyData)
+                {
+                    case Keys.Escape:
+                        //关闭ToolStripMenuItem_Click(null, null);
+                        this.Close();
+                        break;
+                    case Keys.Enter:
+                        btnSearch_Click(null, null);
+                        break;
+                }
+            }
+            return false;
         }
     }
 }

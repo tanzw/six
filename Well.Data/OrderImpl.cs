@@ -247,7 +247,7 @@ namespace Well.Data
             }
         }
 
-        public StandardResult<List<OrderTJ>> GetTJ(int cid, string issue)
+        public StandardResult<List<OrderTJ>> GetTJ(int cid, string issue, string code)
         {
             var result = new StandardResult<List<OrderTJ>>();
             using (var db = base.NewDB())
@@ -258,9 +258,13 @@ where a.issue = @Issue ");
                 {
                     sqlCommonText.Append(" and  a.customer_id=@cid ");
                 }
+                if (!string.IsNullOrWhiteSpace(code))
+                {
+                    sqlCommonText.Append(" and  b.code=@Code ");
+                }
                 sqlCommonText.Append(" group by a.issue, b.code order by money desc");
 
-                result.Body = db.Query<OrderTJ>(sqlCommonText.ToString(), new { Issue = issue, cid = cid }).ToList();
+                result.Body = db.Query<OrderTJ>(sqlCommonText.ToString(), new { Issue = issue, cid = cid, Code = code }).ToList();
                 result.Code = 0;
                 return result;
             }

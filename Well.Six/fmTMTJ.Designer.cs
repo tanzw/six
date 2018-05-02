@@ -37,13 +37,15 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 32);
+            this.label2.Location = new System.Drawing.Point(178, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 7;
@@ -52,16 +54,16 @@
             // cbxCustomerId
             // 
             this.cbxCustomerId.FormattingEnabled = true;
-            this.cbxCustomerId.Location = new System.Drawing.Point(259, 27);
+            this.cbxCustomerId.Location = new System.Drawing.Point(225, 29);
             this.cbxCustomerId.Name = "cbxCustomerId";
-            this.cbxCustomerId.Size = new System.Drawing.Size(146, 20);
+            this.cbxCustomerId.Size = new System.Drawing.Size(100, 20);
             this.cbxCustomerId.TabIndex = 6;
             // 
             // txtIssue
             // 
             this.txtIssue.Location = new System.Drawing.Point(75, 27);
             this.txtIssue.Name = "txtIssue";
-            this.txtIssue.Size = new System.Drawing.Size(122, 21);
+            this.txtIssue.Size = new System.Drawing.Size(96, 21);
             this.txtIssue.TabIndex = 5;
             // 
             // label1
@@ -75,7 +77,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(411, 27);
+            this.btnSearch.Location = new System.Drawing.Point(436, 27);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 8;
@@ -120,11 +122,29 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(331, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "号码";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(366, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(64, 21);
+            this.textBox1.TabIndex = 11;
+            // 
             // fmTMTJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 568);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label2);
@@ -132,7 +152,7 @@
             this.Controls.Add(this.txtIssue);
             this.Controls.Add(this.label1);
             this.Name = "fmTMTJ";
-            this.Text = "fmTMTJ";
+            this.Text = "特码统计";
             this.Load += new System.EventHandler(this.fmTMTJ_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -151,5 +171,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
