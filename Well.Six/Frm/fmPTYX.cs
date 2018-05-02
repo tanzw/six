@@ -475,21 +475,24 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList_pyyx = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.平特);
-                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_pyyx.strJson);
-                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
-                    foreach (var control in controls_pytx)
+                    var oddsList_pyyx = r.Body.FirstOrDefault(x => x.ChildType == (int)ChildType.平特);
+                    if (oddsList_pyyx != null)
                     {
-                        if (control is Label)
+                        var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_pyyx.strJson);
+                        foreach (var control in controls_pytx)
                         {
-                            var t = control as Label;
-                            t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
+                            if (control is Label)
+                            {
+                                var t = control as Label;
+                                t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
 
+                            }
                         }
                     }
 
 
-                    var oddsList_ws = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.尾数);
+
+                    var oddsList_ws = r.Body.FirstOrDefault(x => x.ChildType == (int)ChildType.尾数);
                     if (oddsList_ws != null)
                     {
                         var ws = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList_ws.strJson);
@@ -503,6 +506,8 @@ namespace Well.Six.Frm
                             }
                         }
                     }
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
+
                 }
 
 

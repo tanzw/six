@@ -177,6 +177,7 @@ namespace Well.Data
                                     if (detail.Code == model.Body.Num7_Code)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -188,6 +189,7 @@ namespace Well.Data
                                     if (detail.Code == model.Body.Num1_Zodiac || detail.Code == model.Body.Num2_Zodiac || detail.Code == model.Body.Num3_Zodiac || detail.Code == model.Body.Num4_Zodiac || detail.Code == model.Body.Num5_Zodiac || detail.Code == model.Body.Num6_Zodiac || detail.Code == model.Body.Num7_Zodiac)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -206,6 +208,7 @@ namespace Well.Data
                                         )
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -218,6 +221,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == red)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -229,6 +233,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == green)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -240,6 +245,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == blue)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -256,6 +262,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -268,6 +275,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -280,6 +288,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -292,6 +301,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -304,6 +314,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -316,6 +327,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -328,6 +340,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -340,6 +353,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == red && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -356,6 +370,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -368,6 +383,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -380,6 +396,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -392,6 +409,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -404,6 +422,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -416,6 +435,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -428,6 +448,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -440,6 +461,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == green && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -456,6 +478,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -468,6 +491,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -480,6 +504,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -492,6 +517,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -504,6 +530,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -516,6 +543,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -528,6 +556,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -540,6 +569,7 @@ namespace Well.Data
                                     if (ServiceNum.GetNumColor(v) == blue && v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -556,6 +586,7 @@ namespace Well.Data
                                     if (v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -568,6 +599,7 @@ namespace Well.Data
                                     if (v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -580,6 +612,7 @@ namespace Well.Data
                                     if (v % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -592,6 +625,7 @@ namespace Well.Data
                                     if (v % 2 == 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -604,6 +638,7 @@ namespace Well.Data
                                     if (v % 2 != 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -616,6 +651,7 @@ namespace Well.Data
                                     if (v % 2 != 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -628,6 +664,7 @@ namespace Well.Data
                                     if (v % 2 == 0 && v > 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -640,6 +677,7 @@ namespace Well.Data
                                     if (v % 2 == 0 && v <= 24)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -663,6 +701,7 @@ namespace Well.Data
                                     if (sum > 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -682,6 +721,7 @@ namespace Well.Data
                                     if (sum <= 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -701,6 +741,7 @@ namespace Well.Data
                                     if (sum % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -720,6 +761,7 @@ namespace Well.Data
                                     if (sum % 2 != 0)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -740,6 +782,7 @@ namespace Well.Data
                                     if (sum % 2 != 0 && sum > 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -760,6 +803,7 @@ namespace Well.Data
                                     if (sum % 2 != 0 && sum <= 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -779,6 +823,7 @@ namespace Well.Data
                                     if (sum % 2 == 0 && sum > 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -798,6 +843,7 @@ namespace Well.Data
                                     if (sum % 2 == 0 && sum <= 6)
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -825,6 +871,7 @@ namespace Well.Data
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -837,6 +884,7 @@ namespace Well.Data
                                     if (temp.Contains(detail.Code1) && temp.Contains(detail.Code2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -849,6 +897,7 @@ namespace Well.Data
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -861,6 +910,7 @@ namespace Well.Data
                                     if (temp1.Contains(detail.Code1) && temp1.Contains(detail.Code2) && temp1.Contains(detail.Code3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -873,6 +923,7 @@ namespace Well.Data
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -884,6 +935,7 @@ namespace Well.Data
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2) && model.Body.ZodiacList.Contains(detail.Zodiac3) && model.Body.ZodiacList.Contains(detail.Zodiac4) && model.Body.ZodiacList.Contains(detail.Zodiac5))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -896,6 +948,7 @@ namespace Well.Data
                                     if (temp2.Contains(detail.Code1) && temp2.Contains(detail.Code2) && temp2.Contains(detail.Code3))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.MaxOdds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -929,11 +982,13 @@ namespace Well.Data
                                     if (model.Body.CodeList[6] == detail.Code1 && model.Body.CodeList.Take(6).Contains(detail.Code2))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else if (model.Body.CodeList[6] == detail.Code2 && model.Body.CodeList.Take(6).Contains(detail.Code1))
                                     {
                                         detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
                                         orderMainStatus = (int)ResultStatus.Win;
                                     }
                                     else
@@ -975,7 +1030,7 @@ namespace Well.Data
 
                     sqlCommandText.Clear();
 
-                    sqlCommandText.Append("Update t_orders set total_out_money=(select sum(outmoney) from t_orders_lmlx  where orderId=t_orders.id and status=1) where (order_type=2 or order_type=3) and issue=@Issue  and status=1");
+                    sqlCommandText.Append("Update t_orders set total_out_money=(select sum(outmoney) from t_orders_lxlm  where orderId=t_orders.id and status=1) where (order_type=2 or order_type=3) and issue=@Issue  and status=1");
                     db.Execute(sqlCommandText.ToString(), new { Issue = issue }, trans);
                     trans.Commit();
                 }
@@ -1063,7 +1118,8 @@ namespace Well.Data
             var db = trans.Connection;
             StringBuilder sqlCommandText = new StringBuilder();
             sqlCommandText.Append("Update t_orders_tm set ");
-            sqlCommandText.Append(" status=@Status");
+            sqlCommandText.Append(" status=@Status,");
+            sqlCommandText.Append(" outmoney=@OutMoney ");
             sqlCommandText.Append(" where id = @Id");
 
             if (db.Execute(sqlCommandText.ToString(), model, trans) <= 0)

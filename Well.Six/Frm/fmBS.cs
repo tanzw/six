@@ -868,111 +868,136 @@ namespace Well.Six.Frm
             {
                 if (this.cbox.SelectedIndex == 0)
                 {
+                    lbhb.Text = "0.00";
+                    lbhd.Text = "0.00";
+                    lbhs.Text = "0.00";
+                    lbhda.Text = "0.00";
+                    lbhx.Text = "0.00";
+                    lbhxd.Text = "0.00";
+                    lbhxs.Text = "0.00";
+                    lbhdd.Text = "0.00";
+                    lbhds.Text = "0.00";
 
+                    lblb.Text = "0.00";
+                    lbld.Text = "0.00";
+                    lbls.Text = "0.00";
+                    lblda.Text = "0.00";
+                    lblx.Text = "0.00";
+                    lblxd.Text = "0.00";
+                    lblxs.Text = "0.00";
+                    lbldd.Text = "0.00";
+                    lblds.Text = "0.00";
+
+                    lblanb.Text = "0.00";
+                    lbland.Text = "0.00";
+                    lblans.Text = "0.00";
+                    lblanda.Text = "0.00";
+                    lblanx.Text = "0.00";
+                    lblanxd.Text = "0.00";
+                    lblanxs.Text = "0.00";
+                    lblandd.Text = "0.00";
+                    lblands.Text = "0.00";
                 }
                 else
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.大小单双);
-                    if (oddsList != null)
+                    var oddsList = r.Body.Where(x => x.OrderType == (int)OrderType.波色).ToList();
+                    if (oddsList != null && oddsList.Count > 0)
                     {
-                        var tm = Newtonsoft.Json.JsonConvert.DeserializeObject<BSOdds>(oddsList.strJson);
-
-                        value = tm.Return_PL;
-                        tm.List.ToList().ForEach(x =>
+                        oddsList.ForEach(x =>
                         {
-                            switch (x.Key)
+                            switch (x.ChildType)
                             {
                                 #region 红波
                                 case (int)ChildType.红波:
-                                    lbhb.Text = x.Value.ToString();
+                                    lbhb.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红单:
-                                    lbhd.Text = x.Value.ToString();
+                                    lbhd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红双:
-                                    lbhs.Text = x.Value.ToString();
+                                    lbhs.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红大:
-                                    lbhda.Text = x.Value.ToString();
+                                    lbhda.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红小:
-                                    lbhx.Text = x.Value.ToString();
+                                    lbhx.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红大单:
-                                    lbhdd.Text = x.Value.ToString();
+                                    lbhdd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红大双:
-                                    lbhds.Text = x.Value.ToString();
+                                    lbhds.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红小单:
-                                    lbhxd.Text = x.Value.ToString();
+                                    lbhxd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.红小双:
-                                    lbhxs.Text = x.Value.ToString();
+                                    lbhxs.Text = x.PL.ToString();
                                     break;
 
                                 #endregion
 
                                 #region 绿波
                                 case (int)ChildType.绿波:
-                                    lblb.Text = x.Value.ToString();
+                                    lblb.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿单:
-                                    lbld.Text = x.Value.ToString();
+                                    lbld.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿双:
-                                    lbls.Text = x.Value.ToString();
+                                    lbls.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿大:
-                                    lblda.Text = x.Value.ToString();
+                                    lblda.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿小:
-                                    lblx.Text = x.Value.ToString();
+                                    lblx.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿大单:
-                                    lbldd.Text = x.Value.ToString();
+                                    lbldd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿大双:
-                                    lblds.Text = x.Value.ToString();
+                                    lblds.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿小单:
-                                    lblxd.Text = x.Value.ToString();
+                                    lblxd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.绿小双:
-                                    lblxs.Text = x.Value.ToString();
+                                    lblxs.Text = x.PL.ToString();
                                     break;
 
                                 #endregion
 
                                 #region 蓝波
                                 case (int)ChildType.蓝波:
-                                    lblanb.Text = x.Value.ToString();
+                                    lblanb.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝单:
-                                    lbland.Text = x.Value.ToString();
+                                    lbland.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝双:
-                                    lblans.Text = x.Value.ToString();
+                                    lblans.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝大:
-                                    lblanda.Text = x.Value.ToString();
+                                    lblanda.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝小:
-                                    lblanx.Text = x.Value.ToString();
+                                    lblanx.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝大单:
-                                    lblandd.Text = x.Value.ToString();
+                                    lblandd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝大双:
-                                    lblands.Text = x.Value.ToString();
+                                    lblands.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝小单:
-                                    lblanxd.Text = x.Value.ToString();
+                                    lblanxd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.蓝小双:
-                                    lblanxs.Text = x.Value.ToString();
+                                    lblanxs.Text = x.PL.ToString();
                                     break;
 
                                     #endregion
@@ -1038,6 +1063,38 @@ namespace Well.Six.Frm
 
                         });
                         Common.CustomerId = cbox.SelectedValue.ToTryInt();
+                    }
+                    else
+                    {
+                        lbhb.Text = "0.00";
+                        lbhd.Text = "0.00";
+                        lbhs.Text = "0.00";
+                        lbhda.Text = "0.00";
+                        lbhx.Text = "0.00";
+                        lbhxd.Text = "0.00";
+                        lbhxs.Text = "0.00";
+                        lbhdd.Text = "0.00";
+                        lbhds.Text = "0.00";
+
+                        lblb.Text = "0.00";
+                        lbld.Text = "0.00";
+                        lbls.Text = "0.00";
+                        lblda.Text = "0.00";
+                        lblx.Text = "0.00";
+                        lblxd.Text = "0.00";
+                        lblxs.Text = "0.00";
+                        lbldd.Text = "0.00";
+                        lblds.Text = "0.00";
+
+                        lblanb.Text = "0.00";
+                        lbland.Text = "0.00";
+                        lblans.Text = "0.00";
+                        lblanda.Text = "0.00";
+                        lblanx.Text = "0.00";
+                        lblanxd.Text = "0.00";
+                        lblanxs.Text = "0.00";
+                        lblandd.Text = "0.00";
+                        lblands.Text = "0.00";
                     }
                 }
             });

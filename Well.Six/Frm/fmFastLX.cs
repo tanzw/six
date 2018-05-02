@@ -80,8 +80,16 @@ namespace Well.Six.Frm
                 }
                 OddsImpl oddservice = new OddsImpl();
                 var r = oddservice.GetList(cbxCustomer.SelectedValue.ToTryInt());
-                var oddsList = r.Body.FirstOrDefault(x => x.OrderType == comboBox1.SelectedValue.ToTryInt());
-                odds = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                var oddsList = r.Body.FirstOrDefault(x => x.ChildType == comboBox1.SelectedValue.ToTryInt());
+                if (oddsList != null)
+                {
+                    odds = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                }
+                else
+                {
+                    odds = new LXOdds();
+                    odds.List = new Dictionary<int, decimal>();
+                }
             });
             Common.BindCustomers(cbxCustomer, (sender1, e1) =>
             {
@@ -91,8 +99,16 @@ namespace Well.Six.Frm
                 }
                 OddsImpl oddservice = new OddsImpl();
                 var r = oddservice.GetList(cbxCustomer.SelectedValue.ToTryInt());
-                var oddsList = r.Body.FirstOrDefault(x => x.OrderType == comboBox1.SelectedValue.ToTryInt());
-                odds = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                var oddsList = r.Body.FirstOrDefault(x => x.ChildType == comboBox1.SelectedValue.ToTryInt());
+                if (oddsList != null)
+                {
+                    odds = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                }
+                else
+                {
+                    odds = new LXOdds();
+                    odds.List = new Dictionary<int, decimal>();
+                }
                 Common.CustomerId = cbxCustomer.SelectedValue.ToTryInt();
             });
             listView1.GridLines = true;
@@ -105,6 +121,12 @@ namespace Well.Six.Frm
         private void btnAdd_Click(object sender, EventArgs e)
         {
             #region 检测输入
+            if (cbxCustomer.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+
+            }
             if (comboBox1.SelectedIndex == 0)
             {
                 MessageEx.ShowWarning("请选择连肖类型");
@@ -297,11 +319,19 @@ namespace Well.Six.Frm
 
         private decimal GetMinOdds(Dictionary<int, decimal> dic, List<int> l)
         {
+
             var temp = new List<decimal>();
 
             foreach (var item in l)
             {
-                temp.Add(dic[item]);
+                if (dic.ContainsKey(item))
+                {
+                    temp.Add(dic[item]);
+                }
+                else
+                {
+                    temp.Add(0);
+                }
             }
 
             return temp.OrderBy(x => x).FirstOrDefault();

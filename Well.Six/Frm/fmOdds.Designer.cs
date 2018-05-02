@@ -39,9 +39,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.oddsLX1 = new Well.Six.UControls.OddsLX();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.oddsLX2 = new Well.Six.UControls.OddsLX();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.oddsLX3 = new Well.Six.UControls.OddsLX();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.oddsLX4 = new Well.Six.UControls.OddsLX();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.txtLMFS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,8 +63,9 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.txtPTYXFS = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.oddsLX5 = new Well.Six.UControls.OddsLX();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.txtfs = new System.Windows.Forms.TextBox();
+            this.txtbsfs = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.txthexd = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -148,36 +153,31 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.oddsLX1 = new Well.Six.UControls.OddsLX();
-            this.oddsLX2 = new Well.Six.UControls.OddsLX();
-            this.oddsLX3 = new Well.Six.UControls.OddsLX();
-            this.oddsLX4 = new Well.Six.UControls.OddsLX();
-            this.oddsLX5 = new Well.Six.UControls.OddsLX();
             this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.txt0w = new System.Windows.Forms.TextBox();
-            this.txt1w = new System.Windows.Forms.TextBox();
-            this.txt2w = new System.Windows.Forms.TextBox();
-            this.txt3w = new System.Windows.Forms.TextBox();
-            this.txt4w = new System.Windows.Forms.TextBox();
-            this.txt5w = new System.Windows.Forms.TextBox();
+            this.txtwsfs = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
             this.txt9w = new System.Windows.Forms.TextBox();
             this.txt8w = new System.Windows.Forms.TextBox();
             this.txt7w = new System.Windows.Forms.TextBox();
             this.txt6w = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.txtwsfs = new System.Windows.Forms.TextBox();
+            this.txt5w = new System.Windows.Forms.TextBox();
+            this.txt4w = new System.Windows.Forms.TextBox();
+            this.txt3w = new System.Windows.Forms.TextBox();
+            this.txt2w = new System.Windows.Forms.TextBox();
+            this.txt1w = new System.Windows.Forms.TextBox();
+            this.txt0w = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -307,6 +307,13 @@
             this.tabPage3.Text = "二连";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // oddsLX1
+            // 
+            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX1.Name = "oddsLX1";
+            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX1.TabIndex = 0;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.oddsLX2);
@@ -317,6 +324,13 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "三连";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // oddsLX2
+            // 
+            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX2.Name = "oddsLX2";
+            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX2.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -329,6 +343,13 @@
             this.tabPage5.Text = "四连";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // oddsLX3
+            // 
+            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX3.Name = "oddsLX3";
+            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX3.TabIndex = 0;
+            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.oddsLX4);
@@ -339,6 +360,13 @@
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "五连";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // oddsLX4
+            // 
+            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX4.Name = "oddsLX4";
+            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX4.TabIndex = 0;
             // 
             // tabPage7
             // 
@@ -495,9 +523,16 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "返  水:";
             // 
+            // oddsLX5
+            // 
+            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
+            this.oddsLX5.Name = "oddsLX5";
+            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX5.TabIndex = 0;
+            // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.txtfs);
+            this.tabPage9.Controls.Add(this.txtbsfs);
             this.tabPage9.Controls.Add(this.label55);
             this.tabPage9.Controls.Add(this.txthexd);
             this.tabPage9.Controls.Add(this.label47);
@@ -592,12 +627,12 @@
             this.tabPage9.Text = "大小单双";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // txtfs
+            // txtbsfs
             // 
-            this.txtfs.Location = new System.Drawing.Point(380, 292);
-            this.txtfs.Name = "txtfs";
-            this.txtfs.Size = new System.Drawing.Size(67, 21);
-            this.txtfs.TabIndex = 93;
+            this.txtbsfs.Location = new System.Drawing.Point(380, 292);
+            this.txtbsfs.Name = "txtbsfs";
+            this.txtbsfs.Size = new System.Drawing.Size(67, 21);
+            this.txtbsfs.TabIndex = 93;
             // 
             // label55
             // 
@@ -1296,61 +1331,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "红波";
             // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(632, 362);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 1;
-            this.btnOK.Text = "确定";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(713, 362);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // oddsLX1
-            // 
-            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX1.Name = "oddsLX1";
-            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX1.TabIndex = 0;
-            // 
-            // oddsLX2
-            // 
-            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX2.Name = "oddsLX2";
-            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX2.TabIndex = 0;
-            // 
-            // oddsLX3
-            // 
-            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX3.Name = "oddsLX3";
-            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX3.TabIndex = 0;
-            // 
-            // oddsLX4
-            // 
-            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX4.Name = "oddsLX4";
-            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX4.TabIndex = 0;
-            // 
-            // oddsLX5
-            // 
-            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
-            this.oddsLX5.Name = "oddsLX5";
-            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX5.TabIndex = 0;
-            // 
             // tabPage10
             // 
             this.tabPage10.Controls.Add(this.txtwsfs);
@@ -1382,59 +1362,91 @@
             this.tabPage10.Text = "尾数";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // txtwsfs
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(251, 78);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "0尾";
+            this.txtwsfs.Location = new System.Drawing.Point(339, 211);
+            this.txtwsfs.Name = "txtwsfs";
+            this.txtwsfs.Size = new System.Drawing.Size(100, 21);
+            this.txtwsfs.TabIndex = 23;
             // 
-            // label56
+            // label61
             // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(251, 107);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(23, 12);
-            this.label56.TabIndex = 1;
-            this.label56.Text = "1尾";
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(304, 214);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(29, 12);
+            this.label61.TabIndex = 22;
+            this.label61.Text = "返水";
             // 
-            // label57
+            // txt9w
             // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(251, 135);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(23, 12);
-            this.label57.TabIndex = 2;
-            this.label57.Text = "2尾";
+            this.txt9w.Location = new System.Drawing.Point(445, 183);
+            this.txt9w.Name = "txt9w";
+            this.txt9w.Size = new System.Drawing.Size(100, 21);
+            this.txt9w.TabIndex = 21;
             // 
-            // label58
+            // txt8w
             // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(251, 162);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(23, 12);
-            this.label58.TabIndex = 3;
-            this.label58.Text = "3尾";
+            this.txt8w.Location = new System.Drawing.Point(445, 156);
+            this.txt8w.Name = "txt8w";
+            this.txt8w.Size = new System.Drawing.Size(100, 21);
+            this.txt8w.TabIndex = 20;
             // 
-            // label59
+            // txt7w
             // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(251, 189);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(23, 12);
-            this.label59.TabIndex = 4;
-            this.label59.Text = "4尾";
+            this.txt7w.Location = new System.Drawing.Point(445, 129);
+            this.txt7w.Name = "txt7w";
+            this.txt7w.Size = new System.Drawing.Size(100, 21);
+            this.txt7w.TabIndex = 19;
             // 
-            // label60
+            // txt6w
             // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(416, 81);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(23, 12);
-            this.label60.TabIndex = 5;
-            this.label60.Text = "5尾";
+            this.txt6w.Location = new System.Drawing.Point(445, 102);
+            this.txt6w.Name = "txt6w";
+            this.txt6w.Size = new System.Drawing.Size(100, 21);
+            this.txt6w.TabIndex = 18;
+            // 
+            // txt5w
+            // 
+            this.txt5w.Location = new System.Drawing.Point(445, 75);
+            this.txt5w.Name = "txt5w";
+            this.txt5w.Size = new System.Drawing.Size(100, 21);
+            this.txt5w.TabIndex = 17;
+            // 
+            // txt4w
+            // 
+            this.txt4w.Location = new System.Drawing.Point(280, 183);
+            this.txt4w.Name = "txt4w";
+            this.txt4w.Size = new System.Drawing.Size(100, 21);
+            this.txt4w.TabIndex = 16;
+            // 
+            // txt3w
+            // 
+            this.txt3w.Location = new System.Drawing.Point(280, 156);
+            this.txt3w.Name = "txt3w";
+            this.txt3w.Size = new System.Drawing.Size(100, 21);
+            this.txt3w.TabIndex = 15;
+            // 
+            // txt2w
+            // 
+            this.txt2w.Location = new System.Drawing.Point(280, 129);
+            this.txt2w.Name = "txt2w";
+            this.txt2w.Size = new System.Drawing.Size(100, 21);
+            this.txt2w.TabIndex = 14;
+            // 
+            // txt1w
+            // 
+            this.txt1w.Location = new System.Drawing.Point(280, 102);
+            this.txt1w.Name = "txt1w";
+            this.txt1w.Size = new System.Drawing.Size(100, 21);
+            this.txt1w.TabIndex = 13;
+            // 
+            // txt0w
+            // 
+            this.txt0w.Location = new System.Drawing.Point(280, 75);
+            this.txt0w.Name = "txt0w";
+            this.txt0w.Size = new System.Drawing.Size(100, 21);
+            this.txt0w.TabIndex = 12;
             // 
             // label63
             // 
@@ -1472,91 +1484,79 @@
             this.label66.TabIndex = 6;
             this.label66.Text = "6尾";
             // 
-            // txt0w
+            // label60
             // 
-            this.txt0w.Location = new System.Drawing.Point(280, 75);
-            this.txt0w.Name = "txt0w";
-            this.txt0w.Size = new System.Drawing.Size(100, 21);
-            this.txt0w.TabIndex = 12;
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(416, 81);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(23, 12);
+            this.label60.TabIndex = 5;
+            this.label60.Text = "5尾";
             // 
-            // txt1w
+            // label59
             // 
-            this.txt1w.Location = new System.Drawing.Point(280, 102);
-            this.txt1w.Name = "txt1w";
-            this.txt1w.Size = new System.Drawing.Size(100, 21);
-            this.txt1w.TabIndex = 13;
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(251, 189);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(23, 12);
+            this.label59.TabIndex = 4;
+            this.label59.Text = "4尾";
             // 
-            // txt2w
+            // label58
             // 
-            this.txt2w.Location = new System.Drawing.Point(280, 129);
-            this.txt2w.Name = "txt2w";
-            this.txt2w.Size = new System.Drawing.Size(100, 21);
-            this.txt2w.TabIndex = 14;
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(251, 162);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(23, 12);
+            this.label58.TabIndex = 3;
+            this.label58.Text = "3尾";
             // 
-            // txt3w
+            // label57
             // 
-            this.txt3w.Location = new System.Drawing.Point(280, 156);
-            this.txt3w.Name = "txt3w";
-            this.txt3w.Size = new System.Drawing.Size(100, 21);
-            this.txt3w.TabIndex = 15;
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(251, 135);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(23, 12);
+            this.label57.TabIndex = 2;
+            this.label57.Text = "2尾";
             // 
-            // txt4w
+            // label56
             // 
-            this.txt4w.Location = new System.Drawing.Point(280, 183);
-            this.txt4w.Name = "txt4w";
-            this.txt4w.Size = new System.Drawing.Size(100, 21);
-            this.txt4w.TabIndex = 16;
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(251, 107);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(23, 12);
+            this.label56.TabIndex = 1;
+            this.label56.Text = "1尾";
             // 
-            // txt5w
+            // label5
             // 
-            this.txt5w.Location = new System.Drawing.Point(445, 75);
-            this.txt5w.Name = "txt5w";
-            this.txt5w.Size = new System.Drawing.Size(100, 21);
-            this.txt5w.TabIndex = 17;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(251, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "0尾";
             // 
-            // txt9w
+            // btnOK
             // 
-            this.txt9w.Location = new System.Drawing.Point(445, 183);
-            this.txt9w.Name = "txt9w";
-            this.txt9w.Size = new System.Drawing.Size(100, 21);
-            this.txt9w.TabIndex = 21;
+            this.btnOK.Location = new System.Drawing.Point(632, 362);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 1;
+            this.btnOK.Text = "确定";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // txt8w
+            // btnCancel
             // 
-            this.txt8w.Location = new System.Drawing.Point(445, 156);
-            this.txt8w.Name = "txt8w";
-            this.txt8w.Size = new System.Drawing.Size(100, 21);
-            this.txt8w.TabIndex = 20;
-            // 
-            // txt7w
-            // 
-            this.txt7w.Location = new System.Drawing.Point(445, 129);
-            this.txt7w.Name = "txt7w";
-            this.txt7w.Size = new System.Drawing.Size(100, 21);
-            this.txt7w.TabIndex = 19;
-            // 
-            // txt6w
-            // 
-            this.txt6w.Location = new System.Drawing.Point(445, 102);
-            this.txt6w.Name = "txt6w";
-            this.txt6w.Size = new System.Drawing.Size(100, 21);
-            this.txt6w.TabIndex = 18;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(304, 214);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(29, 12);
-            this.label61.TabIndex = 22;
-            this.label61.Text = "返水";
-            // 
-            // txtwsfs
-            // 
-            this.txtwsfs.Location = new System.Drawing.Point(339, 211);
-            this.txtwsfs.Name = "txtwsfs";
-            this.txtwsfs.Size = new System.Drawing.Size(100, 21);
-            this.txtwsfs.TabIndex = 23;
+            this.btnCancel.Location = new System.Drawing.Point(713, 362);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // fmOdds
             // 
@@ -1718,7 +1718,7 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox txtfs;
+        private System.Windows.Forms.TextBox txtbsfs;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TextBox txtwsfs;

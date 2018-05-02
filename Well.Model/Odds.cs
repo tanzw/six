@@ -30,26 +30,22 @@ namespace Well.Model
         public string Remarks { get; set; }
 
     }
-    public class Odds
-    {
-        public decimal Return_PL { get; set; }
-    }
 
-    public class TMOdds : Odds
+    public class TMOdds
     {
         public decimal Num_PL { get; set; }
 
 
     }
 
-    public class LXOdds : Odds
+    public class LXOdds
     {
         public Dictionary<int, decimal> List { get; set; }
 
 
     }
 
-    public class LMOdds : Odds
+    public class LMOdds
     {
         public decimal SZE { get; set; }
 
@@ -65,19 +61,19 @@ namespace Well.Model
 
     }
 
-    public class PTYXOdds : Odds
+    public class PTYXOdds
     {
         public Dictionary<int, decimal> List { get; set; }
 
 
     }
 
-    public class BSOdds : Odds
+    public class BSOdds
     {
         public Dictionary<int, decimal> List { get; set; }
     }
 
-    public class WSOdds : Odds
+    public class WSOdds
     {
         public Dictionary<int, decimal> List { get; set; }
 

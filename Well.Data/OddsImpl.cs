@@ -22,19 +22,19 @@ namespace Well.Data
                 try
                 {
 
-                    string sqlCommandText = "Insert into t_odds(customerId,ordertype,return_pl,strJson) values(@CustomerId,@OrderType,@Return_PL,@strJson)";
+                    string sqlCommandText = "Insert into t_odds(customerId,ordertype,childtype,pl,fs,strJson,remarks) values(@CustomerId,@OrderType,@ChildType,@PL,@FS,@strJson,@Remarks)";
                     foreach (var item in list)
                     {
-                        string q = " select id from t_odds where customerId=@CustomerId and ordertype=@OrderType";
+                        string q = " select id from t_odds where customerId=@CustomerId and ordertype=@OrderType AND childtype=@ChildType";
                         var id = db.ExecuteScalar<int>(q, item, trans);
                         if (id > 0)
                         {
-                            sqlCommandText = "update t_odds set return_pl=@Return_PL,strJson=@strJson where id=@Id";
+                            sqlCommandText = "update t_odds set PL=@PL,FS=@FS,strJson=@strJson where id=@Id";
                             item.Id = id;
                         }
                         else
                         {
-                            sqlCommandText = "Insert into t_odds(customerId,ordertype,return_pl,strJson) values(@CustomerId,@OrderType,@Return_PL,@strJson)";
+                            sqlCommandText = "Insert into t_odds(customerId,ordertype,childtype,pl,fs,strJson,remarks) values(@CustomerId,@OrderType,@ChildType,@PL,@FS,@strJson,@Remarks)";
                         }
                         if (db.Execute(sqlCommandText, item, trans) <= 0)
                         {

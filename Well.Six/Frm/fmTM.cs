@@ -45,7 +45,7 @@ namespace Well.Six.Frm
                 lbNum.Font = new System.Drawing.Font("宋体", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
 
                 Label lbPL = new Label();
-                lbPL.Text = "43.00";
+                lbPL.Text = "00.00";
                 lbPL.Size = new Size(60, 20);
                 lbPL.Tag = lbNum.Text;
                 lbPL.Name = "PL";
@@ -103,9 +103,11 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.特码);
-                    var tm = Newtonsoft.Json.JsonConvert.DeserializeObject<TMOdds>(oddsList.strJson);
-                    value = tm.Num_PL.ToMoney();
+                    var oddsList = r.Body.FirstOrDefault(x => x.ChildType == (int)ChildType.特码);
+                    if (oddsList != null)
+                    {
+                        value = oddsList.PL.ToMoney();
+                    }
                     Common.CustomerId = cbox.SelectedValue.ToTryInt();
                 }
                 var controls = this.groupBox2.Controls.Find("PL", false);

@@ -96,14 +96,30 @@ namespace Well.Six.Frm
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.连码);
-                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LMOdds>(oddsList.strJson);
+                    var oddsList = r.Body.Where(x => x.OrderType == (int)OrderType.连码).ToList();
+
                     Common.CustomerId = cbox.SelectedValue.ToTryInt();
-                    lbEZE.Text = ptyx.EQZ.ToString();
-                    lbTP.Text = ptyx.TP.ToString();
-                    lbSQZ.Text = ptyx.SQZ.ToString();
-                    lbSZE.Text = ptyx.SZE.ToString();
-                    lbSZS.Text = ptyx.SZS.ToString();
+                    foreach (var item in oddsList)
+                    {
+                        switch (item.ChildType)
+                        {
+                            case (int)ChildType.三全中:
+                                lbSQZ.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.三中三:
+                                lbSZS.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.三中二:
+                                lbSZE.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.二全中:
+                                lbEZE.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.特碰:
+                                lbTP.Text = item.PL.ToString();
+                                break;
+                        }
+                    }
                 }
             });
 

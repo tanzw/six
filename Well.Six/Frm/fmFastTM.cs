@@ -22,9 +22,14 @@ namespace Well.Six.Frm
         List<CodeNum> list = Well.Data.ServiceNum.GetNumsArray();
         List<OrderTM> orderDetails = new List<OrderTM>();
 
-        TMOdds tm = null;
+        OddsData tm = null;
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (this.cbxCustomer.SelectedIndex == 0)
+            {
+                MessageEx.ShowWarning("请选择客户");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(txtCode.Text) || (list.Count(x => x.Value == txtCode.Text.Trim()) == 0 && list.Count(x => x.Zodiac == txtCode.Text.Trim()) == 0))
             {
                 MessageEx.ShowWarning("号码不符合規則,請重新輸入");
@@ -43,8 +48,8 @@ namespace Well.Six.Frm
             {
                 updateModel.Code = txtCode.Text.Trim();
                 updateModel.InMoney = Convert.ToDecimal(txtMoney.Text.Trim());
-                updateModel.Odds = tm.Num_PL;
-                updateModel.OutMoney = tm.Num_PL * updateModel.InMoney;
+                updateModel.Odds = tm.PL;
+                updateModel.OutMoney = tm.PL * updateModel.InMoney;
                 listView1.SelectedItems[0].SubItems[1].Text = updateModel.Code;
                 listView1.SelectedItems[0].SubItems[2].Text = updateModel.Odds.ToMoney();
                 listView1.SelectedItems[0].SubItems[3].Text = updateModel.InMoney.ToString();
@@ -65,7 +70,7 @@ namespace Well.Six.Frm
                         item.UseItemStyleForSubItems = false;
                         item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                         item.SubItems.Add(x.Value);
-                        item.SubItems.Add(tm.Num_PL.ToMoney());
+                        item.SubItems.Add(tm.PL.ToMoney());
                         item.SubItems.Add(inmoney.ToMoney());
                         listView1.Items.Insert(0, item);
                         orderDetails.Add(new OrderTM()
@@ -75,8 +80,8 @@ namespace Well.Six.Frm
                             Sort = listView1.Items.Count,
                             ChildType = (int)ChildType.特码,
                             InMoney = inmoney,
-                            Odds = tm.Num_PL,
-                            OutMoney = tm.Num_PL * inmoney,
+                            Odds = tm.PL,
+                            OutMoney = tm.PL * inmoney,
                             Remarks = "",
                             Status = (int)ResultStatus.Wait,
                             Flag = 1
@@ -91,7 +96,7 @@ namespace Well.Six.Frm
                     item.UseItemStyleForSubItems = false;
                     item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                     item.SubItems.Add(txtCode.Text.Trim());
-                    item.SubItems.Add(tm.Num_PL.ToMoney());
+                    item.SubItems.Add(tm.PL.ToMoney());
                     item.SubItems.Add(txtMoney.Text.Trim());
                     listView1.Items.Insert(0, item);
                     orderDetails.Add(new OrderTM()
@@ -101,8 +106,8 @@ namespace Well.Six.Frm
                         Sort = listView1.Items.Count,
                         ChildType = (int)ChildType.特码,
                         InMoney = Convert.ToDecimal(txtMoney.Text.Trim()),
-                        Odds = tm.Num_PL,
-                        OutMoney = tm.Num_PL * Convert.ToDecimal(txtMoney.Text.Trim()),
+                        Odds = tm.PL,
+                        OutMoney = tm.PL * Convert.ToDecimal(txtMoney.Text.Trim()),
                         Remarks = "",
                         Status = (int)ResultStatus.Wait,
                         Flag = 1
@@ -155,7 +160,6 @@ namespace Well.Six.Frm
 
         }
 
-
         private void BuildColumn()
         {
 
@@ -170,8 +174,14 @@ namespace Well.Six.Frm
             {
                 OddsImpl oddservice = new OddsImpl();
                 var r = oddservice.GetList(cbxCustomer.SelectedValue.ToTryInt());
-                var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)ChildType.特码);
-                tm = Newtonsoft.Json.JsonConvert.DeserializeObject<TMOdds>(oddsList.strJson);
+                tm = r.Body.FirstOrDefault(x => x.ChildType == (int)ChildType.特码);
+                if (tm == null)
+                {
+                    tm = new OddsData();
+                    tm.CustomerId = cbxCustomer.SelectedValue.ToTryInt();
+                    tm.PL = 00.00M;
+                    tm.FS = 0M;
+                }
                 Common.CustomerId = cbxCustomer.SelectedValue.ToTryInt();
             });
             listView1.GridLines = true;

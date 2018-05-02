@@ -96,18 +96,21 @@ namespace Well.Six.UControls
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == ChildType);
-                    var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
-                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
-                    foreach (var control in controls)
+                    var oddsList = r.Body.FirstOrDefault(x => x.ChildType == ChildType);
+                    if (oddsList != null)
                     {
-                        if (control is Label)
+                        var ptyx = Newtonsoft.Json.JsonConvert.DeserializeObject<LXOdds>(oddsList.strJson);
+                        foreach (var control in controls)
                         {
-                            var t = control as Label;
-                            t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
+                            if (control is Label)
+                            {
+                                var t = control as Label;
+                                t.Text = ptyx.List.FirstOrDefault(x => x.Key == t.Tag.ToTryInt()).Value.ToMoney();
 
+                            }
                         }
                     }
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
                 }
             });
 

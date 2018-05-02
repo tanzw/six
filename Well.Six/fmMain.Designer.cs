@@ -42,6 +42,7 @@
             this.特码统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHX = new System.Windows.Forms.Button();
             this.btnDXDS = new System.Windows.Forms.Button();
             this.btnSB = new System.Windows.Forms.Button();
             this.btnFastLX = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@
             this.btnPTYX = new System.Windows.Forms.Button();
             this.btnLX = new System.Windows.Forms.Button();
             this.btnTM = new System.Windows.Forms.Button();
-            this.btnHX = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -188,6 +188,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(938, 710);
             this.panel1.TabIndex = 4;
+            // 
+            // btnHX
+            // 
+            this.btnHX.Location = new System.Drawing.Point(748, 665);
+            this.btnHX.Name = "btnHX";
+            this.btnHX.Size = new System.Drawing.Size(75, 23);
+            this.btnHX.TabIndex = 13;
+            this.btnHX.Text = "合肖";
+            this.btnHX.UseVisualStyleBackColor = true;
+            this.btnHX.Visible = false;
+            this.btnHX.Click += new System.EventHandler(this.btnHX_Click);
             // 
             // btnDXDS
             // 
@@ -398,16 +409,6 @@
             this.btnTM.Text = "特码";
             this.btnTM.UseVisualStyleBackColor = true;
             this.btnTM.Click += new System.EventHandler(this.btnTM_Click);
-            // 
-            // btnHX
-            // 
-            this.btnHX.Location = new System.Drawing.Point(748, 665);
-            this.btnHX.Name = "btnHX";
-            this.btnHX.Size = new System.Drawing.Size(75, 23);
-            this.btnHX.TabIndex = 13;
-            this.btnHX.Text = "合肖";
-            this.btnHX.UseVisualStyleBackColor = true;
-            this.btnHX.Click += new System.EventHandler(this.btnHX_Click);
             // 
             // fmMain
             // 

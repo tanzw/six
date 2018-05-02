@@ -459,46 +459,60 @@ namespace Well.Six.Frm
             {
                 if (this.cbox.SelectedIndex == 0)
                 {
+                    lbhd.Text = "0.00";
+                    lbhs.Text = "0.00";
+                    lbhda.Text = "0.00";
+                    lbhx.Text = "0.00";
+                    lbhxd.Text = "0.00";
+                    lbhxs.Text = "0.00";
+                    lbhdd.Text = "0.00";
+                    lbhds.Text = "0.00";
 
+                    lbtd.Text = "0.00";
+                    lbts.Text = "0.00";
+                    lbtda.Text = "0.00";
+                    lbtx.Text = "0.00";
+                    lbtxd.Text = "0.00";
+                    lbtxs.Text = "0.00";
+                    lbtdd.Text = "0.00";
+                    lbtds.Text = "0.00";
                 }
                 else
                 {
                     OddsImpl oddservice = new OddsImpl();
                     var r = oddservice.GetList(cbox.SelectedValue.ToTryInt());
-                    var oddsList = r.Body.FirstOrDefault(x => x.OrderType == (int)OrderType.大小单双);
-                    if (oddsList != null)
+                    var oddsList = r.Body.Where(x => x.OrderType == (int)OrderType.大小单双).ToList();
+                    if (oddsList != null && oddsList.Count > 0)
                     {
-                        var tm = Newtonsoft.Json.JsonConvert.DeserializeObject<BSOdds>(oddsList.strJson);
 
-
-                        tm.List.ToList().ForEach(x =>
+                        oddsList.ForEach(x =>
                         {
-                            switch (x.Key)
+                            switch (x.ChildType)
                             {
                                 #region 特大单双
                                 case (int)ChildType.特单:
-                                    lbtd.Text = x.Value.ToString();
+                                    lbtd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特双:
-                                    lbts.Text = x.Value.ToString();
+                                    lbts.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特大:
-                                    lbtda.Text = x.Value.ToString();
+                                    lbtda.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特小:
-                                    lbtx.Text = x.Value.ToString();
+                                    lbtx.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特大单:
-                                    lbtdd.Text = x.Value.ToString();
+                                    lbtdd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特大双:
-                                    lbtds.Text = x.Value.ToString();
+                                    lbtds.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特小单:
-                                    lbtxd.Text = x.Value.ToString();
+                                    lbtxd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.特小双:
-                                    lbtxs.Text = x.Value.ToString();
+                                    lbtxs.Text = x.PL.ToString();
                                     break;
 
                                 #endregion
@@ -506,36 +520,56 @@ namespace Well.Six.Frm
                                 #region  合大小单双
 
                                 case (int)ChildType.合单:
-                                    lbhd.Text = x.Value.ToString();
+                                    lbhd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合双:
-                                    lbhs.Text = x.Value.ToString();
+                                    lbhs.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合大:
-                                    lbhda.Text = x.Value.ToString();
+                                    lbhda.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合小:
-                                    lbhx.Text = x.Value.ToString();
+                                    lbhx.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合大单:
-                                    lbhdd.Text = x.Value.ToString();
+                                    lbhdd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合大双:
-                                    lbhds.Text = x.Value.ToString();
+                                    lbhds.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合小单:
-                                    lbhxd.Text = x.Value.ToString();
+                                    lbhxd.Text = x.PL.ToString();
                                     break;
                                 case (int)ChildType.合小双:
-                                    lbhxs.Text = x.Value.ToString();
+                                    lbhxs.Text = x.PL.ToString();
                                     break;
 
                                     #endregion
                             }
 
                         });
-                        Common.CustomerId = cbox.SelectedValue.ToTryInt();
                     }
+                    else
+                    {
+                        lbhd.Text = "0.00";
+                        lbhs.Text = "0.00";
+                        lbhda.Text = "0.00";
+                        lbhx.Text = "0.00";
+                        lbhxd.Text = "0.00";
+                        lbhxs.Text = "0.00";
+                        lbhdd.Text = "0.00";
+                        lbhds.Text = "0.00";
+
+                        lbtd.Text = "0.00";
+                        lbts.Text = "0.00";
+                        lbtda.Text = "0.00";
+                        lbtx.Text = "0.00";
+                        lbtxd.Text = "0.00";
+                        lbtxs.Text = "0.00";
+                        lbtdd.Text = "0.00";
+                        lbtds.Text = "0.00";
+                    }
+                    Common.CustomerId = cbox.SelectedValue.ToTryInt();
                 }
             });
         }
