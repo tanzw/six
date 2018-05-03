@@ -215,12 +215,8 @@ namespace Well.Six.Frm
 
                     listView1.Items.RemoveAt(dd[0]);
                 }
-
-
-
             }
-
-
+             
         }
 
         bool isUpdate = false;
@@ -238,6 +234,10 @@ namespace Well.Six.Frm
             }
         }
 
-
+        private void btnSX_Click(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            txtCode.Text = btn.Text;
+        }
     }
 }
