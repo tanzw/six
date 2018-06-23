@@ -216,6 +216,62 @@ namespace Well.Data
                                         detail.Status = (int)ResultStatus.Lose;
                                     }
                                     break;
+                                case (int)ChildType.二肖:
+                                case (int)ChildType.三肖:
+                                case (int)ChildType.四肖:
+                                case (int)ChildType.五肖:
+                                case (int)ChildType.六肖:
+                                    if (detail.Code.Contains(model.Body.Num7_Zodiac))
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
+                                case (int)ChildType.五不中:
+                                case (int)ChildType.六不中:
+                                case (int)ChildType.七不中:
+                                case (int)ChildType.八不中:
+                                case (int)ChildType.九不中:
+                                case (int)ChildType.十不中:
+                                    if (detail.Code.Contains(model.Body.Num1_Code) ||
+                                        detail.Code.Contains(model.Body.Num2_Code) ||
+                                        detail.Code.Contains(model.Body.Num3_Code) ||
+                                        detail.Code.Contains(model.Body.Num4_Code) ||
+                                        detail.Code.Contains(model.Body.Num5_Code) ||
+                                        detail.Code.Contains(model.Body.Num6_Code) ||
+                                        detail.Code.Contains(model.Body.Num7_Code))
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    break;
+                                case (int)ChildType.单平:
+                                    if (detail.Code == model.Body.Num1_Code ||
+                                      detail.Code == model.Body.Num2_Code ||
+                                      detail.Code == model.Body.Num3_Code ||
+                                      detail.Code == model.Body.Num4_Code ||
+                                      detail.Code == model.Body.Num5_Code ||
+                                      detail.Code == model.Body.Num6_Code)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                                 #region 波色
                                 case (int)ChildType.红波:
                                     if (ServiceNum.GetNumColor(model.Body.Num7_Code.ToTryInt()) == red)

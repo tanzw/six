@@ -175,6 +175,11 @@ namespace Well.Six
             list.Add(new Model.Customers() { Id = (int)OrderType.波色, Name = "波色" });
             list.Add(new Model.Customers() { Id = (int)OrderType.大小单双, Name = "大小单双" });
 
+            List<Model.Customers> list1 = new List<Model.Customers>();
+            list1.Add(new Model.Customers() { Id = 0, Name = "请选择" });
+            list1.Add(new Model.Customers() { Id = 2, Name = "已中奖" });
+            list1.Add(new Model.Customers() { Id = 1, Name = "未中奖" });
+
 
             cbxOrderType.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxOrderType.DataSource = list;
@@ -224,7 +229,7 @@ namespace Well.Six
 
         private void btnFastTM_Click(object sender, EventArgs e)
         {
-            Frm.fmFastTM fm = new Frm.fmFastTM();
+            Frm.fmFastTM fm = new Frm.fmFastTM((int)OrderType.特码, (int)ChildType.特码);
             fm.ShowInTaskbar = false;
             fm.StartPosition = FormStartPosition.CenterParent;
             fm.ShowDialog();
@@ -472,6 +477,25 @@ namespace Well.Six
         {
             TotalImpl sd = new TotalImpl();
             sd.Add("2018046");
+        }
+
+        private void btnQBZ_Click(object sender, EventArgs e)
+        {
+            Frm.fmQBZ fm = new Frm.fmQBZ();
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                //TODO:加载订单
+            }
+        }
+
+        private void btnDP_Click(object sender, EventArgs e)
+        {
+            Frm.fmFastTM fm = new Frm.fmFastTM((int)OrderType.单平, (int)ChildType.单平);
+            fm.ShowInTaskbar = false;
+            fm.StartPosition = FormStartPosition.CenterParent;
+            fm.ShowDialog();
         }
     }
 }

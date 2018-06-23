@@ -24,7 +24,7 @@ namespace Well.Six.Frm
             radioButton4.Tag = (int)ChildType.三肖;
             radioButton5.Tag = (int)ChildType.二肖;
 
-            txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Common.TextBox_FilterString_KeyPress);
+            txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Common.TextBox_FilterString_KeyPress);
 
 
         }
@@ -65,6 +65,41 @@ namespace Well.Six.Frm
             }
             else
             {
+                var str = txt.Text.Trim();
+                var l = ServiceNum.GetZodiacArray();
+                var flag = false;
+                var tmpList = new List<string>();
+                var tmpr = false;
+
+                foreach (var s in str)
+                {
+                    var ss = s.ToString();
+                    if (l.Count(x => x.Value == ss) == 0)
+                    {
+                        flag = true;
+                        break;
+                    }
+                    if (tmpList.Contains(ss.ToString()))
+                    {
+                        tmpr = true;
+                        break;
+                    }
+                    else
+                    {
+                        tmpList.Add(ss.ToString());
+                    }
+
+                }
+                if (flag)
+                {
+                    MessageEx.ShowWarning("输入的生肖不正确,请输入正确的生肖");
+                    return;
+                }
+                if (tmpr)
+                {
+                    MessageEx.ShowWarning("生肖存在重复");
+                    return;
+                }
                 if (radioButton1.Checked && txt.Text.Trim().Length != 6)
                 {
                     MessageEx.ShowWarning("生肖个数不正确");
@@ -90,23 +125,14 @@ namespace Well.Six.Frm
                     MessageEx.ShowWarning("生肖个数不正确");
                     return;
                 }
-                var str = txt.Text.Trim();
-                var l = ServiceNum.GetZodiacArray();
-                var flag = false;
-                foreach (var s in str)
-                {
-                    var ss = s.ToString();
-                    if (l.Count(x => x.Value == ss) == 0)
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (flag)
-                {
-                    MessageEx.ShowWarning("输入的生肖不正确,请输入正确的生肖");
-                    return;
-                }
+
+            }
+            var vv = GetRadioChecked();
+            var odds = oddsList.FirstOrDefault(x => x.ChildType == vv);
+            if (odds == null)
+            {
+                MessageEx.ShowWarning("未设置赔率");
+                return;
             }
 
             #endregion
@@ -119,7 +145,7 @@ namespace Well.Six.Frm
             detail.Flag = 1;
             detail.Id = Guid.NewGuid().ToString("n");
             detail.InMoney = Convert.ToDecimal(txtMoney.Text.Trim());
-            detail.Odds = 0;
+            detail.Odds = odds.PL;
             detail.OrderId = OrderId;
             detail.OutMoney = detail.Odds * detail.InMoney;
             detail.Remarks = detail.Code;
@@ -199,11 +225,13 @@ namespace Well.Six.Frm
             txt.Text = "";
             txtMoney.Text = "";
         }
-
+        List<OddsData> oddsList = null;
         private void fmHX_Load(object sender, EventArgs e)
         {
             WinNumberImpl winService = new WinNumberImpl();
             txtIssue.Text = winService.GetNewIssue().Body;
+
+
 
             Common.BindCustomers(cbox, (sender1, e1) =>
             {
@@ -213,7 +241,8 @@ namespace Well.Six.Frm
                 }
                 else
                 {
-
+                    OddsImpl oddservice = new OddsImpl();
+                    oddsList = oddservice.GetList(cbox.SelectedValue.ToTryInt()).Body;
                     Common.CustomerId = cbox.SelectedValue.ToTryInt();
                 }
             });
@@ -250,6 +279,13 @@ namespace Well.Six.Frm
         private void button2_Click(object sender, EventArgs e)
         {
             txt.Text = "鼠虎兔龙蛇猴";
+        }
+
+
+        private void btnSX_Click(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            txt.Text = txt.Text + btn.Text;
         }
     }
 }

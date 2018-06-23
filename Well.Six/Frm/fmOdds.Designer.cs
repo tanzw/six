@@ -39,13 +39,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.oddsLX1 = new Well.Six.UControls.OddsLX();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.oddsLX2 = new Well.Six.UControls.OddsLX();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.oddsLX3 = new Well.Six.UControls.OddsLX();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.oddsLX4 = new Well.Six.UControls.OddsLX();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.txtLMFS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,7 +59,6 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.txtPTYXFS = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.oddsLX5 = new Well.Six.UControls.OddsLX();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.txtbsfs = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
@@ -178,6 +173,44 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.oddsLX1 = new Well.Six.UControls.OddsLX();
+            this.oddsLX2 = new Well.Six.UControls.OddsLX();
+            this.oddsLX3 = new Well.Six.UControls.OddsLX();
+            this.oddsLX4 = new Well.Six.UControls.OddsLX();
+            this.oddsLX5 = new Well.Six.UControls.OddsLX();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -190,6 +223,9 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            this.tabPage13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -200,6 +236,9 @@
             this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Controls.Add(this.tabPage10);
+            this.tabControl1.Controls.Add(this.tabPage11);
+            this.tabControl1.Controls.Add(this.tabPage12);
+            this.tabControl1.Controls.Add(this.tabPage13);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -307,13 +346,6 @@
             this.tabPage3.Text = "二连";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // oddsLX1
-            // 
-            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX1.Name = "oddsLX1";
-            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX1.TabIndex = 0;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.oddsLX2);
@@ -324,13 +356,6 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "三连";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // oddsLX2
-            // 
-            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX2.Name = "oddsLX2";
-            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX2.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -343,13 +368,6 @@
             this.tabPage5.Text = "四连";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // oddsLX3
-            // 
-            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX3.Name = "oddsLX3";
-            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX3.TabIndex = 0;
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.oddsLX4);
@@ -360,13 +378,6 @@
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "五连";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // oddsLX4
-            // 
-            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
-            this.oddsLX4.Name = "oddsLX4";
-            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX4.TabIndex = 0;
             // 
             // tabPage7
             // 
@@ -522,13 +533,6 @@
             this.label11.Size = new System.Drawing.Size(47, 12);
             this.label11.TabIndex = 4;
             this.label11.Text = "返  水:";
-            // 
-            // oddsLX5
-            // 
-            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
-            this.oddsLX5.Name = "oddsLX5";
-            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
-            this.oddsLX5.TabIndex = 0;
             // 
             // tabPage9
             // 
@@ -1558,6 +1562,341 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // oddsLX1
+            // 
+            this.oddsLX1.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX1.Name = "oddsLX1";
+            this.oddsLX1.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX1.TabIndex = 0;
+            // 
+            // oddsLX2
+            // 
+            this.oddsLX2.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX2.Name = "oddsLX2";
+            this.oddsLX2.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX2.TabIndex = 0;
+            // 
+            // oddsLX3
+            // 
+            this.oddsLX3.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX3.Name = "oddsLX3";
+            this.oddsLX3.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX3.TabIndex = 0;
+            // 
+            // oddsLX4
+            // 
+            this.oddsLX4.Location = new System.Drawing.Point(225, 40);
+            this.oddsLX4.Name = "oddsLX4";
+            this.oddsLX4.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX4.TabIndex = 0;
+            // 
+            // oddsLX5
+            // 
+            this.oddsLX5.Location = new System.Drawing.Point(225, 57);
+            this.oddsLX5.Name = "oddsLX5";
+            this.oddsLX5.Size = new System.Drawing.Size(330, 180);
+            this.oddsLX5.TabIndex = 0;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.textBox6);
+            this.tabPage11.Controls.Add(this.label71);
+            this.tabPage11.Controls.Add(this.textBox5);
+            this.tabPage11.Controls.Add(this.label70);
+            this.tabPage11.Controls.Add(this.textBox4);
+            this.tabPage11.Controls.Add(this.label69);
+            this.tabPage11.Controls.Add(this.textBox3);
+            this.tabPage11.Controls.Add(this.label68);
+            this.tabPage11.Controls.Add(this.textBox2);
+            this.tabPage11.Controls.Add(this.textBox1);
+            this.tabPage11.Controls.Add(this.label67);
+            this.tabPage11.Controls.Add(this.label62);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(792, 330);
+            this.tabPage11.TabIndex = 6;
+            this.tabPage11.Text = "合肖";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.textBox13);
+            this.tabPage12.Controls.Add(this.label78);
+            this.tabPage12.Controls.Add(this.textBox7);
+            this.tabPage12.Controls.Add(this.label72);
+            this.tabPage12.Controls.Add(this.textBox8);
+            this.tabPage12.Controls.Add(this.label73);
+            this.tabPage12.Controls.Add(this.textBox9);
+            this.tabPage12.Controls.Add(this.label74);
+            this.tabPage12.Controls.Add(this.textBox10);
+            this.tabPage12.Controls.Add(this.label75);
+            this.tabPage12.Controls.Add(this.textBox11);
+            this.tabPage12.Controls.Add(this.textBox12);
+            this.tabPage12.Controls.Add(this.label76);
+            this.tabPage12.Controls.Add(this.label77);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(792, 330);
+            this.tabPage12.TabIndex = 7;
+            this.tabPage12.Text = "不中";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.textBox14);
+            this.tabPage13.Controls.Add(this.label79);
+            this.tabPage13.Controls.Add(this.textBox15);
+            this.tabPage13.Controls.Add(this.label80);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(792, 330);
+            this.tabPage13.TabIndex = 8;
+            this.tabPage13.Text = "单平";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(303, 67);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(41, 12);
+            this.label62.TabIndex = 0;
+            this.label62.Text = "二肖：";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(303, 94);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(41, 12);
+            this.label67.TabIndex = 1;
+            this.label67.Text = "三肖：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(350, 64);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(350, 91);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 21);
+            this.textBox2.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(350, 118);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 5;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(303, 121);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(41, 12);
+            this.label68.TabIndex = 4;
+            this.label68.Text = "四肖：";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(350, 145);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 21);
+            this.textBox4.TabIndex = 7;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(303, 148);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(41, 12);
+            this.label69.TabIndex = 6;
+            this.label69.Text = "五肖：";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(350, 172);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 21);
+            this.textBox5.TabIndex = 9;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(303, 175);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(41, 12);
+            this.label70.TabIndex = 8;
+            this.label70.Text = "六肖：";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(350, 199);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 21);
+            this.textBox6.TabIndex = 11;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(303, 202);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(41, 12);
+            this.label71.TabIndex = 10;
+            this.label71.Text = "返水：";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(372, 197);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.TabIndex = 23;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(313, 200);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(53, 12);
+            this.label72.TabIndex = 22;
+            this.label72.Text = "十不中：";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(372, 170);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 21);
+            this.textBox8.TabIndex = 21;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(313, 173);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(53, 12);
+            this.label73.TabIndex = 20;
+            this.label73.Text = "九不中：";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(372, 143);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 21);
+            this.textBox9.TabIndex = 19;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(313, 146);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(53, 12);
+            this.label74.TabIndex = 18;
+            this.label74.Text = "八不中：";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(372, 116);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 21);
+            this.textBox10.TabIndex = 17;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(313, 119);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(53, 12);
+            this.label75.TabIndex = 16;
+            this.label75.Text = "七不中：";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(372, 89);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 21);
+            this.textBox11.TabIndex = 15;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(372, 62);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 21);
+            this.textBox12.TabIndex = 14;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(313, 92);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(53, 12);
+            this.label76.TabIndex = 13;
+            this.label76.Text = "六不中：";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(313, 65);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(53, 12);
+            this.label77.TabIndex = 12;
+            this.label77.Text = "五不中：";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(372, 224);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 21);
+            this.textBox13.TabIndex = 25;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(325, 227);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(41, 12);
+            this.label78.TabIndex = 24;
+            this.label78.Text = "返水：";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(344, 126);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 21);
+            this.textBox14.TabIndex = 29;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(297, 129);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(41, 12);
+            this.label79.TabIndex = 28;
+            this.label79.Text = "返水：";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(344, 99);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 21);
+            this.textBox15.TabIndex = 27;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(297, 102);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(41, 12);
+            this.label80.TabIndex = 26;
+            this.label80.Text = "赔率：";
+            // 
             // fmOdds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1587,6 +1926,12 @@
             this.tabPage9.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1743,5 +2088,38 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label80;
     }
 }

@@ -15,9 +15,21 @@ namespace Well.Six.Frm
 {
     public partial class fmFastTM : Form
     {
-        public fmFastTM()
+        int childType = 0;
+        int orderType = 0;
+        public fmFastTM(int _ordertype, int _childtype)
         {
             InitializeComponent();
+            childType = _childtype;
+            orderType = _ordertype;
+            if (childType == (int)ChildType.单平)
+            {
+                this.Text = "单平快捷投注";
+            }
+            else
+            {
+                this.Text = "特码快捷投注";
+            }
         }
         List<CodeNum> list = Well.Data.ServiceNum.GetNumsArray();
         List<OrderTM> orderDetails = new List<OrderTM>();
@@ -67,7 +79,8 @@ namespace Well.Six.Frm
                     list.Where(x => x.Zodiac == txtCode.Text.Trim()).ToList().ForEach(x =>
                     {
                         var item = new ListViewItem();
-                        item.UseItemStyleForSubItems = false;
+                        item.UseItemStyleForSubItems = true;
+                        item.Font = new Font("宋体", 14);
                         item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                         item.SubItems.Add(x.Value);
                         item.SubItems.Add(tm.PL.ToMoney());
@@ -78,7 +91,7 @@ namespace Well.Six.Frm
                             Code = x.Value,
                             Id = Guid.NewGuid().ToString("n"),
                             Sort = listView1.Items.Count,
-                            ChildType = (int)ChildType.特码,
+                            ChildType = childType,
                             InMoney = inmoney,
                             Odds = tm.PL,
                             OutMoney = tm.PL * inmoney,
@@ -93,7 +106,8 @@ namespace Well.Six.Frm
                 {
 
                     var item = new ListViewItem();
-                    item.UseItemStyleForSubItems = false;
+                    item.UseItemStyleForSubItems = true;
+                    item.Font = new Font("宋体", 14);
                     item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                     item.SubItems.Add(txtCode.Text.Trim());
                     item.SubItems.Add(tm.PL.ToMoney());
@@ -104,7 +118,7 @@ namespace Well.Six.Frm
                         Code = txtCode.Text.Trim(),
                         Id = Guid.NewGuid().ToString("n"),
                         Sort = listView1.Items.Count,
-                        ChildType = (int)ChildType.特码,
+                        ChildType = childType,
                         InMoney = Convert.ToDecimal(txtMoney.Text.Trim()),
                         Odds = tm.PL,
                         OutMoney = tm.PL * Convert.ToDecimal(txtMoney.Text.Trim()),
@@ -130,8 +144,8 @@ namespace Well.Six.Frm
                 IsDel = 0,
                 Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
-                Order_Type = (int)OrderType.特码,
-                Child_Type = (int)ChildType.特码,
+                Order_Type = orderType,
+                Child_Type = childType,
                 Total_In_Money = orderDetails.Sum(x => x.InMoney),
                 Total_Out_Money = 0,
                 Update_Time = "",
@@ -174,9 +188,10 @@ namespace Well.Six.Frm
             {
                 OddsImpl oddservice = new OddsImpl();
                 var r = oddservice.GetList(cbxCustomer.SelectedValue.ToTryInt());
-                tm = r.Body.FirstOrDefault(x => x.ChildType == (int)ChildType.特码);
+                tm = r.Body.FirstOrDefault(x => x.ChildType == childType);
                 if (tm == null)
                 {
+                    MessageEx.ShowWarning("未设置客户赔率");
                     tm = new OddsData();
                     tm.CustomerId = cbxCustomer.SelectedValue.ToTryInt();
                     tm.PL = 00.00M;
@@ -216,7 +231,7 @@ namespace Well.Six.Frm
                     listView1.Items.RemoveAt(dd[0]);
                 }
             }
-             
+
         }
 
         bool isUpdate = false;

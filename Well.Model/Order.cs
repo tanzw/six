@@ -175,5 +175,7 @@ namespace Well.Model
         public string Code { get; set; }
 
         public decimal Money { get; set; }
+
+        public string Code2 { get; set; }
     }
 }

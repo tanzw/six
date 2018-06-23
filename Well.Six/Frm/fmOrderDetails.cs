@@ -37,7 +37,7 @@ namespace Well.Six.Frm
                 lbMoney.Text = result.Body.Total_In_Money.ToString();
                 lbType.Text = result.Body.ChildTypeName;
 
-                if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.波色 || result.Body.OrderType == (int)OrderType.大小单双)
+                if (result.Body.OrderType == (int)OrderType.特码 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.平特 || result.Body.OrderType == (int)OrderType.尾数 || result.Body.OrderType == (int)OrderType.波色 || result.Body.OrderType == (int)OrderType.大小单双 || result.Body.OrderType == (int)OrderType.合肖 || result.Body.OrderType == (int)OrderType.单平 || result.Body.OrderType == (int)OrderType.全不中)
                 {
                     var TMlList = service.GetOrderTMList(id);
                     lbCount.Text = TMlList.Body.Count.ToString();
@@ -47,7 +47,12 @@ namespace Well.Six.Frm
                         TMlList.Body.ForEach(x =>
                         {
                             var item = new ListViewItem();
-                            item.UseItemStyleForSubItems = false;
+                            item.UseItemStyleForSubItems = true;
+                            if (x.Status == (int)ResultStatus.Win)
+                            {
+                                item.BackColor = Color.Red;
+                                item.ForeColor = Color.White;
+                            }
                             item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                             item.SubItems.Add(x.Sort.ToString());
                             var sd = (ChildType)x.ChildType;
@@ -64,8 +69,13 @@ namespace Well.Six.Frm
                         TMlList.Body.ForEach(x =>
                         {
                             var item = new ListViewItem();
-                            item.UseItemStyleForSubItems = false;
+                            item.UseItemStyleForSubItems = true;
                             item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
+                            if (x.Status == (int)ResultStatus.Win)
+                            {
+                                item.BackColor = Color.Red;
+                                item.ForeColor = Color.White;
+                            }
                             item.SubItems.Add(x.Sort.ToString());
                             var sd = (ChildType)x.ChildType;
                             item.SubItems.Add(sd.ToString());
@@ -85,7 +95,12 @@ namespace Well.Six.Frm
                     LXLMlList.Body.ForEach(x =>
                     {
                         var item = new ListViewItem();
-                        item.UseItemStyleForSubItems = false;
+                        item.UseItemStyleForSubItems = true;
+                        if (x.Status == (int)ResultStatus.Win)
+                        {
+                            item.BackColor = Color.Red;
+                            item.ForeColor = Color.White;
+                        }
                         item.SubItems[0].Text = (listView1.Items.Count + 1).ToString();
                         item.SubItems.Add(x.Sort.ToString());
                         var str = "";

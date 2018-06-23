@@ -288,12 +288,55 @@ namespace Well.Six.Frm
                                 txtbsfs.Text = item.FS.ToString();
                                 break;
 
-                                #endregion
+                            #endregion
 
-
-
-
+                            #region 全不中
+                            case (int)ChildType.五不中:
+                                textBox12.Text = item.PL.ToString();
                                 break;
+                            case (int)ChildType.六不中:
+                                textBox11.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.七不中:
+                                textBox10.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.八不中:
+                                textBox9.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.九不中:
+                                textBox8.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.十不中:
+                                textBox7.Text = item.PL.ToString();
+                                textBox13.Text = item.FS.ToString();
+                                break;
+                            #endregion
+
+                            #region 合肖
+                            case (int)ChildType.二肖:
+                                textBox1.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.三肖:
+                                textBox2.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.四肖:
+                                textBox3.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.五肖:
+                                textBox4.Text = item.PL.ToString();
+                                break;
+                            case (int)ChildType.六肖:
+                                textBox5.Text = item.PL.ToString();
+                                textBox6.Text = item.FS.ToString();
+                                break;
+                            #endregion
+
+                            #region 单平
+                            case (int)ChildType.单平:
+                                textBox15.Text = item.PL.ToString();
+                                textBox14.Text = item.FS.ToString();
+                                break;
+                                #endregion
                         }
                     }
 
@@ -1269,6 +1312,129 @@ namespace Well.Six.Frm
             list.Add(wsdata);
 
             #endregion
+
+            #region  合肖
+            OddsData hxe = new OddsData();
+            hxe.CustomerId = customerId;
+            hxe.OrderType = (int)OrderType.合肖;
+            hxe.ChildType = (int)ChildType.二肖;
+            hxe.PL = Convert.ToDecimal(textBox1.Text.Trim());
+            hxe.FS = Convert.ToDecimal(textBox6.Text.Trim());
+            hxe.Remarks = "合肖-二肖";
+
+            OddsData hxsan = new OddsData();
+            hxsan.CustomerId = customerId;
+            hxsan.OrderType = (int)OrderType.合肖;
+            hxsan.ChildType = (int)ChildType.三肖;
+            hxsan.PL = Convert.ToDecimal(textBox2.Text.Trim());
+            hxsan.FS = Convert.ToDecimal(textBox6.Text.Trim());
+            hxsan.Remarks = "合肖-三肖";
+
+            OddsData hxsi = new OddsData();
+            hxsi.CustomerId = customerId;
+            hxsi.OrderType = (int)OrderType.合肖;
+            hxsi.ChildType = (int)ChildType.四肖;
+            hxsi.PL = Convert.ToDecimal(textBox3.Text.Trim());
+            hxsi.FS = Convert.ToDecimal(textBox6.Text.Trim());
+            hxsi.Remarks = "合肖-四肖";
+
+            OddsData hxwu = new OddsData();
+            hxwu.CustomerId = customerId;
+            hxwu.OrderType = (int)OrderType.合肖;
+            hxwu.ChildType = (int)ChildType.五肖;
+            hxwu.PL = Convert.ToDecimal(textBox4.Text.Trim());
+            hxwu.FS = Convert.ToDecimal(textBox6.Text.Trim());
+            hxwu.Remarks = "合肖-五肖";
+
+            OddsData hxliu = new OddsData();
+            hxliu.CustomerId = customerId;
+            hxliu.OrderType = (int)OrderType.合肖;
+            hxliu.ChildType = (int)ChildType.六肖;
+            hxliu.PL = Convert.ToDecimal(textBox5.Text.Trim());
+            hxliu.FS = Convert.ToDecimal(textBox6.Text.Trim());
+            hxliu.Remarks = "合肖-六肖";
+
+            list.Add(hxe);
+            list.Add(hxsan);
+            list.Add(hxsi);
+            list.Add(hxwu);
+            list.Add(hxliu);
+            #endregion
+
+            #region 全不中
+            OddsData qbz5 = new OddsData();
+            qbz5.CustomerId = customerId;
+            qbz5.OrderType = (int)OrderType.全不中;
+            qbz5.ChildType = (int)ChildType.五不中;
+            qbz5.PL = Convert.ToDecimal(textBox12.Text.Trim());
+            qbz5.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz5.Remarks = "全不中-五不中";
+
+
+            OddsData qbz6 = new OddsData();
+            qbz6.CustomerId = customerId;
+            qbz6.OrderType = (int)OrderType.全不中;
+            qbz6.ChildType = (int)ChildType.六不中;
+            qbz6.PL = Convert.ToDecimal(textBox11.Text.Trim());
+            qbz6.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz6.Remarks = "全不中-六不中";
+
+            OddsData qbz7 = new OddsData();
+            qbz7.CustomerId = customerId;
+            qbz7.OrderType = (int)OrderType.全不中;
+            qbz7.ChildType = (int)ChildType.七不中;
+            qbz7.PL = Convert.ToDecimal(textBox10.Text.Trim());
+            qbz7.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz7.Remarks = "全不中-七不中";
+
+
+            OddsData qbz8 = new OddsData();
+            qbz8.CustomerId = customerId;
+            qbz8.OrderType = (int)OrderType.全不中;
+            qbz8.ChildType = (int)ChildType.八不中;
+            qbz8.PL = Convert.ToDecimal(textBox9.Text.Trim());
+            qbz8.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz8.Remarks = "全不中-八不中";
+
+
+            OddsData qbz9 = new OddsData();
+            qbz9.CustomerId = customerId;
+            qbz9.OrderType = (int)OrderType.全不中;
+            qbz9.ChildType = (int)ChildType.九不中;
+            qbz9.PL = Convert.ToDecimal(textBox8.Text.Trim());
+            qbz9.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz9.Remarks = "全不中-九不中";
+
+
+            OddsData qbz10 = new OddsData();
+            qbz10.CustomerId = customerId;
+            qbz10.OrderType = (int)OrderType.全不中;
+            qbz10.ChildType = (int)ChildType.十不中;
+            qbz10.PL = Convert.ToDecimal(textBox7.Text.Trim());
+            qbz10.FS = Convert.ToDecimal(textBox13.Text.Trim());
+            qbz10.Remarks = "全不中-十不中";
+
+
+            list.Add(qbz5);
+            list.Add(qbz6);
+            list.Add(qbz7);
+            list.Add(qbz8);
+            list.Add(qbz9);
+            list.Add(qbz10);
+            #endregion
+
+
+            #region 单平
+            OddsData dpdata = new OddsData();
+            dpdata.CustomerId = customerId;
+            dpdata.OrderType = (int)OrderType.单平;
+            dpdata.ChildType = (int)ChildType.单平;
+            dpdata.PL = Convert.ToDecimal(textBox15.Text.Trim());
+            dpdata.FS = Convert.ToDecimal(textBox14.Text.Trim());
+            dpdata.Remarks = "单平";
+            list.Add(dpdata);
+            #endregion
+
 
             OddsImpl service = new OddsImpl();
             if (service.Add(list).Code == 0)

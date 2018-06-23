@@ -251,7 +251,7 @@ namespace Well.Data
             var result = new StandardResult<List<OrderTJ>>();
             using (var db = base.NewDB())
             {
-                StringBuilder sqlCommonText = new StringBuilder(@"select a.issue,b.code,sum(b.inmoney) as money from t_orders as a INNER JOIN t_orders_tm as b on a.id=b.orderId
+                StringBuilder sqlCommonText = new StringBuilder(@"select a.issue,b.code,sum(b.inmoney) as money from t_orders as a INNER JOIN t_orders_tm as b on a.id=b.orderId and a.order_type=1 
 where a.issue = @Issue ");
                 if (cid != 0)
                 {
@@ -264,6 +264,12 @@ where a.issue = @Issue ");
                 sqlCommonText.Append(" group by a.issue, b.code order by money desc");
 
                 result.Body = db.Query<OrderTJ>(sqlCommonText.ToString(), new { Issue = issue, cid = cid, Code = code }).ToList();
+                result.Body.ForEach(x =>
+                {
+                    x.Code2 = x.Code;
+                    x.Code = x.Code + "\n" + ServiceNum.GetNumsArray().FirstOrDefault(P => P.Value == x.Code).Zodiac;
+
+                });
                 result.Code = 0;
                 return result;
             }
