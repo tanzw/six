@@ -1439,7 +1439,13 @@ namespace Well.Six.Frm
             OddsImpl service = new OddsImpl();
             if (service.Add(list).Code == 0)
             {
+                CustomerImpl cs = new CustomerImpl();
+                var cdata = cs.GetModel(new Customers() { Id = customerId });
+                cdata.Body.Remarks = "赔率设置完成";
+                cs.Update(cdata.Body);
                 MessageEx.Show("成功");
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+
             }
             else
             {

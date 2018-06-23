@@ -123,7 +123,10 @@ namespace Well.Six.Frm
                 fm.MinimizeBox = false;
                 fm.MaximizeBox = false;
                 fm.StartPosition = FormStartPosition.CenterParent;
-                fm.ShowDialog();
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadList();
+                }
             }
         }
     }
