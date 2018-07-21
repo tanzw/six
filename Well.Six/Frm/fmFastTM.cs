@@ -142,6 +142,7 @@ namespace Well.Six.Frm
                 Customer_Id = cbxCustomer.SelectedValue.ToString().ToTryInt(),
                 Id = OrderId,
                 IsDel = 0,
+                Sort = textBox1.Text.ToTryInt(),
                 Issue = txtIssue.Text.Trim(),
                 Order_No = ServiceNum.GetOrderNo(),
                 Order_Type = orderType,
@@ -162,6 +163,7 @@ namespace Well.Six.Frm
             if (services.AddOrderTM(order).Code == 0)
             {
                 MessageEx.Show("投注成功");
+                textBox1.Text = (textBox1.Text.Trim().ToTryInt() + 1).ToString();
                 listView1.Items.Clear();
                 txtMoney.Text = "";
                 txtCode.Text = "";
@@ -186,6 +188,12 @@ namespace Well.Six.Frm
             this.txtMoney.KeyPress += new KeyPressEventHandler(Common.TextBox_FilterString_KeyPress);
             Common.BindCustomers(cbxCustomer, (sender1, e1) =>
             {
+                if (cbxCustomer.SelectedIndex != 0)
+                {
+                    OrderImpl orderservice = new OrderImpl();
+                    textBox1.Text = orderservice.GetMaxIndex(cbxCustomer.SelectedValue.ToString(), txtIssue.Text.Trim()).Body.ToString();
+                }
+
                 OddsImpl oddservice = new OddsImpl();
                 var r = oddservice.GetList(cbxCustomer.SelectedValue.ToTryInt());
                 tm = r.Body.FirstOrDefault(x => x.ChildType == childType);

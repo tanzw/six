@@ -20,4 +20,19 @@ namespace Well.Common.Result
         }
         public T Body { get; set; }
     }
+
+    public class SearchReasult<T> : StandardResult
+    {
+        /// <summary>
+        /// 记录总数
+        /// </summary>
+        public int total { set; get; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<T> rows { set; get; }
+    }
+
+
 }

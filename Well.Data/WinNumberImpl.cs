@@ -923,6 +923,18 @@ namespace Well.Data
                         {
                             switch (detail.ChildType)
                             {
+                                case (int)ChildType.平特:
+                                    if (detail.Zodiac1 == model.Body.Num1_Zodiac || detail.Zodiac1 == model.Body.Num2_Zodiac || detail.Zodiac1 == model.Body.Num3_Zodiac || detail.Zodiac1 == model.Body.Num4_Zodiac || detail.Zodiac1 == model.Body.Num5_Zodiac || detail.Zodiac1 == model.Body.Num6_Zodiac || detail.Zodiac1 == model.Body.Num7_Zodiac)
+                                    {
+                                        detail.Status = (int)ResultStatus.Win;
+                                        detail.OutMoney = detail.Odds * detail.InMoney;
+                                        orderMainStatus = (int)ResultStatus.Win;
+                                    }
+                                    else
+                                    {
+                                        detail.Status = (int)ResultStatus.Lose;
+                                    }
+                                    break;
                                 case (int)ChildType.二连肖:
                                     if (model.Body.ZodiacList.Contains(detail.Zodiac1) && model.Body.ZodiacList.Contains(detail.Zodiac2))
                                     {

@@ -17,10 +17,10 @@ namespace Well.Data
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public StandardResult AddOrderTM(Order<OrderTM> model)
+        public StandardResult AddOrderTM(Order<OrderTM> model, int flag = 1)
         {
             var result = new StandardResult();
-            using (var db = base.NewDB())
+            using (var db = base.NewDB(flag))
             {
                 db.Open();
                 IDbTransaction trans = db.BeginTransaction();
@@ -47,10 +47,10 @@ namespace Well.Data
             return result;
         }
 
-        public StandardResult AddOrderLXLM(Order<OrderLXLM> model)
+        public StandardResult AddOrderLXLM(Order<OrderLXLM> model, int flag = 1)
         {
             var result = new StandardResult();
-            using (var db = base.NewDB())
+            using (var db = base.NewDB(flag))
             {
                 db.Open();
                 IDbTransaction trans = db.BeginTransaction();
@@ -87,7 +87,7 @@ namespace Well.Data
         {
             StandardResult result = new StandardResult();
             var db = trans.Connection;
-            string sqlCommandText = "Insert into t_orders(id,order_no,issue,order_type,child_type,customer_id,total_in_money,total_out_money,create_time,create_user_id,update_time,update_user_id,ischeck,isdel,status)  values(@Id,@Order_No,@Issue,@Order_Type,@Child_Type,@Customer_Id,@Total_In_Money,@Total_Out_Money,@Create_Time,@Create_User_Id,@Update_Time,@Update_User_Id,0,0,0)";
+            string sqlCommandText = "Insert into t_orders(id,order_no,issue,order_type,child_type,customer_id,total_in_money,total_out_money,create_time,create_user_id,update_time,update_user_id,ischeck,isdel,status,sort)  values(@Id,@Order_No,@Issue,@Order_Type,@Child_Type,@Customer_Id,@Total_In_Money,@Total_Out_Money,@Create_Time,@Create_User_Id,@Update_Time,@Update_User_Id,0,0,0,@Sort)";
             if (db.Execute(sqlCommandText, model, trans) <= 0)
             {
                 result.Code = 1;
@@ -246,10 +246,10 @@ namespace Well.Data
             }
         }
 
-        public StandardResult<List<OrderTJ>> GetTJ(int cid, string issue, string code)
+        public StandardResult<List<OrderTJ>> GetTJ(int cid, string issue, string code, int flag = 1)
         {
             var result = new StandardResult<List<OrderTJ>>();
-            using (var db = base.NewDB())
+            using (var db = base.NewDB(flag))
             {
                 StringBuilder sqlCommonText = new StringBuilder(@"select a.issue,b.code,sum(b.inmoney) as money from t_orders as a INNER JOIN t_orders_tm as b on a.id=b.orderId and a.order_type=1 
 where a.issue = @Issue ");
@@ -293,6 +293,20 @@ where a.issue = @Issue ");
             }
             return result;
 
+        }
+
+        public StandardResult<int> GetMaxIndex(string cid, string issue)
+        {
+            var result = new StandardResult<int>();
+            using (var db = base.NewDB())
+            {
+                StringBuilder sqlCommonText = new StringBuilder(@"select ifnull(max(sort),0) from t_orders where customer_id=@cid and issue=@Issue ");
+                result.Body = db.Query<int>(sqlCommonText.ToString(), new { Issue = issue, cid = cid }).FirstOrDefault();
+
+                result.Body = result.Body + 1;
+
+            }
+            return result;
         }
 
     }

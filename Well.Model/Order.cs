@@ -31,6 +31,8 @@ namespace Well.Model
         public string Update_User_Id { get; set; }
 
         public int IsDel { get; set; }
+
+        public int Sort { get; set; }
     }
 
     public class Order<T> : OrderMain

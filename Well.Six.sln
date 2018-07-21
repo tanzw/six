@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Well.Data", "Well.Data\Well
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Well.Model", "Well.Model\Well.Model.csproj", "{19B70774-DE25-4060-8619-08B00CE5317F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Well.Wen", "Well.Wen\Well.Wen.csproj", "{E2F002A1-A49B-49A0-BFB5-C74B91320441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{19B70774-DE25-4060-8619-08B00CE5317F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B70774-DE25-4060-8619-08B00CE5317F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B70774-DE25-4060-8619-08B00CE5317F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F002A1-A49B-49A0-BFB5-C74B91320441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F002A1-A49B-49A0-BFB5-C74B91320441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F002A1-A49B-49A0-BFB5-C74B91320441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F002A1-A49B-49A0-BFB5-C74B91320441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

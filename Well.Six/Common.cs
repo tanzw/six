@@ -100,6 +100,7 @@ namespace Well.Six
 
             List<dynamic> list = new List<dynamic>();
             list.Add(new { Name = "请选择类型", Id = 0 });
+            list.Add(new { Name = "一肖", Id = 41 });
             list.Add(new { Name = "二连肖", Id = 22 });
             list.Add(new { Name = "三连肖", Id = 23 });
             list.Add(new { Name = "四连肖", Id = 24 });

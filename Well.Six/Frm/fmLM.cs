@@ -304,7 +304,6 @@ namespace Well.Six.Frm
                 if (service.AddOrderLXLM(order).Code == 0)
                 {
                     MessageEx.Show("下单成功");
-                    btnReset_Click(null, null);
                 }
                 else
                 {

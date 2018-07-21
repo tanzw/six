@@ -43,6 +43,15 @@ namespace Well.Model
 
         public string CustomerName { get; set; }
 
-        public string total { get; set; }
+        public int total { get; set; }
+    }
+
+    public class OrderResult
+    {
+        public int Sort { get; set; }
+
+        public string OrderTypeName { get; set; }
+
+        public decimal Money { get; set; }
     }
 }

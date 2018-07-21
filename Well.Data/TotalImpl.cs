@@ -251,5 +251,39 @@ GROUP BY
             return result;
 
         }
+
+        public StandardResult<List<OrderResult>> GetOrderResult(OrderSearch search = null)
+        {
+            var result = new StandardResult<List<OrderResult>>();
+            using (var db = base.NewDB())
+            {
+                result.Body = db.Query<OrderResult>(@"SELECT
+	order_type,
+	(
+		CASE order_type
+		WHEN 1 THEN
+			'特'
+		WHEN 2 THEN
+			'平'
+		WHEN 4 THEN
+			'平'
+		ELSE
+			'其他'
+		END
+	) AS ordertypename,
+	sort,
+	sum(total_in_money) as Money
+FROM
+	t_orders
+WHERE
+	customer_id = 16
+AND issue = @Issue
+GROUP BY
+	order_type,
+	sort order by sort asc", new { Issue = search.Issue }).ToList();
+            }
+
+            return result;
+        }
     }
 }

@@ -70,6 +70,9 @@
             this.cbxCustomer = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMoney = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +114,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label29);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label17);
@@ -149,7 +155,7 @@
             this.groupBox1.Controls.Add(this.txtMoney);
             this.groupBox1.Location = new System.Drawing.Point(12, 319);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 155);
+            this.groupBox1.Size = new System.Drawing.Size(395, 200);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "連肖快捷投注";
@@ -169,7 +175,7 @@
             this.comboBox1.Location = new System.Drawing.Point(66, 94);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 34;
+            this.comboBox1.TabIndex = 1;
             // 
             // label17
             // 
@@ -392,7 +398,7 @@
             this.txtIssue.Location = new System.Drawing.Point(66, 67);
             this.txtIssue.Name = "txtIssue";
             this.txtIssue.Size = new System.Drawing.Size(121, 21);
-            this.txtIssue.TabIndex = 9;
+            this.txtIssue.TabIndex = 11;
             // 
             // label4
             // 
@@ -405,20 +411,20 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(202, 120);
+            this.btnAdd.Location = new System.Drawing.Point(164, 171);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 7;
+            this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "加入";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(287, 120);
+            this.btnOK.Location = new System.Drawing.Point(257, 171);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 6;
+            this.btnOK.TabIndex = 21;
             this.btnOK.Text = "确认";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -428,7 +434,7 @@
             this.txtCode.Location = new System.Drawing.Point(241, 93);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(121, 21);
-            this.txtCode.TabIndex = 1;
+            this.txtCode.TabIndex = 2;
             // 
             // label3
             // 
@@ -454,7 +460,7 @@
             this.cbxCustomer.Location = new System.Drawing.Point(241, 67);
             this.cbxCustomer.Name = "cbxCustomer";
             this.cbxCustomer.Size = new System.Drawing.Size(121, 20);
-            this.cbxCustomer.TabIndex = 4;
+            this.cbxCustomer.TabIndex = 10;
             // 
             // label2
             // 
@@ -470,14 +476,40 @@
             this.txtMoney.Location = new System.Drawing.Point(66, 120);
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.Size = new System.Drawing.Size(121, 21);
-            this.txtMoney.TabIndex = 3;
+            this.txtMoney.TabIndex = 4;
+            this.txtMoney.Enter += new System.EventHandler(this.txtMoney_Enter);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(369, 94);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(198, 123);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(41, 12);
+            this.label30.TabIndex = 36;
+            this.label30.Text = "序号：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(241, 120);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 21);
+            this.textBox1.TabIndex = 5;
             // 
             // fmFastLX
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 486);
+            this.ClientSize = new System.Drawing.Size(419, 531);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listView1);
             this.KeyPreview = true;
@@ -535,5 +567,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label30;
     }
 }

@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <table class="table-bordered">
+            <tr>
+                <td>1</td>
+                <td>1002</td>
+            </tr>
+            @foreach (var item in ViewBag.TMList)
+            {
+                <tr>
+                    <td>item.Code</td>
+                    <td>item.Money</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
