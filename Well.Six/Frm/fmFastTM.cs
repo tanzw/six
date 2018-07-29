@@ -262,5 +262,10 @@ namespace Well.Six.Frm
             var btn = sender as Button;
             txtCode.Text = btn.Text;
         }
+
+        private void txtMoney_Enter(object sender, EventArgs e)
+        {
+            this.txtMoney.SelectAll();
+        }
     }
 }
